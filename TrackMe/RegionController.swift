@@ -36,6 +36,8 @@ class RegionController {
         }
         
         // MARK: Starts Monitoring Region
+        guard let delegate = (UIApplication.sharedApplication().delegate as? AppDelegate) else { return }
+        delegate.setUpRegions()
         if let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager {
             manager.startMonitoringForRegion(region)
         } else {
