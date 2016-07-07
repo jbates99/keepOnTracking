@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 @IBDesignable
 
@@ -49,10 +50,10 @@ protocol ButtonTableViewCellDelegate {
 
 extension ButtonTableViewCell {
     
-    func updateWithLocation(geoFence: GeoFence) {
+    func updateWithLocation(region: CLRegion) {
         
-        primaryLabel.text = geoFence.name
-        updateButton(geoFence.status.boolValue)
+        primaryLabel.text = region.identifier
+        updateButton(true)
     }
 }
 

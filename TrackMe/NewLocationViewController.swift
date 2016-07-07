@@ -19,6 +19,14 @@ class NewLocationViewController: UIViewController {
     @IBOutlet weak var locationNameTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpLongTouch()
+        setUpMap()
+        distanceTextField.delegate = self
+        self.hideKeyboardWhenTappedAround()
+    }
+    
     // MARK: - IBActions
     
     @IBAction func mapViewLongPress(sender: AnyObject) {
@@ -59,9 +67,7 @@ class NewLocationViewController: UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    
     
     // MARK: - Constants 
     
@@ -86,7 +92,7 @@ class NewLocationViewController: UIViewController {
 
 extension NewLocationViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField) {
-        guard mapView.annotations.count > 1 else { return }
+        guard mapView.annotations.count >= 1 else { return }
         mapView.removeOverlay(distanceCircleOverlay)
         setUpDistanceCircleOverlay()
     }

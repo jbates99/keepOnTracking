@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import CloudKit
+
+class NotificationController {
+//    let subscription = CKSubscription(recordType: <#T##String#>, predicate: <#T##NSPredicate#>, subscriptionID: <#T##String#>, options: <#T##CKSubscriptionOptions#>)
+//    
+    
+    
+}

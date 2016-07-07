@@ -10,7 +10,7 @@
         <!--New Location-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="NewLocationViewController" customModule="Capstone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="NewLocationViewController" customModule="TrackMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -95,10 +95,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="address" destination="piL-A7-nRU" id="zlG-sE-USM"/>
                         <outlet property="addressTextField" destination="piL-A7-nRU" id="zZ0-SM-meM"/>
                         <outlet property="distanceTextField" destination="w7t-lw-DTP" id="LZZ-EO-5dn"/>
-                        <outlet property="locationName" destination="pnU-1f-yLa" id="iWS-Un-rvz"/>
                         <outlet property="locationNameTextField" destination="pnU-1f-yLa" id="0La-9g-fAw"/>
                         <outlet property="longPressRecognizer" destination="r2e-Ao-QgH" id="XmV-GY-Bi7"/>
                         <outlet property="mapView" destination="183-Ul-ZrQ" id="EtW-xF-2AU"/>
@@ -113,16 +111,16 @@
             </objects>
             <point key="canvasLocation" x="969" y="429"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Locations Detail Table View Controller-->
         <scene sceneID="XYg-pa-GpL">
             <objects>
-                <tableViewController id="yhw-CV-waM" sceneMemberID="viewController">
+                <tableViewController id="yhw-CV-waM" customClass="LocationsDetailTableViewController" customModule="TrackMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0bV-Cg-phC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" id="1zV-zH-cQA" customClass="ButtonTableViewCell" customModule="Capstone" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" id="1zV-zH-cQA" customClass="ButtonTableViewCell" customModule="TrackMe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1zV-zH-cQA" id="Jog-H8-hj7">

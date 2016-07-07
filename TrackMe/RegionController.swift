@@ -45,14 +45,14 @@ class RegionController {
     
     static func statusToggled(geoFence: GeoFence) {
         if geoFence.status == false {
-            geoFence.status = true
+            // geoFence.status = true
             if let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager {
                 manager.startMonitoringForRegion(geoFence.region)
             } else {
                 print("Unable to access the manager")
             }
         } else {
-            geoFence.status = false
+            // geoFence.status = false
             if let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager {
                 manager.stopMonitoringForRegion(geoFence.region)
             } else {

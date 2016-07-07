@@ -29,7 +29,7 @@ extension GeoFence {
         
         self.init(region: CLCircularRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), radius: CLLocationDegrees(distance), identifier: identifier), status: status, name: identifier)
     }
-    
+
 }
 
 

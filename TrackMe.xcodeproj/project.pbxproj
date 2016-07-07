@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */; };
 		C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */; };
-		C4BEEDA11D2DB19D00C0D190 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDA01D2DB19D00C0D190 /* ViewController.swift */; };
-		C4BEEDA41D2DB19D00C0D190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA21D2DB19D00C0D190 /* Main.storyboard */; };
 		C4BEEDA61D2DB19D00C0D190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */; };
 		C4BEEDA91D2DB19D00C0D190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA71D2DB19D00C0D190 /* LaunchScreen.storyboard */; };
 		C4BEEDB41D2DB19D00C0D190 /* TrackMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDB31D2DB19D00C0D190 /* TrackMeTests.swift */; };
 		C4BEEDBF1D2DB19D00C0D190 /* TrackMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDBE1D2DB19D00C0D190 /* TrackMeUITests.swift */; };
+		C4BEEDCE1D2DB1B200C0D190 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BEEDCD1D2DB1B200C0D190 /* CloudKit.framework */; };
+		C4BEEDD11D2DB1F100C0D190 /* GeoFence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDCF1D2DB1F100C0D190 /* GeoFence.swift */; };
+		C4BEEDD21D2DB1F100C0D190 /* GeoFence + CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD01D2DB1F100C0D190 /* GeoFence + CloudKit.swift */; };
+		C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */; };
+		C4BEEDD81D2DB1FF00C0D190 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD51D2DB1FF00C0D190 /* ButtonTableViewCell.swift */; };
+		C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */; };
+		C4BEEDDA1D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */; };
+		C4BEEDDC1D2DB25C00C0D190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDDB1D2DB25C00C0D190 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		C4BEED9B1D2DB19D00C0D190 /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4BEEDA01D2DB19D00C0D190 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C4BEEDA31D2DB19D00C0D190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4BEEDA81D2DB19D00C0D190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4BEEDAA1D2DB19D00C0D190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +53,15 @@
 		C4BEEDBA1D2DB19D00C0D190 /* TrackMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BEEDBE1D2DB19D00C0D190 /* TrackMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMeUITests.swift; sourceTree = "<group>"; };
 		C4BEEDC01D2DB19D00C0D190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4BEEDCC1D2DB1AA00C0D190 /* TrackMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TrackMe.entitlements; sourceTree = "<group>"; };
+		C4BEEDCD1D2DB1B200C0D190 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		C4BEEDCF1D2DB1F100C0D190 /* GeoFence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoFence.swift; sourceTree = "<group>"; };
+		C4BEEDD01D2DB1F100C0D190 /* GeoFence + CloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GeoFence + CloudKit.swift"; sourceTree = "<group>"; };
+		C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
+		C4BEEDD51D2DB1FF00C0D190 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLocationViewController.swift; sourceTree = "<group>"; };
+		C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsDetailTableViewController.swift; sourceTree = "<group>"; };
+		C4BEEDDB1D2DB25C00C0D190 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4BEEDCE1D2DB1B200C0D190 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +93,7 @@
 		C4BEED921D2DB19D00C0D190 = {
 			isa = PBXGroup;
 			children = (
+				C4BEEDCD1D2DB1B200C0D190 /* CloudKit.framework */,
 				C4BEED9D1D2DB19D00C0D190 /* TrackMe */,
 				C4BEEDB21D2DB19D00C0D190 /* TrackMeTests */,
 				C4BEEDBD1D2DB19D00C0D190 /* TrackMeUITests */,
@@ -97,11 +114,13 @@
 		C4BEED9D1D2DB19D00C0D190 /* TrackMe */ = {
 			isa = PBXGroup;
 			children = (
+				C4BEEDCC1D2DB1AA00C0D190 /* TrackMe.entitlements */,
 				C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */,
-				C4BEEDA01D2DB19D00C0D190 /* ViewController.swift */,
-				C4BEEDA21D2DB19D00C0D190 /* Main.storyboard */,
+				C4BEEDDD1D2DB43000C0D190 /* Model */,
+				C4BEEDDE1D2DB43700C0D190 /* Controllers */,
+				C4BEEDDF1D2DB44000C0D190 /* ViewControllers */,
 				C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */,
-				C4BEEDA71D2DB19D00C0D190 /* LaunchScreen.storyboard */,
+				C4BEEDE01D2DB44700C0D190 /* Storyboards */,
 				C4BEEDAA1D2DB19D00C0D190 /* Info.plist */,
 			);
 			path = TrackMe;
@@ -123,6 +142,43 @@
 				C4BEEDC01D2DB19D00C0D190 /* Info.plist */,
 			);
 			path = TrackMeUITests;
+			sourceTree = "<group>";
+		};
+		C4BEEDDD1D2DB43000C0D190 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C4BEEDCF1D2DB1F100C0D190 /* GeoFence.swift */,
+				C4BEEDD01D2DB1F100C0D190 /* GeoFence + CloudKit.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C4BEEDDE1D2DB43700C0D190 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */,
+				C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C4BEEDDF1D2DB44000C0D190 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C4BEEDD51D2DB1FF00C0D190 /* ButtonTableViewCell.swift */,
+				C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */,
+				C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C4BEEDE01D2DB44700C0D190 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C4BEEDDB1D2DB25C00C0D190 /* Main.storyboard */,
+				C4BEEDA71D2DB19D00C0D190 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +249,18 @@
 				TargetAttributes = {
 					C4BEED9A1D2DB19D00C0D190 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = MPSVKC6C5B;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					C4BEEDAE1D2DB19D00C0D190 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -229,9 +297,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4BEEDDC1D2DB25C00C0D190 /* Main.storyboard in Resources */,
 				C4BEEDA91D2DB19D00C0D190 /* LaunchScreen.storyboard in Resources */,
 				C4BEEDA61D2DB19D00C0D190 /* Assets.xcassets in Resources */,
-				C4BEEDA41D2DB19D00C0D190 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,8 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4BEEDA11D2DB19D00C0D190 /* ViewController.swift in Sources */,
+				C4BEEDDA1D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift in Sources */,
+				C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */,
+				C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */,
+				C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */,
 				C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */,
+				C4BEEDD81D2DB1FF00C0D190 /* ButtonTableViewCell.swift in Sources */,
+				C4BEEDD21D2DB1F100C0D190 /* GeoFence + CloudKit.swift in Sources */,
+				C4BEEDD11D2DB1F100C0D190 /* GeoFence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,14 +367,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C4BEEDA21D2DB19D00C0D190 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C4BEEDA31D2DB19D00C0D190 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C4BEEDA71D2DB19D00C0D190 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -401,6 +467,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TrackMe/TrackMe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TrackMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshB.TrackMe;
@@ -412,6 +480,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TrackMe/TrackMe.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TrackMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.joshB.TrackMe;
@@ -484,6 +554,7 @@
 				C4BEEDC51D2DB19D00C0D190 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C4BEEDC61D2DB19D00C0D190 /* Build configuration list for PBXNativeTarget "TrackMeTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +563,7 @@
 				C4BEEDC81D2DB19D00C0D190 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C4BEEDC91D2DB19D00C0D190 /* Build configuration list for PBXNativeTarget "TrackMeUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +572,7 @@
 				C4BEEDCB1D2DB19D00C0D190 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

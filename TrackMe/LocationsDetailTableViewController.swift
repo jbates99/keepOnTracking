@@ -7,17 +7,20 @@
 //
 
 import UIKit
+import CoreLocation
 
 class LocationsDetailTableViewController: UITableViewController {
+    
+    var regions = [CLRegion]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.reloadData()
+        setUpRegions()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        tableView.reloadData()
+        setUpRegions()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,17 +32,26 @@ class LocationsDetailTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return RegionController.sharedController.geoFences.count
+        return regions.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("locationCell", forIndexPath: indexPath) as! ButtonTableViewCell
         
-        let location = RegionController.sharedController.geoFences[indexPath.row]
-        cell.updateWithLocation(location)
+        let region = regions[indexPath.row]
+        cell.updateWithLocation(region)
         cell.delegate = self
 
         return cell
+    }
+    
+    func setUpRegions() {
+        if let regions = (UIApplication.sharedApplication().delegate as? AppDelegate)?.regions {
+            self.regions = regions
+        } else {
+            self.regions = []
+        }
+        self.tableView.reloadData()
     }
     
 
@@ -51,17 +63,22 @@ class LocationsDetailTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            let region = regions[indexPath.row]
+            if let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager {
+                manager.stopMonitoringForRegion(region)
+            } else {
+                print("Unable to access the manager")
+            }
+            setUpRegions()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
+        
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
