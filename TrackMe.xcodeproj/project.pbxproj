@@ -14,8 +14,6 @@
 		C4BEEDB41D2DB19D00C0D190 /* TrackMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDB31D2DB19D00C0D190 /* TrackMeTests.swift */; };
 		C4BEEDBF1D2DB19D00C0D190 /* TrackMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDBE1D2DB19D00C0D190 /* TrackMeUITests.swift */; };
 		C4BEEDCE1D2DB1B200C0D190 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BEEDCD1D2DB1B200C0D190 /* CloudKit.framework */; };
-		C4BEEDD11D2DB1F100C0D190 /* GeoFence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDCF1D2DB1F100C0D190 /* GeoFence.swift */; };
-		C4BEEDD21D2DB1F100C0D190 /* GeoFence + CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD01D2DB1F100C0D190 /* GeoFence + CloudKit.swift */; };
 		C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */; };
 		C4BEEDD81D2DB1FF00C0D190 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD51D2DB1FF00C0D190 /* ButtonTableViewCell.swift */; };
 		C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */; };
@@ -55,8 +53,6 @@
 		C4BEEDC01D2DB19D00C0D190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4BEEDCC1D2DB1AA00C0D190 /* TrackMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TrackMe.entitlements; sourceTree = "<group>"; };
 		C4BEEDCD1D2DB1B200C0D190 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		C4BEEDCF1D2DB1F100C0D190 /* GeoFence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoFence.swift; sourceTree = "<group>"; };
-		C4BEEDD01D2DB1F100C0D190 /* GeoFence + CloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GeoFence + CloudKit.swift"; sourceTree = "<group>"; };
 		C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionController.swift; sourceTree = "<group>"; };
 		C4BEEDD51D2DB1FF00C0D190 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLocationViewController.swift; sourceTree = "<group>"; };
@@ -147,8 +143,6 @@
 		C4BEEDDD1D2DB43000C0D190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C4BEEDCF1D2DB1F100C0D190 /* GeoFence.swift */,
-				C4BEEDD01D2DB1F100C0D190 /* GeoFence + CloudKit.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -330,8 +324,6 @@
 				C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */,
 				C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */,
 				C4BEEDD81D2DB1FF00C0D190 /* ButtonTableViewCell.swift in Sources */,
-				C4BEEDD21D2DB1F100C0D190 /* GeoFence + CloudKit.swift in Sources */,
-				C4BEEDD11D2DB1F100C0D190 /* GeoFence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
