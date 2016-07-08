@@ -64,6 +64,7 @@ class NewLocationViewController: UIViewController {
             guard let locationName = locationNameTextField.text, let distanceText = distanceTextField.text else { return }
             guard let distance = Double(distanceText) else { return }
             RegionController.createRegion(mapSelectionPoint.coordinate, radius: distance, name: locationName)
+            performSegueWithIdentifier("detailView", sender: nil)
         }
     }
     
