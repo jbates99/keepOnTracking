@@ -6,33 +6,34 @@
 //  Copyright © 2016 Joshua Bates. All rights reserved.
 //
 
-//
-//import Foundation
-//import CloudKit
-//
-//extension UserRecord {
-//    static var requestedToFollowKey: String { return "requested" }
-//    static var followingKey: String { return "following" }
-//    static var followerRequestsKey: String { return "requests" }
-//    static var followersKey: String { return "followers" }
-//   
-//    init?(cloudKitRecord: CKRecord) {
-//        guard let requestedToFollow = cloudKitRecord[UserRecord.requestedToFollowKey] as? [CKReference : Bool],
-//        following = cloudKitRecord[UserRecord.followingKey] as? [CKReference : Bool],
-//        followerRequests = cloudKitRecord[UserRecord.followerRequestsKey] as? [CKReference : Bool],
-//        followers = cloudKitRecord[UserRecord.followersKey] as? [CKReference : Bool]
-//        where cloudKitRecord.recordType == UserRecord.recordType else { return nil }
-//        
-//        self.init(requestedToFollow: requestedToFollow, following: following, followerRequests: followerRequests, followers : followers)
-//    }
-//}
-//
-//extension CKRecord {
-//    convenience init(userRecord: UserRecord) {
-//        self.init(recordType: UserRecord.recordType)
-//        self[UserRecord.requestedToFollowKey] = UserRecord.requestedToFollow
-//        self[UserRecord.followingKey] = UserRecord.followingKey
-//        self[UserRecord.followerRequestsKey] = UserRecord.followerRequests
-//        self[UserRecord.followersKey] = UserRecord.followers
-//    }
-//}
+
+import Foundation
+import CloudKit
+
+extension User {
+    static var requestedToFollowKey: String { return "requested" }
+    static var followingKey: String { return "following" }
+    static var followerRequestsKey: String { return "requests" }
+    static var followersKey: String { return "followers" }
+    static var recordType: String { return "User" }
+   
+    init?(cloudKitRecord: CKRecord) {
+        guard let requestedToFollow = cloudKitRecord[User.requestedToFollowKey] as? [CKReference],
+        following = cloudKitRecord[User.followingKey] as? [CKReference],
+        followerRequests = cloudKitRecord[User.followerRequestsKey] as? [CKReference],
+        followers = cloudKitRecord[User.followersKey] as? [CKReference]
+        where cloudKitRecord.recordType == User.recordType else { return nil }
+        
+        self.init(requestedToFollow: requestedToFollow, following: following, followerRequests: followerRequests, followers : followers)
+    }
+}
+
+extension CKRecord {
+    convenience init(user: User) {
+        self.init(recordType: User.recordType)
+        self[User.requestedToFollowKey] = user.requestedToFollow
+        self[User.followingKey] = user.following
+        self[User.followerRequestsKey] = user.followerRequests
+        self[User.followersKey] = user.followers
+    }
+}
