@@ -65,6 +65,15 @@ class NewLocationViewController: UIViewController {
             guard let distance = Double(distanceText) else { return }
             RegionController.createRegion(mapSelectionPoint.coordinate, radius: distance, name: locationName)
             performSegueWithIdentifier("detailView", sender: nil)
+            
+            // MARK: - Location Permissions
+            guard let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager else { return }
+            if CLLocationManager.authorizationStatus() == .NotDetermined {
+                manager.requestAlwaysAuthorization()
+                manager.startUpdatingLocation()
+            } else if CLLocationManager.authorizationStatus() == .AuthorizedAlways {
+                manager.startUpdatingLocation()
+            }
         }
     }
     
