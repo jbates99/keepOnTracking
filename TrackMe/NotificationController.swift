@@ -12,18 +12,31 @@ import CloudKit
 class NotificationController {
     
     let container = CKContainer.defaultContainer()
-    
 
-    func userForEmailAddress(email: String) {
+//    func userForEmailAddress(email: String, completion: (id: CKRecordID?) -> CKRecordID?) {
+//        var id: CKRecordID?
+//        container.discoverUserInfoWithEmailAddress(email, completionHandler: { (response, error) in
+//            if error != nil {
+//                print("Error retrieving user for email: \(error)")
+//                id = nil
+//            } else {
+//                guard let response = response else { return }
+//                id = response.userRecordID
+//            }
+//        })
+//        return id
+//    }
+   
+    func requestFollow(id: CKRecordID) {
         
-        return container.discoverUserInfoWithEmailAddress(email, completionHandler: { (response, error) in
-            if error != nil {
-                print("Error retrieving user for email: \(error)")
-            } else {
-                guard let response = response else { return }
-                print(response.userRecordID)
-            }
-        })
+    }
+    
+    func acceptFollow() {
+        
+    }
+    
+    func denyFollow() {
+        
     }
     
     
