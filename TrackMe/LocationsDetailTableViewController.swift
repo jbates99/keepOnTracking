@@ -68,7 +68,7 @@ class LocationsDetailTableViewController: UITableViewController {
         } else {
             print("Unable to access the manager")
         }
-        setUpRegions()
+        regions.removeAtIndex(indexPath.row)
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
     
