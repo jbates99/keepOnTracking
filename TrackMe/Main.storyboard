@@ -22,34 +22,34 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CDp-kF-Y7p">
                                 <rect key="frame" x="20" y="72" width="560" height="508"/>
                                 <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="mBQ-Lq-YaA">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address(Optional search)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="piL-A7-nRU">
+                                                <rect key="frame" x="0.0" y="0.0" width="445" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-DH-uIp">
+                                                <rect key="frame" x="445" y="0.0" width="115" height="30"/>
+                                                <state key="normal" title="Search"/>
+                                                <connections>
+                                                    <action selector="addressGoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IJg-B8-l8I"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="soj-Pi-kbk">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="68"/>
+                                        <rect key="frame" x="0.0" y="38" width="560" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="avR-Pa-vuI">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="68"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pnU-1f-yLa">
                                                         <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                     </textField>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="mBQ-Lq-YaA">
-                                                        <rect key="frame" x="0.0" y="38" width="560" height="30"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="piL-A7-nRU">
-                                                                <rect key="frame" x="0.0" y="0.0" width="399" height="30"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                                            </textField>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-DH-uIp">
-                                                                <rect key="frame" x="399" y="0.0" width="161" height="30"/>
-                                                                <state key="normal" title="Go"/>
-                                                                <connections>
-                                                                    <action selector="addressGoButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IJg-B8-l8I"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
@@ -90,7 +90,7 @@
                     <navigationItem key="navigationItem" title="New Location" id="vI4-Vf-qbh">
                         <barButtonItem key="rightBarButtonItem" title="Locations" id="BhJ-PT-l9S">
                             <connections>
-                                <segue destination="yhw-CV-waM" kind="show" id="bZf-zf-VU2"/>
+                                <segue destination="yhw-CV-waM" kind="show" identifier="detailView" id="bZf-zf-VU2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

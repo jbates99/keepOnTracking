@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */; };
+		C498D8AC1D2F22E3002965F2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8A91D2F22E3002965F2 /* Message.swift */; };
+		C498D8AD1D2F22E3002965F2 /* Message+Cloudkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8AA1D2F22E3002965F2 /* Message+Cloudkit.swift */; };
+		C498D8AE1D2F22E3002965F2 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8AB1D2F22E3002965F2 /* MessageController.swift */; };
 		C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */; };
 		C4BEEDA61D2DB19D00C0D190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */; };
 		C4BEEDA91D2DB19D00C0D190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA71D2DB19D00C0D190 /* LaunchScreen.storyboard */; };
@@ -40,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		C498D8A91D2F22E3002965F2 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		C498D8AA1D2F22E3002965F2 /* Message+Cloudkit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Message+Cloudkit.swift"; sourceTree = "<group>"; };
+		C498D8AB1D2F22E3002965F2 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
 		C4BEED9B1D2DB19D00C0D190 /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,6 +149,8 @@
 		C4BEEDDD1D2DB43000C0D190 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C498D8A91D2F22E3002965F2 /* Message.swift */,
+				C498D8AA1D2F22E3002965F2 /* Message+Cloudkit.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -150,6 +158,7 @@
 		C4BEEDDE1D2DB43700C0D190 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C498D8AB1D2F22E3002965F2 /* MessageController.swift */,
 				C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */,
 				C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */,
 			);
@@ -318,12 +327,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C498D8AD1D2F22E3002965F2 /* Message+Cloudkit.swift in Sources */,
+				C498D8AE1D2F22E3002965F2 /* MessageController.swift in Sources */,
 				C4BEEDDA1D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift in Sources */,
 				C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */,
 				C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */,
 				C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */,
 				C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */,
 				C4BEEDD81D2DB1FF00C0D190 /* ButtonTableViewCell.swift in Sources */,
+				C498D8AC1D2F22E3002965F2 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

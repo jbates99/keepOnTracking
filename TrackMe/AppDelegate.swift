@@ -49,6 +49,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         regions = Array(manager.monitoredRegions)
     }
     
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        MessageController.sharedController.subscribeForPushNotifications()
+    }
+    
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
         print("didExitRegion")
         let localNotification = UILocalNotification()
@@ -56,6 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         localNotification.alertTitle = "Location Alert"
         localNotification.fireDate = NSDate()
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
+        MessageController.sharedController.postNewMessage(Message(messageText: "User has left \(region.identifier)", date: NSDate()))
         
     }
     
@@ -66,6 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         localNotification.alertTitle = "Location Alert"
         localNotification.fireDate = NSDate()
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        
+        MessageController.sharedController.postNewMessage(Message(messageText: "User has entered \(region.identifier)", date: NSDate()))
+
     }
     
     // MARK: - Location Authorization Changed
