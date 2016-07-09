@@ -24,6 +24,8 @@
 		C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */; };
 		C4BEEDDA1D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */; };
 		C4BEEDDC1D2DB25C00C0D190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDDB1D2DB25C00C0D190 /* Main.storyboard */; };
+		C4C907351D314DC10013C603 /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C907341D314DC10013C603 /* GetUserInfo.swift */; };
+		C4C907371D31531C0013C603 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C907361D31531C0013C603 /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLocationViewController.swift; sourceTree = "<group>"; };
 		C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsDetailTableViewController.swift; sourceTree = "<group>"; };
 		C4BEEDDB1D2DB25C00C0D190 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C4C907341D314DC10013C603 /* GetUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserInfo.swift; sourceTree = "<group>"; };
+		C4C907361D31531C0013C603 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,8 @@
 				C498D8AB1D2F22E3002965F2 /* MessageController.swift */,
 				C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */,
 				C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */,
+				C4C907361D31531C0013C603 /* UserController.swift */,
+				C4C907341D314DC10013C603 /* GetUserInfo.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -338,8 +344,10 @@
 				C4BEEDDA1D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift in Sources */,
 				C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */,
 				C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */,
+				C4C907371D31531C0013C603 /* UserController.swift in Sources */,
 				C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */,
 				C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */,
+				C4C907351D314DC10013C603 /* GetUserInfo.swift in Sources */,
 				C4BEEDD81D2DB1FF00C0D190 /* ButtonTableViewCell.swift in Sources */,
 				C4B53AE21D2F3D0400B0B627 /* UserRecord+CloudKit.swift in Sources */,
 				C498D8AC1D2F22E3002965F2 /* Message.swift in Sources */,

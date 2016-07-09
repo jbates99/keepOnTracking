@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="afP-jx-uTl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8sB-GX-FuY">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -88,11 +88,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Location" id="vI4-Vf-qbh">
-                        <barButtonItem key="rightBarButtonItem" title="Locations" id="BhJ-PT-l9S">
-                            <connections>
-                                <segue destination="yhw-CV-waM" kind="show" identifier="detailView" id="bZf-zf-VU2"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Locations" id="BhJ-PT-l9S"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addressTextField" destination="piL-A7-nRU" id="zZ0-SM-meM"/>
@@ -100,6 +96,7 @@
                         <outlet property="locationNameTextField" destination="pnU-1f-yLa" id="0La-9g-fAw"/>
                         <outlet property="longPressRecognizer" destination="r2e-Ao-QgH" id="XmV-GY-Bi7"/>
                         <outlet property="mapView" destination="183-Ul-ZrQ" id="EtW-xF-2AU"/>
+                        <outlet property="searchStackView" destination="mBQ-Lq-YaA" id="D6f-SD-q6c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -109,7 +106,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="969" y="429"/>
+            <point key="canvasLocation" x="2461" y="429"/>
         </scene>
         <!--Locations Detail Table View Controller-->
         <scene sceneID="XYg-pa-GpL">
@@ -166,6 +163,7 @@
                                 <connections>
                                     <outlet property="completeButton" destination="xj7-GU-JpN" id="mQC-I0-SZL"/>
                                     <outlet property="primaryLabel" destination="4ge-pG-zBG" id="jmF-eR-e8R"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="savedLocation" id="UUk-cH-vde"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -174,15 +172,25 @@
                             <outlet property="delegate" destination="yhw-CV-waM" id="5hZ-Jh-Igt"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="58V-Ia-hoM">
+                        <barButtonItem key="rightBarButtonItem" title="Add Location" id="JOw-9D-wbH">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="addLocation" id="1b0-8X-HJt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ei-m4-IMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="429"/>
+            <point key="canvasLocation" x="1778" y="429"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Locations-->
         <scene sceneID="283-uY-Eze">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="afP-jx-uTl" sceneMemberID="viewController">
+                <navigationController title="My Locations" automaticallyAdjustsScrollViewInsets="NO" id="afP-jx-uTl" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="v9v-ex-G79"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Vc-PB-sle">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -190,15 +198,35 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2y5-EC-KOw"/>
+                        <segue destination="yhw-CV-waM" kind="relationship" relationship="rootViewController" id="HAd-1q-8hP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExW-Ij-SGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="429"/>
+            <point key="canvasLocation" x="1117" y="429"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="SXE-i7-dOU">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="8sB-GX-FuY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="uPI-Mq-jZJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="afP-jx-uTl" kind="relationship" relationship="viewControllers" id="eXJ-nC-tdf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wIw-0p-G2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="291" y="232"/>
         </scene>
     </scenes>
     <resources>
         <image name="incomplete" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="UUk-cH-vde"/>
+    </inferredMetricsTieBreakers>
 </document>

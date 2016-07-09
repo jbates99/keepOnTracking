@@ -72,11 +72,22 @@ class LocationsDetailTableViewController: UITableViewController {
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let detailViewController = segue.destinationViewController as? NewLocationViewController else { fatalError("unexpected destination from segue") }
+        if segue.identifier == "savedLocation" {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                guard let region = regions[selectedIndexPath.row] as? CLCircularRegion else { return }
+                detailViewController.region = region
+            }
+        }
+    }
+    
+    
 }
 
 extension LocationsDetailTableViewController: ButtonTableViewCellDelegate {
     
     func buttonCellButtonTapped(sender: ButtonTableViewCell) {
-       
+        
     }
 }

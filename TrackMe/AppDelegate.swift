@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         localNotification.fireDate = NSDate()
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
-        MessageController.sharedController.postNewMessage(Message(messageText: "User has left \(region.identifier)", date: NSDate()))
+        //MessageController.sharedController.postNewMessage(Message(messageText: "User has left \(region.identifier)", date: NSDate()))
         
     }
     
@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         localNotification.fireDate = NSDate()
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
-        MessageController.sharedController.postNewMessage(Message(messageText: "User has entered \(region.identifier)", date: NSDate()))
+        //MessageController.sharedController.postNewMessage(Message(messageText: "User has entered \(region.identifier)", date: NSDate()))
 
     }
     

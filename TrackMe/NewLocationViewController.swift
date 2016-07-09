@@ -11,6 +11,8 @@ import CoreLocation
 import MapKit
 
 class NewLocationViewController: UIViewController {
+    
+    var region: CLCircularRegion? = nil
 
     // MARK: - IBOutlets
     @IBOutlet var longPressRecognizer: UILongPressGestureRecognizer!
@@ -18,6 +20,7 @@ class NewLocationViewController: UIViewController {
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var locationNameTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var searchStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +28,7 @@ class NewLocationViewController: UIViewController {
         setUpMap()
         distanceTextField.delegate = self
         self.hideKeyboardWhenTappedAround()
+        
     }
     
     // MARK: - IBActions
@@ -64,7 +68,6 @@ class NewLocationViewController: UIViewController {
             guard let locationName = locationNameTextField.text, let distanceText = distanceTextField.text else { return }
             guard let distance = Double(distanceText) else { return }
             RegionController.createRegion(mapSelectionPoint.coordinate, radius: distance, name: locationName)
-            performSegueWithIdentifier("detailView", sender: nil)
             
             // MARK: - Location Permissions
             guard let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager else { return }
@@ -73,6 +76,9 @@ class NewLocationViewController: UIViewController {
                 manager.startUpdatingLocation()
             } else if CLLocationManager.authorizationStatus() == .AuthorizedAlways {
                 manager.startUpdatingLocation()
+            }
+            if let navController = self.navigationController {
+                navController.popViewControllerAnimated(true)
             }
         }
     }
@@ -113,6 +119,23 @@ extension NewLocationViewController: MKMapViewDelegate {
         mapView.delegate = self
         mapView.rotateEnabled = false
         
+        if region != nil {
+            guard let region = region else { return }
+            mapSelectionPoint.coordinate = CLLocationCoordinate2D(latitude: region.center.latitude, longitude: region.center.longitude)
+            mapView.removeAnnotation(mapSelectionPoint)
+            mapView.addAnnotation(mapSelectionPoint)
+            distanceTextField.text = String(region.radius)
+            self.title = region.identifier
+            locationNameTextField.text = region.identifier
+            locationNameTextField.hidden = true
+            setUpDistanceCircleOverlay()
+            searchStackView.hidden = true
+            
+            
+            let zoomRegion = MKCoordinateRegion(center: mapSelectionPoint.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            mapView.setRegion(zoomRegion, animated: true)
+            
+        }
         // MARK: Need to set up initial region
         
     }
