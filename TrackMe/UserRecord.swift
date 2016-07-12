@@ -11,11 +11,13 @@ import CloudKit
 
 struct User {
     
-    var name: String = ""
+    var name: String
+    let userID: String
+    let child: Bool = true
     
-    static var requestedToFollow: [CKReference] = []
-    static var following: [CKReference] = []
-    static var followerRequests: [CKReference] = []
-    static var followers: [CKReference] = []
+    var requestedToFollow: [CKReference] = []
+    var following: [CKReference] = []
+    var followerRequests: [CKReference] = []
+    var followers: [CKReference] = []
 
 }
