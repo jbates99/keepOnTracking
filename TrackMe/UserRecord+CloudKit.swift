@@ -7,7 +7,7 @@
 //
 
 
-import Foundation
+import UIKit
 import CloudKit
 
 extension User {
@@ -16,15 +16,17 @@ extension User {
     static var followerRequestsKey: String { return "requests" }
     static var followersKey: String { return "followers" }
     static var recordType: String { return "User" }
+    static var nameKey: String { return "name" }
    
     init?(cloudKitRecord: CKRecord) {
         guard let requestedToFollow = cloudKitRecord[User.requestedToFollowKey] as? [CKReference],
         following = cloudKitRecord[User.followingKey] as? [CKReference],
         followerRequests = cloudKitRecord[User.followerRequestsKey] as? [CKReference],
-        followers = cloudKitRecord[User.followersKey] as? [CKReference]
+        followers = cloudKitRecord[User.followersKey] as? [CKReference],
+        name = cloudKitRecord[User.nameKey] as? String
         where cloudKitRecord.recordType == User.recordType else { return nil }
         
-        self.init(requestedToFollow: requestedToFollow, following: following, followerRequests: followerRequests, followers : followers)
+        self.init(name: name, requestedToFollow: requestedToFollow, following: following, followerRequests: followerRequests, followers : followers)
     }
 }
 
@@ -35,5 +37,6 @@ extension CKRecord {
         self[User.followingKey] = user.following
         self[User.followerRequestsKey] = user.followerRequests
         self[User.followersKey] = user.followers
+        self[User.nameKey] = user.name
     }
 }

@@ -6,13 +6,16 @@
 //  Copyright © 2016 Joshua Bates. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CloudKit
 
 struct User {
-    var requestedToFollow: [CKReference] = []
-    var following: [CKReference] = []
-    var followerRequests: [CKReference] = []
-    var followers: [CKReference] = []
+    
+    var name: String = ""
+    
+    static var requestedToFollow: [CKReference] = []
+    static var following: [CKReference] = []
+    static var followerRequests: [CKReference] = []
+    static var followers: [CKReference] = []
 
 }

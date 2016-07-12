@@ -54,8 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-        MessageController.sharedController.subscribeForPushNotifications()
+        
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        
+//        UIApplication.sharedApplication().registerForRemoteNotifications()
+//        MessageController.sharedController.subscribeForPushNotifications()
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {

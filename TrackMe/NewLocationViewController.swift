@@ -132,7 +132,7 @@ extension NewLocationViewController: MKMapViewDelegate {
             searchStackView.hidden = true
             
             
-            let zoomRegion = MKCoordinateRegion(center: mapSelectionPoint.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+            let zoomRegion = MKCoordinateRegion(center: mapSelectionPoint.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
             mapView.setRegion(zoomRegion, animated: true)
             
         }

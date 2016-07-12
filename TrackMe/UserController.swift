@@ -11,5 +11,11 @@ import CloudKit
 
 class UserController {
     
+   static let sharedInstance = UserController()
+    
+    var currentUser = User! {
+        
+    }
+    
     let container = CKContainer.defaultContainer()
 }
