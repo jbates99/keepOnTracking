@@ -15,9 +15,6 @@ struct User {
     let userID: String
     let child: Bool = true
     
-    var requestedToFollow: [CKReference] = []
-    var following: [CKReference] = []
-    var followerRequests: [CKReference] = []
-    var followers: [CKReference] = []
+    var following: [String] = []
 
 }

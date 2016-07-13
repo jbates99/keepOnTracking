@@ -27,11 +27,11 @@ class UserController {
         }
     }
     
-    static func createUser(name: String, userID: String, child: Bool = true, requestedToFollow: [CKReference] = [], following: [CKReference] = [], followerRequests: [CKReference] = [], followers: [CKReference] = [], completion: (success: Bool, user: User?) -> Void) {
+    static func createUser(name: String, child: Bool = true,/* requestedToFollow: [CKReference] = [], */following: [String] = []/*, followerRequests: [CKReference] = [], followers: [CKReference] = []*/, completion: (success: Bool, user: User?) -> Void) {
         fetchCurrentUserID { (userID, error) in
             if let userID = userID where error == nil {
                 let userAsString = String(userID)
-                let user = User(name: name, userID: userAsString, requestedToFollow: requestedToFollow, following: following, followerRequests: followerRequests, followers: followers)
+                let user = User(name: name, userID: userAsString, /*requestedToFollow: requestedToFollow, */following: following/*, followerRequests: followerRequests, followers: followers*/)
                 completion(success: true, user: user)
                 self.sharedInstance.currentUser = user
             } else {
@@ -40,7 +40,5 @@ class UserController {
             }
         }
     }
-    
-    
-    
+
 }

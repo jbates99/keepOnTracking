@@ -59,30 +59,29 @@ class MessageController {
         }
     }
     
-//    func subscribeForPushNotifications() {
-//        let db = CKContainer.defaultContainer().publicCloudDatabase
-//        db.fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in
-//            if let error = error {
-//                NSLog("Error fetching subscriptions: \(error)")
-//                return
-//            }
-//            if let subscriptions = subscriptions where subscriptions.count > 0 {
-//                NSLog("Already subscribed")
-//                return
-//            }
-//            
-//            let subscription = CKSubscription(recordType: Message.recordType, predicate: NSPredicate(value: true), options: .FiresOnRecordCreation)
-//            let notificationInfo = CKNotificationInfo()
-//            notificationInfo.alertBody = "There's a new message on the bulletin board."
-//           // notificationInfo.soundNam
-//            subscription.notificationInfo = notificationInfo
-//            db.saveSubscription(subscription) { (subscription, error) in
-//                if let error = error {
-//                    NSLog("Error saving subscription: \(error)")
-//                    return
-//                }
-//            }
-//        }
-//    }
+    func subscribeForPushNotifications(userID: String) {
+        let db = CKContainer.defaultContainer().publicCloudDatabase
+        db.fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in
+            if let error = error {
+                NSLog("Error fetching subscriptions: \(error)")
+                return
+            }
+            if let subscriptions = subscriptions where subscriptions.count > 0 {
+                NSLog("Already subscribed")
+                return
+            }
+            
+            let subscription = CKSubscription(recordType: Message.recordType, predicate: NSPredicate(format: "userID CONTAINS '\(userID)'"), options: .FiresOnRecordCreation)
+            let notificationInfo = CKNotificationInfo()
+            notificationInfo.alertBody = "A user has updated their location."
+            subscription.notificationInfo = notificationInfo
+            db.saveSubscription(subscription) { (subscription, error) in
+                if let error = error {
+                    NSLog("Error saving subscription: \(error)")
+                    return
+                }
+            }
+        }
+    }
     
 }

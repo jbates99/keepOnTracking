@@ -21,15 +21,15 @@ extension User {
     static var recordType: String { return "User" }
    
     init?(cloudKitRecord: CKRecord) {
-        guard let requestedToFollow = cloudKitRecord[User.requestedToFollowKey] as? [CKReference],
-        following = cloudKitRecord[User.followingKey] as? [CKReference],
-        followerRequests = cloudKitRecord[User.followerRequestsKey] as? [CKReference],
-        followers = cloudKitRecord[User.followersKey] as? [CKReference],
+        guard let /*requestedToFollow = cloudKitRecord[User.requestedToFollowKey] as? [CKReference],*/
+        following = cloudKitRecord[User.followingKey] as? [String],
+        //followerRequests = cloudKitRecord[User.followerRequestsKey] as? [CKReference],
+        //followers = cloudKitRecord[User.followersKey] as? [CKReference],
         name = cloudKitRecord[User.nameKey] as? String,
         userID = cloudKitRecord[User.userIDKey] as? String
         where cloudKitRecord.recordType == User.recordType else { return nil }
         
-        self.init(name: name, userID: userID, requestedToFollow: requestedToFollow, following: following, followerRequests: followerRequests, followers : followers)
+        self.init(name: name, userID: userID,/* requestedToFollow: requestedToFollow, */following: following/*, followerRequests: followerRequests, followers : followers*/)
     }
 }
 
@@ -38,10 +38,10 @@ extension CKRecord {
         self.init(recordType: User.recordType)
         self[User.childKey] = user.child
         self[User.userIDKey] = user.userID
-        self[User.requestedToFollowKey] = user.requestedToFollow
+       // self[User.requestedToFollowKey] = user.requestedToFollow
         self[User.followingKey] = user.following
-        self[User.followerRequestsKey] = user.followerRequests
-        self[User.followersKey] = user.followers
+      //  self[User.followerRequestsKey] = user.followerRequests
+        //self[User.followersKey] = user.followers
         self[User.nameKey] = user.name
     }
 }

@@ -32,13 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         manager.distanceFilter = kCLDistanceFilterNone  // Whenever user moves
         manager.desiredAccuracy = kCLLocationAccuracyBest // Best Accuracy
         
-//        // MARK: - Location Permissions
-//        if CLLocationManager.authorizationStatus() == .NotDetermined {
-//            manager.requestAlwaysAuthorization()
-//            manager.startUpdatingLocation()
-//        } else if CLLocationManager.authorizationStatus() == .AuthorizedAlways {
-//            manager.startUpdatingLocation()
-//        }
+
         
         setUpRegions()
         
@@ -60,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
 //        UIApplication.sharedApplication().registerForRemoteNotifications()
-//        MessageController.sharedController.subscribeForPushNotifications()
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {

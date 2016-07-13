@@ -9,8 +9,6 @@
 import UIKit
 import CoreLocation
 
-@IBDesignable
-
 class ButtonTableViewCell: UITableViewCell {
 
     @IBOutlet weak var completeButton: UIButton!

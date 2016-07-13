@@ -12,4 +12,5 @@ struct Message {
     
     let messageText: String
     let date: NSDate
+   // let userID: String
 }
