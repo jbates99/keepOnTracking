@@ -359,8 +359,6 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="jlB-sq-YS5" firstAttribute="leading" secondItem="Ewi-Td-1IS" secondAttribute="leadingMargin" id="AIL-pX-aZa"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="jlB-sq-YS5" secondAttribute="bottom" constant="8" id="D4D-OZ-RLW"/>
-                                        <constraint firstItem="jlB-sq-YS5" firstAttribute="top" secondItem="Ewi-Td-1IS" secondAttribute="topMargin" constant="8" id="Gja-ji-Ai2"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="jlB-sq-YS5" secondAttribute="bottom" id="Td6-gJ-ZH5"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="jlB-sq-YS5" secondAttribute="trailing" id="bef-II-Uv1"/>
                                         <constraint firstItem="jlB-sq-YS5" firstAttribute="top" secondItem="Ewi-Td-1IS" secondAttribute="topMargin" id="xXC-rk-YE6"/>

@@ -11,6 +11,7 @@ import CloudKit
 
 class ProfileTableViewController: UITableViewController {
     
+    private let notificationController = NotificationController()
     var users: [CKDiscoveredUserInfo] = []
     var followedUsers: [String]? {
         return UserController.sharedInstance.currentUser?.following
@@ -21,8 +22,9 @@ class ProfileTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpUsers()
         
-        NotificationController.requestAccess()
+        notificationController.requestAccess()
         
         
         if let currentUser = UserController.sharedInstance.currentUser {
@@ -31,7 +33,6 @@ class ProfileTableViewController: UITableViewController {
         
     }
 
-    
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,32 +49,21 @@ class ProfileTableViewController: UITableViewController {
     }
   
     func setUpUsers() {
-        func discoverUsers(completion: (users: [CKDiscoveredUserInfo]) -> Void) {
-            let container = NotificationController.container
-            var discoveredUsers: [CKDiscoveredUserInfo] = []
-            container.discoverAllContactUserInfosWithCompletionHandler { (users, error) in
-                if error != nil {
-                    print("Error: \(error)")
-                    discoveredUsers = []
-                } else if users != nil {
-                    guard let users = users else { return }
-                    discoveredUsers = users
+            notificationController.discoverUsers { (users) in
+            self.users = users
+                Dispatch.main.async {
+                    self.tableView.reloadData()
                 }
-            }
-            completion(users: discoveredUsers)
-            dispatch_async(dispatch_get_main_queue()) {
-                self.users = discoveredUsers
-                self.tableView.reloadData()
-            }
-            
+      
         }
-        
     }
     
 }
 
 extension ProfileTableViewController: FollowUserTableViewCellDelegate {
     func buttonCellButtonTapped(sender: ButtonTableViewCell) {
-        
+        let indexPath = tableView.indexPathForCell(sender)!
+        let user = users[indexPath.row]
+        MessageController.subscribeForPushNotifications(String(user.userRecordID))
     }
 }

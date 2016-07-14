@@ -26,7 +26,7 @@ class MessageController {
                 NSLog("Error saving \(message) to CloudKit: \(error)")
                 return
             }
-            dispatch_async(dispatch_get_main_queue()) {
+            Dispatch.main.async {
                 self.messages.append(message)
             }
             self.refresh()
@@ -46,7 +46,7 @@ class MessageController {
             }
             guard let records = records?.suffix(20) else { return }
             let messages = records.flatMap { Message(cloudKitRecord: $0) }
-            dispatch_async(dispatch_get_main_queue()) {
+            Dispatch.main.async {
                 self.messages = messages
             }
         }
@@ -59,7 +59,7 @@ class MessageController {
         }
     }
     
-    func subscribeForPushNotifications(userID: String) {
+    static func subscribeForPushNotifications(userID: String) {
         let db = CKContainer.defaultContainer().publicCloudDatabase
         db.fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in
             if let error = error {

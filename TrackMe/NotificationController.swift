@@ -11,9 +11,9 @@ import CloudKit
 
 class NotificationController {
     
-    static let container = CKContainer.defaultContainer()
+    let container = CKContainer.defaultContainer()
     
-    static func requestAccess() {
+    func requestAccess() {
         container.requestApplicationPermission(.UserDiscoverability) { (permissionStatus, error) in
             if error != nil {
                 print("Error: \(error)")
@@ -21,5 +21,24 @@ class NotificationController {
         }
         
     }
+    
+   func discoverUsers(completion: (users: [CKDiscoveredUserInfo]) -> Void) {
+        let container = self.container
+        var discoveredUsers: [CKDiscoveredUserInfo] = []
+        container.discoverAllContactUserInfosWithCompletionHandler { (users, error) in
+            if error != nil {
+                print("Error: \(error)")
+                discoveredUsers = []
+            } else if users != nil {
+                guard let users = users else { return }
+                discoveredUsers = users
+            }
+        }
+        completion(users: discoveredUsers)
+        Dispatch.main.async {
+        }
+        
+    }
+
     
 }
