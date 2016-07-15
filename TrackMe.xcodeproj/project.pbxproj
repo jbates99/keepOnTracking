@@ -11,7 +11,6 @@
 		C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */; };
 		C498D8AC1D2F22E3002965F2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8A91D2F22E3002965F2 /* Message.swift */; };
 		C498D8AE1D2F22E3002965F2 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8AB1D2F22E3002965F2 /* MessageController.swift */; };
-		C4B1E5AA1D35D16B00A1BBF8 /* FollowedUserUpdatesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B1E5A91D35D16B00A1BBF8 /* FollowedUserUpdatesTableViewController.swift */; };
 		C4B53AE01D2F3C4F00B0B627 /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B53ADF1D2F3C4F00B0B627 /* UserRecord.swift */; };
 		C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */; };
 		C4BEEDA61D2DB19D00C0D190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */; };
@@ -51,7 +50,6 @@
 		C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		C498D8A91D2F22E3002965F2 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C498D8AB1D2F22E3002965F2 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
-		C4B1E5A91D35D16B00A1BBF8 /* FollowedUserUpdatesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowedUserUpdatesTableViewController.swift; sourceTree = "<group>"; };
 		C4B53ADF1D2F3C4F00B0B627 /* UserRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
 		C4BEED9B1D2DB19D00C0D190 /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				C4BEEDD51D2DB1FF00C0D190 /* ButtonTableViewCell.swift */,
-				C4B1E5A91D35D16B00A1BBF8 /* FollowedUserUpdatesTableViewController.swift */,
 				C4C7D6EF1D35B0E7000D5310 /* ProfileTableViewController.swift */,
 				C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */,
 				C4C7D6F11D35B143000D5310 /* FollowUserTableViewCell.swift */,
@@ -347,7 +344,6 @@
 				C4C7D6F21D35B143000D5310 /* FollowUserTableViewCell.swift in Sources */,
 				C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */,
 				C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */,
-				C4B1E5AA1D35D16B00A1BBF8 /* FollowedUserUpdatesTableViewController.swift in Sources */,
 				C4C907371D31531C0013C603 /* UserController.swift in Sources */,
 				C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */,
 				C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */,

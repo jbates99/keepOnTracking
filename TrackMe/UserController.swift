@@ -47,22 +47,22 @@ class UserController {
             }
         }
         
-        static func createUser(name: String, child: Bool = true, following: [String], completion: (success: Bool, user: User?) -> Void) {
-            fetchCurrentUserID { userID, error in
-                if let userID = userID where error == nil {
-                    let userAsString = String(userID)
-                    let following = [userAsString]
-                    let user = User(name: name, userID: userAsString, following: following)
-                    let record = CKRecord(user: user)
-                    db.saveRecord(record, completionHandler: { record, error in
-                        // error check
-                        completion(success: true, user: user)
-                    })
-                } else {
-                    print(error)
-                    completion(success: false, user: nil)
-                }
+    static func createUser(name: String, child: Bool = true, following: [String], completion: (success: Bool, user: User?) -> Void) {
+        fetchCurrentUserID { userID, error in
+            if let userID = userID where error == nil {
+                let userAsString = String(userID)
+                let following = [userAsString]
+                let user = User(name: name, userID: userAsString, following: following)
+                let record = CKRecord(user: user)
+                db.saveRecord(record, completionHandler: { record, error in
+                    // error check
+                    completion(success: true, user: user)
+                })
+            } else {
+                print(error)
+                completion(success: false, user: nil)
             }
         }
+    }
         
 }
