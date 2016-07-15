@@ -12,6 +12,7 @@ import CloudKit
 class UserSearchTableViewController: UITableViewController {
     
     private let notificationController = NotificationController()
+    private let cloudKitManager = CloudKitManager()
     
     var users: [CKDiscoveredUserInfo] {
         return notificationController.discoveredRecords
@@ -53,9 +54,11 @@ class UserSearchTableViewController: UITableViewController {
 }
 
 extension UserSearchTableViewController: FollowUserTableViewCellDelegate {
-    func buttonCellButtonTapped(sender: ButtonTableViewCell) {
+    func buttonCellButtonTapped(sender: FollowUserTableViewCell) {
         let indexPath = tableView.indexPathForCell(sender)!
         let user = users[indexPath.row]
-        MessageController.subscribeForPushNotifications(String(user.userRecordID))
+        guard let recordID = user.userRecordID else { return }
+        let reference = FollowingController.sharedController.createReference(recordID)
+        FollowingController.sharedController.createFollowing(reference)
     }
 }

@@ -13,6 +13,7 @@ class FollowingController {
     
     static let sharedController = FollowingController()
     
+    
     let cloudKitManager = CloudKitManager()
     
     func createReference(recordID: CKRecordID) -> CKReference {

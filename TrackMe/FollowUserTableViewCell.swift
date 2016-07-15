@@ -30,7 +30,7 @@ class FollowUserTableViewCell: UITableViewCell {
 
 protocol FollowUserTableViewCellDelegate {
     
-    func buttonCellButtonTapped(sender: ButtonTableViewCell)
+    func buttonCellButtonTapped(sender: FollowUserTableViewCell)
 }
 
 extension FollowUserTableViewCell {
