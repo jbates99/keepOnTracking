@@ -104,7 +104,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2474" y="232"/>
+            <point key="canvasLocation" x="2464" y="-116"/>
         </scene>
         <!--My Locations-->
         <scene sceneID="XYg-pa-GpL">
@@ -182,7 +182,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ei-m4-IMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="232"/>
+            <point key="canvasLocation" x="1747" y="-116"/>
         </scene>
         <!--My Locations-->
         <scene sceneID="283-uY-Eze">
@@ -201,7 +201,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExW-Ij-SGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1019" y="232"/>
+            <point key="canvasLocation" x="1019" y="-116"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="SXE-i7-dOU">
@@ -300,7 +300,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mbx-3o-uIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1019" y="959"/>
+            <point key="canvasLocation" x="1747" y="599"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="eLs-nH-iBS">
@@ -308,7 +308,7 @@
                 <tableViewController id="DFf-7T-eYy" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEM-H6-z6g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="959"/>
+            <point key="canvasLocation" x="2464" y="599"/>
         </scene>
         <!--Family-->
         <scene sceneID="2p8-cA-KSy">
@@ -327,7 +327,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nt2-eJ-ZbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="291" y="959"/>
+            <point key="canvasLocation" x="1013" y="599"/>
         </scene>
     </scenes>
     <resources>
