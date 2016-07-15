@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         manager.desiredAccuracy = kCLLocationAccuracyBest // Best Accuracy
         
 
-        
+        UserController.loadCurrentUser()
         setUpRegions()
         
         return true

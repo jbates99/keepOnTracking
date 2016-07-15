@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TrackMe/ProfileTableViewController.swift"
-            timestampString = "490149599.111897"
+            timestampString = "490232839.508735"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "setUpUsers()"
             landmarkType = "5">
          </BreakpointContent>
@@ -25,46 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TrackMe/ProfileTableViewController.swift"
-            timestampString = "490149625.851272"
+            filePath = "TrackMe/NotificationController.swift"
+            timestampString = "490232881.639998"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "setUpUsers()"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "discoverUsers(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TrackMe.ProfileTableViewController.setUpUsers () -&gt; ()"
-                  moduleName = "TrackMe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jbates/Desktop/TrackMe/TrackMe/ProfileTableViewController.swift"
-                  timestampString = "490150118.550875"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "TrackMe.ProfileTableViewController.(setUpUsers () -&gt; ()).(closure #1)"
-                  moduleName = "TrackMe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jbates/Desktop/TrackMe/TrackMe/ProfileTableViewController.swift"
-                  timestampString = "490150118.551069"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

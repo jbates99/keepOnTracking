@@ -367,7 +367,6 @@
                                 <connections>
                                     <outlet property="followButton" destination="Kyu-kd-0Od" id="6Wq-GD-nui"/>
                                     <outlet property="nameLabel" destination="l5a-Jg-Uul" id="xzg-lS-Jtx"/>
-                                    <outlet property="nameTextField" destination="l5a-Jg-Uul" id="dQo-ao-nra"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

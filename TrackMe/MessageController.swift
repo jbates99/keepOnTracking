@@ -39,7 +39,7 @@ class MessageController {
         let query = CKQuery(recordType: Message.recordType, predicate: NSPredicate(value: true))
         query.sortDescriptors = [NSSortDescriptor(key: Message.dateKey, ascending: true)]
         
-        db.performQuery(query, inZoneWithID: nil) { (records, error) in
+        db.performQuery(query, inZoneWithID: nil) { records, error in
             if let error = error {
                 NSLog("Error fetching from cloudKit: \(error)")
                 return

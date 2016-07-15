@@ -11,18 +11,13 @@ import CloudKit
 
 class FollowedUserUpdatesTableViewController: UITableViewController {
     
-    var followedUsers = UserController.sharedInstance.currentUser?.following
+    var followedUsers = UserController.currentUser?.following
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
+
     func setUpUpdates() {
         guard let followedUsers = followedUsers else { return }
         for userID in followedUsers {

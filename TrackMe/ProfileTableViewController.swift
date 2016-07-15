@@ -12,9 +12,15 @@ import CloudKit
 class ProfileTableViewController: UITableViewController {
     
     private let notificationController = NotificationController()
-    var users: [CKDiscoveredUserInfo] = []
+    
+    var users: [CKDiscoveredUserInfo] {
+        return notificationController.discoveredRecords
+    }
+    
+    // MARK: - Computed Properties
+    
     var followedUsers: [String]? {
-        return UserController.sharedInstance.currentUser?.following
+        return UserController.currentUser?.following
     }
     
     @IBOutlet weak var currentUserProfilePic: UIImageView!
@@ -23,16 +29,14 @@ class ProfileTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUsers()
-        
         notificationController.requestAccess()
         
-        
-        if let currentUser = UserController.sharedInstance.currentUser {
+        if let currentUser = UserController.currentUser {
             currentUserNameLabel.text = currentUser.name
         }
         
     }
-
+    
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,14 +51,17 @@ class ProfileTableViewController: UITableViewController {
         
         return cell
     }
-  
+    
     func setUpUsers() {
-            notificationController.discoverUsers { (users) in
-            self.users = users
+        notificationController.discoverUsers { success in
+            if success {
                 Dispatch.main.async {
                     self.tableView.reloadData()
                 }
-      
+            }
+        }
+        UserController.fetchCurrentUserID { userID, error in
+            
         }
     }
     
