@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C426EDEF1D3870EB007F9123 /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C426EDEE1D3870EB007F9123 /* UserSearchTableViewController.swift */; };
 		C42D64B91D37174000FB63F6 /* DispatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D64B81D37174000FB63F6 /* DispatchHelper.swift */; };
 		C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */; };
 		C498D8AC1D2F22E3002965F2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8A91D2F22E3002965F2 /* Message.swift */; };
 		C498D8AE1D2F22E3002965F2 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8AB1D2F22E3002965F2 /* MessageController.swift */; };
-		C4B53AE01D2F3C4F00B0B627 /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B53ADF1D2F3C4F00B0B627 /* UserRecord.swift */; };
 		C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */; };
 		C4BEEDA61D2DB19D00C0D190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */; };
 		C4BEEDA91D2DB19D00C0D190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA71D2DB19D00C0D190 /* LaunchScreen.storyboard */; };
@@ -23,9 +23,7 @@
 		C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */; };
 		C4BEEDDA1D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */; };
 		C4BEEDDC1D2DB25C00C0D190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDDB1D2DB25C00C0D190 /* Main.storyboard */; };
-		C4C7D6F01D35B0E7000D5310 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D6EF1D35B0E7000D5310 /* ProfileTableViewController.swift */; };
 		C4C7D6F21D35B143000D5310 /* FollowUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D6F11D35B143000D5310 /* FollowUserTableViewCell.swift */; };
-		C4C907371D31531C0013C603 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C907361D31531C0013C603 /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,11 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C426EDEE1D3870EB007F9123 /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewController.swift; sourceTree = "<group>"; };
 		C42D64B81D37174000FB63F6 /* DispatchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchHelper.swift; sourceTree = "<group>"; };
 		C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		C498D8A91D2F22E3002965F2 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C498D8AB1D2F22E3002965F2 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
-		C4B53ADF1D2F3C4F00B0B627 /* UserRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
 		C4BEED9B1D2DB19D00C0D190 /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,9 +67,7 @@
 		C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLocationViewController.swift; sourceTree = "<group>"; };
 		C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsDetailTableViewController.swift; sourceTree = "<group>"; };
 		C4BEEDDB1D2DB25C00C0D190 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		C4C7D6EF1D35B0E7000D5310 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		C4C7D6F11D35B143000D5310 /* FollowUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUserTableViewCell.swift; sourceTree = "<group>"; };
-		C4C907361D31531C0013C603 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				C498D8A91D2F22E3002965F2 /* Message.swift */,
-				C4B53ADF1D2F3C4F00B0B627 /* UserRecord.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -170,7 +165,6 @@
 				C498D8AB1D2F22E3002965F2 /* MessageController.swift */,
 				C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */,
 				C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */,
-				C4C907361D31531C0013C603 /* UserController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -179,10 +173,10 @@
 			isa = PBXGroup;
 			children = (
 				C4BEEDD51D2DB1FF00C0D190 /* ButtonTableViewCell.swift */,
-				C4C7D6EF1D35B0E7000D5310 /* ProfileTableViewController.swift */,
 				C4BEEDD61D2DB1FF00C0D190 /* NewLocationViewController.swift */,
 				C4C7D6F11D35B143000D5310 /* FollowUserTableViewCell.swift */,
 				C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */,
+				C426EDEE1D3870EB007F9123 /* UserSearchTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -344,13 +338,11 @@
 				C4C7D6F21D35B143000D5310 /* FollowUserTableViewCell.swift in Sources */,
 				C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */,
 				C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */,
-				C4C907371D31531C0013C603 /* UserController.swift in Sources */,
+				C426EDEF1D3870EB007F9123 /* UserSearchTableViewController.swift in Sources */,
 				C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */,
 				C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */,
-				C4C7D6F01D35B0E7000D5310 /* ProfileTableViewController.swift in Sources */,
 				C4BEEDD81D2DB1FF00C0D190 /* ButtonTableViewCell.swift in Sources */,
 				C498D8AC1D2F22E3002965F2 /* Message.swift in Sources */,
-				C4B53AE01D2F3C4F00B0B627 /* UserRecord.swift in Sources */,
 				C42D64B91D37174000FB63F6 /* DispatchHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

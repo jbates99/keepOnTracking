@@ -23,7 +23,6 @@ class NotificationController {
                 
             }
         }
-        
     }
     
     func discoverUsers(completion: (success: Bool) -> Void) {
@@ -32,9 +31,11 @@ class NotificationController {
                 print("Error: \(error)")
                 completion(success: false)
             } else {
+                guard let users = users else { return }
+                self.discoveredRecords = users
                 completion(success: true)
             }
         }
     }
-
+    
 }

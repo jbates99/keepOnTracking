@@ -10,20 +10,15 @@ import UIKit
 import CloudKit
 
 class FollowUserTableViewCell: UITableViewCell {
-
-
+    
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var followButton: UIButton!
+    
     
     // MARK: - Complete Button Drawing Properties
     
     var delegate: FollowUserTableViewCellDelegate?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    @IBAction func followButtonTapped(sender: AnyObject) {
+
+    @IBAction func requestButtonTapped(sender: AnyObject) {
         
     }
     

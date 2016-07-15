@@ -10,35 +10,11 @@ import UIKit
 import CoreLocation
 
 class ButtonTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var completeButton: UIButton!
+    
     @IBOutlet weak var primaryLabel: UILabel!
     
-    // MARK: - Complete Button Drawing Properties
-    
     var delegate: ButtonTableViewCellDelegate?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-    }
-    
-    @IBAction func buttonTapped(sender: AnyObject) {
-        
-        if let delegate = delegate {
-            delegate.buttonCellButtonTapped(self)
-        }
-    }
-    
-    func updateButton(isComplete: Bool) {
-        
-        if isComplete {
-            completeButton.setImage(UIImage(named: "complete"), forState: .Normal)
-        } else {
-            completeButton.setImage(UIImage(named: "incomplete"), forState: .Normal)
-        }
-    }
+
 }
 
 protocol ButtonTableViewCellDelegate {
@@ -49,9 +25,7 @@ protocol ButtonTableViewCellDelegate {
 extension ButtonTableViewCell {
     
     func updateWithLocation(region: CLRegion) {
-        
         primaryLabel.text = region.identifier
-        updateButton(true)
     }
 }
 

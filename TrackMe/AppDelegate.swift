@@ -32,8 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         manager.distanceFilter = kCLDistanceFilterNone  // Whenever user moves
         manager.desiredAccuracy = kCLLocationAccuracyBest // Best Accuracy
         
-
-        UserController.loadCurrentUser()
         setUpRegions()
         
         return true
