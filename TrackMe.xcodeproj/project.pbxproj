@@ -10,6 +10,7 @@
 		C426EDEF1D3870EB007F9123 /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C426EDEE1D3870EB007F9123 /* UserSearchTableViewController.swift */; };
 		C426EDF41D387C5F007F9123 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C426EDF31D387C5F007F9123 /* CloudKitManager.swift */; };
 		C426EDF61D387EF7007F9123 /* Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = C426EDF51D387EF7007F9123 /* Following.swift */; };
+		C426EDF81D388209007F9123 /* FollowingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C426EDF71D388209007F9123 /* FollowingController.swift */; };
 		C42D64B91D37174000FB63F6 /* DispatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D64B81D37174000FB63F6 /* DispatchHelper.swift */; };
 		C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */; };
 		C498D8AC1D2F22E3002965F2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8A91D2F22E3002965F2 /* Message.swift */; };
@@ -49,6 +50,7 @@
 		C426EDEE1D3870EB007F9123 /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewController.swift; sourceTree = "<group>"; };
 		C426EDF31D387C5F007F9123 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		C426EDF51D387EF7007F9123 /* Following.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Following.swift; sourceTree = "<group>"; };
+		C426EDF71D388209007F9123 /* FollowingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowingController.swift; sourceTree = "<group>"; };
 		C42D64B81D37174000FB63F6 /* DispatchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchHelper.swift; sourceTree = "<group>"; };
 		C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		C498D8A91D2F22E3002965F2 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				C498D8AB1D2F22E3002965F2 /* MessageController.swift */,
+				C426EDF71D388209007F9123 /* FollowingController.swift */,
 				C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */,
 				C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */,
 			);
@@ -352,6 +355,7 @@
 				C426EDF41D387C5F007F9123 /* CloudKitManager.swift in Sources */,
 				C4C7D6F21D35B143000D5310 /* FollowUserTableViewCell.swift in Sources */,
 				C426EDF61D387EF7007F9123 /* Following.swift in Sources */,
+				C426EDF81D388209007F9123 /* FollowingController.swift in Sources */,
 				C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */,
 				C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */,
 				C426EDEF1D3870EB007F9123 /* UserSearchTableViewController.swift in Sources */,

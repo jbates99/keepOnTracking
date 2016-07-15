@@ -11,13 +11,17 @@ import CloudKit
 
 class FollowUserTableViewCell: UITableViewCell {
     
+    let cloudKitManager = CloudKitManager()
+    
+    var userRecordID: CKRecordID?
+    
     @IBOutlet weak var nameLabel: UILabel!
     
     
     // MARK: - Complete Button Drawing Properties
     
     var delegate: FollowUserTableViewCellDelegate?
-
+    
     @IBAction func requestButtonTapped(sender: AnyObject) {
         
     }
@@ -33,7 +37,7 @@ extension FollowUserTableViewCell {
     
     func updateWithUser(userInfo: CKDiscoveredUserInfo) {
         nameLabel.text = userInfo.displayContact?.givenName
-    
+        
     }
 }
 
