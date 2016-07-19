@@ -41,6 +41,9 @@ class UserSearchTableViewController: UITableViewController {
         return cell
     }
     
+
+    
+    
     func setUpUsers() {
         notificationController.discoverUsers { success in
             if success {
@@ -58,7 +61,6 @@ extension UserSearchTableViewController: FollowUserTableViewCellDelegate {
         let indexPath = tableView.indexPathForCell(sender)!
         let user = users[indexPath.row]
         guard let recordID = user.userRecordID else { return }
-        let reference = FollowingController.sharedController.createReference(recordID)
-        FollowingController.sharedController.createFollowing(reference)
+        FollowingController.sharedController.createFollowing(recordID)
     }
 }

@@ -23,7 +23,7 @@ class FollowUserTableViewCell: UITableViewCell {
     var delegate: FollowUserTableViewCellDelegate?
     
     @IBAction func requestButtonTapped(sender: AnyObject) {
-        
+        self.delegate?.buttonCellButtonTapped(self)
     }
     
 }

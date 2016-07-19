@@ -13,19 +13,16 @@ class FollowingController {
     
     static let sharedController = FollowingController()
     
-    
     let cloudKitManager = CloudKitManager()
     
-    func createReference(recordID: CKRecordID) -> CKReference {
-        return CKReference(recordID: recordID, action: .None)
-    }
-    
-    func createFollowing(sentTo: CKReference) {
-        let following = Following(sentTo: sentTo, date: NSDate(), status: 0)
+    func createFollowing(recordID: CKRecordID) {
+        let following = Following(recordID: recordID)
         let record = CKRecord(following: following)
         cloudKitManager.saveRecord(record) { record, error in
             if let error = error {
                 print("Error: \(error)")
+            } else if record != nil {
+                print("Record saved")
             }
         }
     }
@@ -56,4 +53,9 @@ class FollowingController {
             }
         }
     }
+    
+    func updateFollowingStatus() {
+        
+    }
+
 }

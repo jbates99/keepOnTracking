@@ -14,6 +14,8 @@ class ButtonTableViewCell: UITableViewCell {
     @IBOutlet weak var primaryLabel: UILabel!
     
     var delegate: ButtonTableViewCellDelegate?
+    
+    
 
 }
 
