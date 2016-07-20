@@ -27,20 +27,22 @@ class FollowingController {
         }
     }
     
-    func retrieveFollowings() -> [CKRecord]? {
-        var retrievedRecords = [CKRecord]?()
-        cloudKitManager.fetchCurrentUserRecords("Following") { records, error in
+    func retrieveFollowings(recordID: CKRecordID, completion: (returnedRecords: [CKRecord]?) -> Void) {
+        let reference = CKReference(recordID: recordID, action: .None)
+        let predicate = NSPredicate(format: "sentTo == %@", argumentArray: [reference])
+        cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: { (record) in
+        }) { (records, error) in
             if let records = records {
-                retrievedRecords = records
+                print("Records Retrieved Successfully")
+                completion(returnedRecords: records)
             } else if let error = error {
-                print("Error: \(error)")
-                retrievedRecords = nil
+                print("Error retrieving records: \(error)")
+                completion(returnedRecords: nil)
             }
         }
-        return retrievedRecords
     }
     
-    func updateFollowing() {
+    func updateFollowing(following: Following, status: Following.Status) {
         
     }
     
@@ -57,5 +59,5 @@ class FollowingController {
     func updateFollowingStatus() {
         
     }
-
+    
 }
