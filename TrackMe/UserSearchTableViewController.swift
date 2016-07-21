@@ -58,6 +58,16 @@ extension UserSearchTableViewController: FollowUserTableViewCellDelegate {
         let indexPath = tableView.indexPathForCell(sender)!
         let user = users[indexPath.row]
         guard let recordID = user.userRecordID else { return }
-        FollowingController.sharedController.createFollowing(recordID)
+        FollowingController.sharedController.retrieveFollowingRequests(by: recordID) { (returnedRecords) in
+            if let returnedRecords = returnedRecords {
+                if returnedRecords.count == 0 {
+                    FollowingController.sharedController.createFollowing(recordID)
+                } else {
+                    return
+                }
+            } else {
+                FollowingController.sharedController.createFollowing(recordID)
+            }
+        }
     }
 }

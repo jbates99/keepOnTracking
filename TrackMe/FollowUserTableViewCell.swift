@@ -18,7 +18,7 @@ class FollowUserTableViewCell: UITableViewCell {
     
     @IBOutlet weak var buttonLabel: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
-    
+    @IBOutlet weak var pendingLabel: UILabel!
     
     // MARK: - Complete Button Drawing Properties
     
@@ -26,6 +26,9 @@ class FollowUserTableViewCell: UITableViewCell {
     
     @IBAction func requestButtonTapped(sender: AnyObject) {
         self.delegate?.buttonCellButtonTapped(self)
+        buttonLabel.hidden = true
+        pendingLabel.hidden = false
+        
     }
     
 }

@@ -30,6 +30,7 @@ class PendingRequestCell: UITableViewCell {
 
     @IBAction func acceptButtonTapped(sender: AnyObject) {
         self.delegate?.acceptButtonPressed(self)
+        
     }
 
     @IBAction func declineButtonTapped(sender: AnyObject) {
@@ -43,6 +44,7 @@ extension PendingRequestCell {
     func setUpCell(with record: CKRecord, and userInfo: CKDiscoveredUserInfo) {
         guard let contact = userInfo.displayContact else { return }
         nameLabel.text = "\(contact.givenName)"
+        
     }
     
 }

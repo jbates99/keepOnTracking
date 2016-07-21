@@ -16,7 +16,7 @@ class FollowingController {
     var currentUserRecordID: CKRecordID?
     
     let cloudKitManager = CloudKitManager()
-
+    
     func createFollowing(recordID: CKRecordID) {
         let following = Following(recordID: recordID)
         let record = CKRecord(following: following)
@@ -29,10 +29,35 @@ class FollowingController {
         }
     }
     
+    func retrieveFollowingRequests(by recordID: CKRecordID, completion: (returnedRecords: [CKRecord]?) -> Void) {
+        let reference = CKReference(recordID: recordID, action: .None)
+        let predicate = NSPredicate(format: "SentTo == %@", argumentArray: [reference])
+        cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: nil) { records, error in
+            if let error = error {
+                AlertController.displayError(error, withMessage: nil)
+                completion(returnedRecords: nil)
+            } else if let records = records {
+                completion(returnedRecords: records)
+            }
+        }
+    }
+    
+    func retrieveFollowingsForCurrentUser(completion: (followings: [Following]?) -> Void) {
+        cloudKitManager.fetchCurrentUserRecords("Following") { records, error in
+            guard let records = records else { return }
+            var followings = [Following]()
+            for record in records {
+                guard let following = Following(cloudKitRecord: record) else { break }
+                followings.append(following)
+            }
+            completion (followings: followings)
+        }
+    }
+    
     func retrieveFollowingsRequestsByStatus(status: Int, recordID: CKRecordID, completion: (returnedRecords: [CKRecord]?) -> Void) {
         let reference = CKReference(recordID: recordID, action: .None)
         let predicate = NSPredicate(format: "SentTo == %@ AND Status == \(status)", argumentArray: [reference])
-        cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: { (record) in
+        cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: { record in
         }) { (records, error) in
             if let error = error {
                 AlertController.displayError(error, withMessage: nil)
@@ -47,7 +72,15 @@ class FollowingController {
         var followingCopy = following
         followingCopy.status = status.rawValue
         let record = CKRecord(following: following)
-        cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: nil)
+        cloudKitManager.modifyRecords([record], perRecordCompletion: { (record, error) in
+            if let error = error {
+                print(error)
+            }
+        }) { (records, error) in
+            if let error = error {
+                print(error)
+            }
+        }
     }
     
     func deleteFollowing(recordID: CKRecordID) {
@@ -58,10 +91,6 @@ class FollowingController {
                 print("Error: \(error) when deleting record")
             }
         }
-    }
-    
-    func updateFollowingStatus() {
-        
     }
     
 }

@@ -109,42 +109,52 @@
         <scene sceneID="5hR-Vd-jWh">
             <objects>
                 <tableViewController id="z1m-mV-pUM" customClass="UserSearchTableViewController" customModule="TrackMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WR3-l0-xtq">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" id="WR3-l0-xtq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="requestCell" id="fny-IO-gCJ" customClass="FollowUserTableViewCell" customModule="TrackMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="requestCell" rowHeight="57" id="fny-IO-gCJ" customClass="FollowUserTableViewCell" customModule="TrackMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fny-IO-gCJ" id="YOP-Fh-xJS">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBu-6a-D7g">
-                                            <rect key="frame" x="16" y="11" width="42" height="21"/>
+                                            <rect key="frame" x="16" y="18" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GXX-dM-I8V">
-                                            <rect key="frame" x="453" y="7" width="139" height="30"/>
+                                            <rect key="frame" x="453" y="13.5" width="139" height="30"/>
                                             <state key="normal" title="Request Connection"/>
                                             <connections>
                                                 <action selector="requestButtonTapped:" destination="fny-IO-gCJ" eventType="touchUpInside" id="DwN-NQ-SHJ"/>
                                             </connections>
                                         </button>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7c-4t-6Sx">
+                                            <rect key="frame" x="521.5" y="16" width="62.5" height="24.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="pBu-6a-D7g" firstAttribute="centerY" secondItem="YOP-Fh-xJS" secondAttribute="centerY" id="1Sk-lX-SgI"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="GXX-dM-I8V" secondAttribute="trailing" id="CiM-sl-o0c"/>
                                         <constraint firstItem="pBu-6a-D7g" firstAttribute="leading" secondItem="YOP-Fh-xJS" secondAttribute="leadingMargin" constant="8" id="epP-Ym-aei"/>
                                         <constraint firstItem="GXX-dM-I8V" firstAttribute="centerY" secondItem="YOP-Fh-xJS" secondAttribute="centerY" id="kRi-Gm-Y1n"/>
+                                        <constraint firstItem="J7c-4t-6Sx" firstAttribute="top" secondItem="YOP-Fh-xJS" secondAttribute="topMargin" constant="8" id="kix-Qh-cPM"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="J7c-4t-6Sx" secondAttribute="bottom" constant="8" id="lLS-un-g8y"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="J7c-4t-6Sx" secondAttribute="trailing" constant="8" id="xyE-Vz-AVh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="buttonLabel" destination="GXX-dM-I8V" id="mwK-6L-yUs"/>
                                     <outlet property="nameLabel" destination="pBu-6a-D7g" id="lOR-dB-g7W"/>
+                                    <outlet property="pendingLabel" destination="J7c-4t-6Sx" id="ff6-ee-86O"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
