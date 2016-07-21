@@ -13,6 +13,24 @@ class RequestsViewController: UITableViewController {
     
     var queryResults: [CKRecord]?
     
+    var filteredResults: [CKRecord]? {
+        guard let queryResults = queryResults else { return nil }
+        return queryResults.filter { $0.creatorUserRecordID?.recordName != "__defaultOwner__" }
+    }
+    
+    var followingResults: [Following]? {
+        guard let filteredResults = filteredResults else { return nil }
+        var followingResults = [Following]()
+        for result in filteredResults {
+            if let following = Following(cloudKitRecord: result) {
+                followingResults.append(following)
+            } else {
+                print("Record type was not following")
+            }
+        }
+        return followingResults
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDataSource()
@@ -26,13 +44,14 @@ class RequestsViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return queryResults?.count ?? 0
+        return filteredResults?.count ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(PendingRequestCell.reuseIdentifier) as!PendingRequestCell
-        guard let record = queryResults?[indexPath.row] else { return UITableViewCell() }
-        cell.setUpCellWithRecord(record)
+        guard let record = filteredResults?[indexPath.row] else { return UITableViewCell() }
+        guard let userInfo = NotificationController.sharedInstance.creatorUserInfo(for: record) else { return UITableViewCell() }
+        cell.setUpCell(with: record, and: userInfo)
         cell.delegate = self
         return cell
     }
@@ -49,21 +68,23 @@ class RequestsViewController: UITableViewController {
             }
         }
     }
-
+    
 }
 
 extension RequestsViewController: PendingRequestCellDelegate {
     func acceptButtonPressed(sender: PendingRequestCell) {
-        guard let indexPath = tableView.indexPathForCell(sender), queryResults = queryResults else { return }
-        let record = queryResults[indexPath.row]
+        guard let indexPath = tableView.indexPathForCell(sender), filteredResults = filteredResults else { return }
+        let record = filteredResults[indexPath.row]
         guard let following = Following(cloudKitRecord: record) else { return }
         FollowingController.sharedController.updateFollowing(following, status: Following.Status.accepted)
+        tableView.reloadData()
     }
     
     func declineButtonPressed(sender: PendingRequestCell) {
-        guard let indexPath = tableView.indexPathForCell(sender), queryResults = queryResults else { return }
-        let record = queryResults[indexPath.row]
+        guard let indexPath = tableView.indexPathForCell(sender), filteredResults = filteredResults else { return }
+        let record = filteredResults[indexPath.row]
         guard let following = Following(cloudKitRecord: record) else { return }
         FollowingController.sharedController.updateFollowing(following, status: Following.Status.denied)
+        tableView.reloadData()
     }
 }

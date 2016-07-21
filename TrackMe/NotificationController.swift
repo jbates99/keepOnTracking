@@ -11,6 +11,8 @@ import CloudKit
 
 class NotificationController {
     
+    static let sharedInstance = NotificationController()
+    
     let cloudKitManager = CloudKitManager()
     
     var discoveredRecords = [CKDiscoveredUserInfo]() {
@@ -29,13 +31,24 @@ class NotificationController {
         cloudKitManager.requestDiscoverabilityPermission()
     }
     
-    func discoverUsers(completion: (success: Bool) -> Void) {
+    func discoverUsers(completion: ((success: Bool) -> Void)?) {
         cloudKitManager.fetchAllDiscoverableUsers { users in
             if let users = users {
                 self.discoveredRecords = users
-                completion(success: true)
+                completion?(success: true)
             }
         }
     }
+    
+    func creatorUserInfo(for userRecord: CKRecord) -> CKDiscoveredUserInfo? {
+        if let recordID = userRecord.creatorUserRecordID {
+            let recordName = recordID.recordName
+            return usersDict[recordName]
+        } else {
+            print("Unable to access creator recordID")
+            return nil
+        }
+    }
+    
     
 }

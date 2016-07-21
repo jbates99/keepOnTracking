@@ -11,7 +11,7 @@ import CloudKit
 
 class UserSearchTableViewController: UITableViewController {
     
-    private let notificationController = NotificationController()
+    let notificationController = NotificationController.sharedInstance
     private let cloudKitManager = CloudKitManager()
     
     var users: [CKDiscoveredUserInfo] {
@@ -40,9 +40,6 @@ class UserSearchTableViewController: UITableViewController {
         
         return cell
     }
-    
-
-    
     
     func setUpUsers() {
         notificationController.discoverUsers { success in

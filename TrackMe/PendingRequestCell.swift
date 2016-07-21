@@ -20,6 +20,8 @@ class PendingRequestCell: UITableViewCell {
     
     static let reuseIdentifier = "requestCell"
     
+    let notificationController = NotificationController.sharedInstance
+
     let cloudKitManager = CloudKitManager()
     
     var delegate: PendingRequestCellDelegate?
@@ -38,17 +40,9 @@ class PendingRequestCell: UITableViewCell {
 
 extension PendingRequestCell {
     
-    func setUpCellWithRecord(record: CKRecord) {
-        guard let creatorRecordID = record.creatorUserRecordID else  { return }
-        cloudKitManager.fetchUsernameFromRecordID(creatorRecordID) { givenName, familyName in
-            if let givenName = givenName, familyName = familyName {
-                Dispatch.main.async {
-                    self.nameLabel.text = "\(givenName) \(familyName)"
-                }
-            } else {
-                AlertController.displayError(nil, withMessage: "Error fetching UserName")
-            }
-        }
+    func setUpCell(with record: CKRecord, and userInfo: CKDiscoveredUserInfo) {
+        guard let contact = userInfo.displayContact else { return }
+        nameLabel.text = "\(contact.givenName)"
     }
     
 }
