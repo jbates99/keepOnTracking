@@ -16,7 +16,7 @@ class FollowingController {
     var currentUserRecordID: CKRecordID?
     
     let cloudKitManager = CloudKitManager()
-    
+
     func createFollowing(recordID: CKRecordID) {
         let following = Following(recordID: recordID)
         let record = CKRecord(following: following)

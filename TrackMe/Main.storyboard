@@ -143,6 +143,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="buttonLabel" destination="GXX-dM-I8V" id="mwK-6L-yUs"/>
                                     <outlet property="nameLabel" destination="pBu-6a-D7g" id="lOR-dB-g7W"/>
                                 </connections>
                             </tableViewCell>

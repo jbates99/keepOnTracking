@@ -16,6 +16,7 @@ class FollowUserTableViewCell: UITableViewCell {
     
     var userRecordID: CKRecordID?
     
+    @IBOutlet weak var buttonLabel: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     
     
