@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         manager.desiredAccuracy = kCLLocationAccuracyBest // Best Accuracy
         
         setUpRegions()
+        storeUserRecordID()
         
         return true
     }
@@ -51,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
-//        UIApplication.sharedApplication().registerForRemoteNotifications()
+        //        UIApplication.sharedApplication().registerForRemoteNotifications()
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
@@ -75,13 +76,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
         //MessageController.sharedController.postNewMessage(Message(messageText: "User has entered \(region.identifier)", date: NSDate()))
-
+        
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        print("Received notification but you haven't done anything with it yet: \(notification)") // FIXME:
     }
     
     // MARK: - Location Authorization Changed
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedAlways {
             manager.startUpdatingLocation()
+        }
+    }
+    
+    func storeUserRecordID() {
+        let followingController = FollowingController.sharedController
+        followingController.cloudKitManager.fetchLoggedInUserRecord { (record, error) in
+            guard let record = record else { return }
+            followingController.currentUserRecordID = record.recordID
         }
     }
     

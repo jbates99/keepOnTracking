@@ -48,8 +48,8 @@ extension CKRecord {
 
 extension Following {
     enum Status: Int {
-        case pending = 0
-        case accepted = 1
-        case denied = 2
+        case pending
+        case accepted
+        case denied
     }
 }

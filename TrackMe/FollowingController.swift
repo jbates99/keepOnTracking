@@ -13,6 +13,8 @@ class FollowingController {
     
     static let sharedController = FollowingController()
     
+    var currentUserRecordID: CKRecordID? 
+    
     let cloudKitManager = CloudKitManager()
     
     func createFollowing(recordID: CKRecordID) {
