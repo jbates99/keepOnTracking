@@ -11,6 +11,7 @@ import CloudKit
 
 class FollowUserTableViewCell: UITableViewCell {
     
+    
     let cloudKitManager = CloudKitManager()
     
     var userRecordID: CKRecordID?

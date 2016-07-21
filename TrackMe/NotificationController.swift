@@ -13,7 +13,17 @@ class NotificationController {
     
     let cloudKitManager = CloudKitManager()
     
-    var discoveredRecords = [CKDiscoveredUserInfo]()
+    var discoveredRecords = [CKDiscoveredUserInfo]() {
+        didSet {
+            usersDict = [String: CKDiscoveredUserInfo]()
+            for record in discoveredRecords {
+                guard let recordName = record.userRecordID?.recordName else { break }
+                usersDict[recordName] = record
+            }
+        }
+    }
+    
+    var usersDict = [String: CKDiscoveredUserInfo]()
     
     func requestAccess() {
         cloudKitManager.requestDiscoverabilityPermission()

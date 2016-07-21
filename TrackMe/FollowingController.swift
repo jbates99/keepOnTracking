@@ -13,7 +13,7 @@ class FollowingController {
     
     static let sharedController = FollowingController()
     
-    var currentUserRecordID: CKRecordID? 
+    var currentUserRecordID: CKRecordID?
     
     let cloudKitManager = CloudKitManager()
     
@@ -31,21 +31,23 @@ class FollowingController {
     
     func retrieveFollowingsRequests(recordID: CKRecordID, completion: (returnedRecords: [CKRecord]?) -> Void) {
         let reference = CKReference(recordID: recordID, action: .None)
-        let predicate = NSPredicate(format: "sentTo == %@", argumentArray: [reference])
+        let predicate = NSPredicate(format: "SentTo == %@", argumentArray: [reference])
         cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: { (record) in
         }) { (records, error) in
-            if let records = records {
-                print("Records Retrieved Successfully")
-                completion(returnedRecords: records)
-            } else if let error = error {
-                print("Error retrieving records: \(error)")
+            if let error = error {
+                AlertController.displayError(error, withMessage: nil)
                 completion(returnedRecords: nil)
+            } else if let records = records {
+                completion(returnedRecords: records)
             }
         }
     }
     
     func updateFollowing(following: Following, status: Following.Status) {
-        
+        var followingCopy = following
+        followingCopy.status = status.rawValue
+        let record = CKRecord(following: following)
+        cloudKitManager.modifyRecords([record], perRecordCompletion: nil, completion: nil)
     }
     
     func deleteFollowing(recordID: CKRecordID) {

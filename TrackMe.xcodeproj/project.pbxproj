@@ -14,6 +14,8 @@
 		C42D64B91D37174000FB63F6 /* DispatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D64B81D37174000FB63F6 /* DispatchHelper.swift */; };
 		C438BFEA1D3F24CD00C62BF4 /* RequestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C438BFE91D3F24CD00C62BF4 /* RequestsViewController.storyboard */; };
 		C438BFEC1D3F255500C62BF4 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C438BFEB1D3F255500C62BF4 /* RequestsViewController.swift */; };
+		C459F8571D4077470061B300 /* PendingRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C459F8561D4077470061B300 /* PendingRequestCell.swift */; };
+		C459F8591D407D390061B300 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C459F8581D407D390061B300 /* AlertController.swift */; };
 		C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */; };
 		C498D8AC1D2F22E3002965F2 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8A91D2F22E3002965F2 /* Message.swift */; };
 		C498D8AE1D2F22E3002965F2 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C498D8AB1D2F22E3002965F2 /* MessageController.swift */; };
@@ -57,6 +59,8 @@
 		C42D64B81D37174000FB63F6 /* DispatchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchHelper.swift; sourceTree = "<group>"; };
 		C438BFE91D3F24CD00C62BF4 /* RequestsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RequestsViewController.storyboard; sourceTree = "<group>"; };
 		C438BFEB1D3F255500C62BF4 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
+		C459F8561D4077470061B300 /* PendingRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingRequestCell.swift; sourceTree = "<group>"; };
+		C459F8581D407D390061B300 /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		C498D8A91D2F22E3002965F2 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C498D8AB1D2F22E3002965F2 /* MessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				C498D8AB1D2F22E3002965F2 /* MessageController.swift */,
+				C459F8581D407D390061B300 /* AlertController.swift */,
 				C426EDF71D388209007F9123 /* FollowingController.swift */,
 				C4BEEDD31D2DB1F700C0D190 /* RegionController.swift */,
 				C4723D751D2EEEC5008D0AD3 /* NotificationController.swift */,
@@ -201,6 +206,7 @@
 				C4C7D6F11D35B143000D5310 /* FollowUserTableViewCell.swift */,
 				C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */,
 				C438BFEB1D3F255500C62BF4 /* RequestsViewController.swift */,
+				C459F8561D4077470061B300 /* PendingRequestCell.swift */,
 				C426EDEE1D3870EB007F9123 /* UserSearchTableViewController.swift */,
 			);
 			name = ViewControllers;
@@ -370,8 +376,10 @@
 				C426EDF81D388209007F9123 /* FollowingController.swift in Sources */,
 				C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */,
 				C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */,
+				C459F8591D407D390061B300 /* AlertController.swift in Sources */,
 				C426EDEF1D3870EB007F9123 /* UserSearchTableViewController.swift in Sources */,
 				C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */,
+				C459F8571D4077470061B300 /* PendingRequestCell.swift in Sources */,
 				C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */,
 				C4BEEDD81D2DB1FF00C0D190 /* ButtonTableViewCell.swift in Sources */,
 				C498D8AC1D2F22E3002965F2 /* Message.swift in Sources */,
