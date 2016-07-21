@@ -33,7 +33,7 @@ class RequestsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpDataSource()
+        setUpPendingDataSource()
         
     }
     
@@ -56,10 +56,10 @@ class RequestsViewController: UITableViewController {
         return cell
     }
     
-    func setUpDataSource() {
+    func setUpPendingDataSource() {
         let sharedController = FollowingController.sharedController
         guard let currentUserID = sharedController.currentUserRecordID else { return }
-        sharedController.retrieveFollowingsRequests(currentUserID) { returnedRecords in
+        sharedController.retrieveFollowingsRequestsByStatus(0, recordID: currentUserID) { returnedRecords in
             guard let returnedRecords = returnedRecords else { return }
             self.queryResults = returnedRecords
             

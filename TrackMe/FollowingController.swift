@@ -29,9 +29,9 @@ class FollowingController {
         }
     }
     
-    func retrieveFollowingsRequests(recordID: CKRecordID, completion: (returnedRecords: [CKRecord]?) -> Void) {
+    func retrieveFollowingsRequestsByStatus(status: Int, recordID: CKRecordID, completion: (returnedRecords: [CKRecord]?) -> Void) {
         let reference = CKReference(recordID: recordID, action: .None)
-        let predicate = NSPredicate(format: "SentTo == %@ AND Status != 1", argumentArray: [reference])
+        let predicate = NSPredicate(format: "SentTo == %@ AND Status == \(status)", argumentArray: [reference])
         cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: { (record) in
         }) { (records, error) in
             if let error = error {
