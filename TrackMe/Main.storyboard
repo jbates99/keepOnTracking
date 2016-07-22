@@ -38,7 +38,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="soj-Pi-kbk">
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="soj-Pi-kbk">
                                         <rect key="frame" x="0.0" y="38" width="560" height="30"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="avR-Pa-vuI">
@@ -53,12 +53,12 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Distance from center point(meters)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7t-lw-DTP">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Distance from center point(meters)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7t-lw-DTP">
                                         <rect key="frame" x="0.0" y="76" width="560" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vu4-Z3-QWK">
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vu4-Z3-QWK">
                                         <rect key="frame" x="0.0" y="114" width="560" height="30"/>
                                         <state key="normal" title="Save Location"/>
                                         <connections>
@@ -115,7 +115,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="requestCell" rowHeight="57" id="fny-IO-gCJ" customClass="FollowUserTableViewCell" customModule="TrackMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="57"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fny-IO-gCJ" id="YOP-Fh-xJS">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
@@ -257,15 +257,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="afP-jx-uTl" kind="relationship" relationship="viewControllers" id="eXJ-nC-tdf"/>
                         <segue destination="nlC-NT-PWx" kind="relationship" relationship="viewControllers" id="G00-Do-otT"/>
+                        <segue destination="afP-jx-uTl" kind="relationship" relationship="viewControllers" id="eXJ-nC-tdf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wIw-0p-G2a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="289" y="234"/>
         </scene>
-        <!--Family Members-->
+        <!--Table View Controller-->
         <scene sceneID="0TF-hZ-UyR">
             <objects>
                 <tableViewController id="vge-d1-ynd" sceneMemberID="viewController">
@@ -305,7 +305,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="75" id="hM9-nQ-qnL"/>
                                                             </constraints>
-                                                            <state key="normal" title="Subscribe"/>
+                                                            <state key="normal" title="Notify Me"/>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -334,7 +334,7 @@
                             <outlet property="delegate" destination="vge-d1-ynd" id="VFw-c5-jnh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Family Members" id="vgr-oI-pbK">
+                    <navigationItem key="navigationItem" prompt=" " id="vgr-oI-pbK">
                         <barButtonItem key="leftBarButtonItem" title="Pending" id="O83-Yq-FHA">
                             <connections>
                                 <segue destination="a30-rq-tVF" kind="presentation" id="E6K-Wf-skb"/>
