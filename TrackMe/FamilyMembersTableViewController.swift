@@ -19,6 +19,7 @@ class FamilyMembersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hiddenView.backgroundColor = AppearanceController.offWhite
 
     }
 

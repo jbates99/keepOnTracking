@@ -18,6 +18,7 @@ class LocationsDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpRegions()
+        hiddenView.backgroundColor = AppearanceController.offWhite
     }
     
     override func viewDidAppear(animated: Bool) {

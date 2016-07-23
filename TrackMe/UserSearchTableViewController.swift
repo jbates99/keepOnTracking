@@ -25,6 +25,7 @@ class UserSearchTableViewController: UITableViewController {
         super.viewDidLoad()
         setUpUsers()
         notificationController.requestAccess()
+        hiddenView.backgroundColor = AppearanceController.offWhite
     }
     
     // MARK: - Table view data source
