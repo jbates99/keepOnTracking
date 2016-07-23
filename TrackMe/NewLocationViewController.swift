@@ -151,8 +151,8 @@ extension NewLocationViewController: MKMapViewDelegate {
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKCircle {
             let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.strokeColor = UIColor.purpleColor().colorWithAlphaComponent(0.6)
-            circleRenderer.fillColor = UIColor.purpleColor().colorWithAlphaComponent(0.2)
+            circleRenderer.strokeColor = AppearanceController.darkGreen.colorWithAlphaComponent(0.6)
+            circleRenderer.fillColor = AppearanceController.darkGreen.colorWithAlphaComponent(0.2)
             circleRenderer.lineWidth = 3.0
             return circleRenderer
         } else {

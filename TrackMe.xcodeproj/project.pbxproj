@@ -12,6 +12,7 @@
 		C426EDF61D387EF7007F9123 /* Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = C426EDF51D387EF7007F9123 /* Following.swift */; };
 		C426EDF81D388209007F9123 /* FollowingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C426EDF71D388209007F9123 /* FollowingController.swift */; };
 		C42D64B91D37174000FB63F6 /* DispatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D64B81D37174000FB63F6 /* DispatchHelper.swift */; };
+		C42F99781D43C46A0090C34D /* AppearanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42F99771D43C46A0090C34D /* AppearanceController.swift */; };
 		C433DC551D4194AC00D4A9BA /* FamilyMembersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433DC541D4194AC00D4A9BA /* FamilyMembersTableViewController.swift */; };
 		C438BFEA1D3F24CD00C62BF4 /* RequestsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C438BFE91D3F24CD00C62BF4 /* RequestsViewController.storyboard */; };
 		C438BFEC1D3F255500C62BF4 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C438BFEB1D3F255500C62BF4 /* RequestsViewController.swift */; };
@@ -58,6 +59,7 @@
 		C426EDF51D387EF7007F9123 /* Following.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Following.swift; sourceTree = "<group>"; };
 		C426EDF71D388209007F9123 /* FollowingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowingController.swift; sourceTree = "<group>"; };
 		C42D64B81D37174000FB63F6 /* DispatchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchHelper.swift; sourceTree = "<group>"; };
+		C42F99771D43C46A0090C34D /* AppearanceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppearanceController.swift; sourceTree = "<group>"; };
 		C433DC541D4194AC00D4A9BA /* FamilyMembersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FamilyMembersTableViewController.swift; sourceTree = "<group>"; };
 		C438BFE91D3F24CD00C62BF4 /* RequestsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RequestsViewController.storyboard; sourceTree = "<group>"; };
 		C438BFEB1D3F255500C62BF4 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				C42D64B81D37174000FB63F6 /* DispatchHelper.swift */,
 				C426EDF31D387C5F007F9123 /* CloudKitManager.swift */,
+				C42F99771D43C46A0090C34D /* AppearanceController.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				C433DC551D4194AC00D4A9BA /* FamilyMembersTableViewController.swift in Sources */,
 				C426EDF61D387EF7007F9123 /* Following.swift in Sources */,
 				C426EDF81D388209007F9123 /* FollowingController.swift in Sources */,
+				C42F99781D43C46A0090C34D /* AppearanceController.swift in Sources */,
 				C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */,
 				C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */,
 				C459F8591D407D390061B300 /* AlertController.swift in Sources */,
