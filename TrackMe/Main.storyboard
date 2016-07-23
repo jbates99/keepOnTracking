@@ -18,31 +18,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CDp-kF-Y7p">
-                                <rect key="frame" x="20" y="72" width="560" height="454"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CDp-kF-Y7p">
+                                <rect key="frame" x="0.0" y="94" width="600" height="462"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2GK-d6-dc4">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="33"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9d4-NT-0lA">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="150"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Address(Optional search)" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="piL-A7-nRU">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="11"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Location name..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pnU-1f-yLa">
-                                                <rect key="frame" x="0.0" y="11" width="560" height="11"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Distance from center point(meters)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w7t-lw-DTP">
-                                                <rect key="frame" x="0.0" y="22" width="560" height="11"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                            </textField>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UJW-oJ-G9L">
+                                                <rect key="frame" x="0.0" y="0.0" width="16" height="150"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="16" id="ZEw-OU-JlY"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2GK-d6-dc4">
+                                                <rect key="frame" x="16" y="0.0" width="568" height="150"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Address(Optional search)" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="piL-A7-nRU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="568" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="YYA-Nb-cq5"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Location name..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pnU-1f-yLa">
+                                                        <rect key="frame" x="0.0" y="50" width="568" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Distance from center point(meters)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w7t-lw-DTP">
+                                                        <rect key="frame" x="0.0" y="100" width="568" height="50"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHy-bC-9Ca">
+                                                <rect key="frame" x="584" y="0.0" width="16" height="150"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="16" id="l33-uo-hIW"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="183-Ul-ZrQ">
-                                        <rect key="frame" x="0.0" y="33" width="560" height="421"/>
+                                        <rect key="frame" x="0.0" y="150" width="600" height="312"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="rgG-Jk-qPn"/>
@@ -60,10 +82,10 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="CDp-kF-Y7p" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="9dv-8l-LLR"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="183-Ul-ZrQ" secondAttribute="bottom" id="dVb-Zm-0JJ"/>
-                            <constraint firstItem="CDp-kF-Y7p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="kvV-Bq-lhW"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="CDp-kF-Y7p" secondAttribute="leading" id="uWD-IY-9EA"/>
+                            <constraint firstAttribute="trailing" secondItem="CDp-kF-Y7p" secondAttribute="trailing" id="CHA-O4-eQE"/>
+                            <constraint firstItem="CDp-kF-Y7p" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jn0-6u-bfi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CDp-kF-Y7p" secondAttribute="bottom" id="Sz4-Za-zzw"/>
+                            <constraint firstItem="CDp-kF-Y7p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="aME-5D-yoK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" prompt=" " id="vI4-Vf-qbh">
@@ -76,9 +98,13 @@
                     <connections>
                         <outlet property="addressTextField" destination="piL-A7-nRU" id="zZ0-SM-meM"/>
                         <outlet property="distanceTextField" destination="w7t-lw-DTP" id="LZZ-EO-5dn"/>
+                        <outlet property="fullPageStackView" destination="CDp-kF-Y7p" id="Xs0-9h-OXf"/>
+                        <outlet property="leftView" destination="UJW-oJ-G9L" id="1rl-9x-jkV"/>
                         <outlet property="locationNameTextField" destination="pnU-1f-yLa" id="0La-9g-fAw"/>
                         <outlet property="longPressRecognizer" destination="r2e-Ao-QgH" id="XmV-GY-Bi7"/>
                         <outlet property="mapView" destination="183-Ul-ZrQ" id="EtW-xF-2AU"/>
+                        <outlet property="rightView" destination="SHy-bC-9Ca" id="9q2-MT-shN"/>
+                        <outlet property="textFieldStackView" destination="2GK-d6-dc4" id="JpJ-ej-Hip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -158,23 +184,23 @@
         <scene sceneID="XYg-pa-GpL">
             <objects>
                 <tableViewController id="yhw-CV-waM" customClass="LocationsDetailTableViewController" customModule="TrackMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0bV-Cg-phC">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" id="0bV-Cg-phC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" id="1zV-zH-cQA" customClass="ButtonTableViewCell" customModule="TrackMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="122" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="57" id="1zV-zH-cQA" customClass="ButtonTableViewCell" customModule="TrackMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="122" width="600" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1zV-zH-cQA" id="Jog-H8-hj7">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="56.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1l7-o9-3CH">
-                                            <rect key="frame" x="8" y="0.0" width="584" height="44"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1l7-o9-3CH">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="57"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ge-pG-zBG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ge-pG-zBG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="584" height="57"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>

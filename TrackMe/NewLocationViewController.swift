@@ -21,6 +21,10 @@ class NewLocationViewController: UIViewController {
     @IBOutlet weak var locationNameTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchStackView: UIStackView!
+    @IBOutlet weak var textFieldStackView: UIStackView!
+    @IBOutlet weak var fullPageStackView: UIStackView!
+    @IBOutlet weak var leftView: UIView!
+    @IBOutlet weak var rightView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,8 @@ class NewLocationViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         view.backgroundColor = AppearanceController.offWhite
         view.tintColor = AppearanceController.darkGreen
+        leftView.backgroundColor = AppearanceController.offWhite
+        rightView.backgroundColor = AppearanceController.offWhite
         setUpKeyboards()
         
     }
@@ -182,5 +188,11 @@ extension UIViewController {
     }
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+extension NewLocationViewController {
+    func setUpSpacing() {
+        
     }
 }
