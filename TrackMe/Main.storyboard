@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--New Location-->
+        <!--New Location View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NewLocationViewController" customModule="TrackMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,31 +18,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CDp-kF-Y7p">
-                                <rect key="frame" x="20" y="72" width="560" height="484"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CDp-kF-Y7p">
+                                <rect key="frame" x="20" y="72" width="560" height="454"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2GK-d6-dc4">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="63"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="33"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Address(Optional search)" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="piL-A7-nRU">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="560" height="11"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Location name..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pnU-1f-yLa">
-                                                <rect key="frame" x="0.0" y="21" width="560" height="21"/>
+                                                <rect key="frame" x="0.0" y="11" width="560" height="11"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Distance from center point(meters)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w7t-lw-DTP">
-                                                <rect key="frame" x="0.0" y="42" width="560" height="21"/>
+                                                <rect key="frame" x="0.0" y="22" width="560" height="11"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="183-Ul-ZrQ">
-                                        <rect key="frame" x="0.0" y="63" width="560" height="421"/>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="183-Ul-ZrQ">
+                                        <rect key="frame" x="0.0" y="33" width="560" height="421"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="250" id="rgG-Jk-qPn"/>
@@ -66,7 +66,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="CDp-kF-Y7p" secondAttribute="leading" id="uWD-IY-9EA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Location" id="vI4-Vf-qbh">
+                    <navigationItem key="navigationItem" prompt=" " id="vI4-Vf-qbh">
                         <barButtonItem key="rightBarButtonItem" title="Save Location" id="x5g-2E-dh9">
                             <connections>
                                 <action selector="saveLocationButtonPressed:" destination="BYZ-38-t0r" id="GzT-lg-7uh"/>
@@ -148,6 +148,7 @@
                             <outlet property="delegate" destination="z1m-mV-pUM" id="vKT-kf-nPB"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" prompt=" " id="FDS-wn-hdT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMY-tA-gMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,7 +164,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" id="1zV-zH-cQA" customClass="ButtonTableViewCell" customModule="TrackMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1zV-zH-cQA" id="Jog-H8-hj7">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -351,7 +352,7 @@
             </objects>
             <point key="canvasLocation" x="1825" y="599"/>
         </scene>
-        <!--Requests View Controller-->
+        <!--Pending-->
         <scene sceneID="9eY-Oe-wCq">
             <objects>
                 <tableViewController id="YVQ-c8-XN7" customClass="RequestsViewController" customModule="TrackMe" customModuleProvider="target" sceneMemberID="viewController">
@@ -361,7 +362,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="requestCell" rowHeight="89" id="9fV-XL-Sn4" customClass="PendingRequestCell" customModule="TrackMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="89"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="89"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9fV-XL-Sn4" id="eZD-eI-wRO">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="88.5"/>
@@ -407,6 +408,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="acceptButton" destination="Mqi-Lt-mvN" id="Ns0-Se-X3h"/>
+                                    <outlet property="declineButton" destination="hGE-6F-naJ" id="0BB-L8-dUQ"/>
                                     <outlet property="nameLabel" destination="CTU-6q-oSO" id="Z6M-Ex-99C"/>
                                 </connections>
                             </tableViewCell>
@@ -416,7 +419,7 @@
                             <outlet property="delegate" destination="YVQ-c8-XN7" id="6Kb-tQ-lo5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" prompt=" " id="Exw-Ot-hCc"/>
+                    <navigationItem key="navigationItem" title="Pending" prompt=" " id="Exw-Ot-hCc"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCq-lc-O2O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

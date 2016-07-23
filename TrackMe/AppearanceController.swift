@@ -31,10 +31,17 @@ class AppearanceController {
         UITableView.appearance().backgroundColor = offWhite
         UITableViewCell.appearance().tintColor = darkGreen
         UITableViewCell.appearance().backgroundColor = offWhite
+        ButtonTableViewCell.appearance().backgroundColor = offWhite
+        FollowUserTableViewCell.appearance().backgroundColor = offWhite
+        PendingRequestCell.appearance().backgroundColor = offWhite
+        ButtonTableViewCell.appearance().tintColor = darkGreen
+        FollowUserTableViewCell.appearance().tintColor = darkGreen
+        PendingRequestCell.appearance().tintColor = darkGreen
         MKMapView.appearance().tintColor = lightGreen
         UITextField.appearance().backgroundColor = offWhite
         UITextField.appearance().tintColor = lightGreen
         UITextField.appearance().textColor = darkGreen
+        UILabel.appearance().tintColor = darkGreen
         
     }
 
