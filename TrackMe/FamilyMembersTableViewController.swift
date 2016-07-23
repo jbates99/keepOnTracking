@@ -10,10 +10,11 @@ import UIKit
 
 class FamilyMembersTableViewController: UITableViewController {
     
-    var followings: [Following]?
+    @IBOutlet weak var hiddenView: UIView!
+    var followings = [Following]()
     
-    var acceptedFollowings: [Following]? {
-        return followings?.filter { $0.status == 1 }
+    var acceptedFollowings: [Following] {
+        return followings.filter { $0.status == 1 }
     }
 
     override func viewDidLoad() {
@@ -34,13 +35,21 @@ class FamilyMembersTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        let count = acceptedFollowings.count
+        if count == 0 {
+            hiddenView.hidden = false
+            return count
+        } else if count >= 1 {
+            hiddenView.hidden = true
+            return count
+        } else {
+            return count
+        }
     }
 
     func setUpDataSource() {
         FollowingController.sharedController.retrieveFollowingsForCurrentUser { (followings) in
-            self.followings = followings
+            
         }
     }
 

@@ -13,6 +13,8 @@ class RequestsViewController: UITableViewController {
     
     var queryResults: [CKRecord]?
     
+    @IBOutlet weak var hiddenView: UIView!
+    
     var filteredResults: [CKRecord]? {
         guard let queryResults = queryResults else { return nil }
         return queryResults.filter { $0.creatorUserRecordID?.recordName != "__defaultOwner__" }
@@ -44,7 +46,16 @@ class RequestsViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredResults?.count ?? 0
+        let count = filteredResults?.count ?? 0
+        if count == 0 {
+            hiddenView.hidden = false
+            return count
+        } else if count >= 1 {
+            hiddenView.hidden = true
+            return count
+        } else {
+            return count
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

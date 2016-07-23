@@ -13,6 +13,8 @@ class LocationsDetailTableViewController: UITableViewController {
     
     var regions = [CLRegion]()
     
+    @IBOutlet weak var hiddenView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpRegions()
@@ -31,7 +33,16 @@ class LocationsDetailTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return regions.count
+        let count = regions.count
+        if count == 0 {
+            hiddenView.hidden = false
+            return count
+        } else if count >= 1 {
+            hiddenView.hidden = true
+            return count
+        } else {
+            return count
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
