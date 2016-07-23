@@ -54,18 +54,11 @@
                                         </subviews>
                                     </stackView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Distance from center point(meters)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w7t-lw-DTP">
-                                        <rect key="frame" x="0.0" y="76" width="560" height="30"/>
+                                        <rect key="frame" x="0.0" y="76" width="560" height="68"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vu4-Z3-QWK">
-                                        <rect key="frame" x="0.0" y="114" width="560" height="30"/>
-                                        <state key="normal" title="Save Location"/>
-                                        <connections>
-                                            <action selector="saveLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kjM-Mx-onF"/>
-                                        </connections>
-                                    </button>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="183-Ul-ZrQ">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="183-Ul-ZrQ">
                                         <rect key="frame" x="0.0" y="152" width="560" height="356"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -86,7 +79,13 @@
                             <constraint firstItem="CDp-kF-Y7p" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="kvV-Bq-lhW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Location" id="vI4-Vf-qbh"/>
+                    <navigationItem key="navigationItem" title="New Location" id="vI4-Vf-qbh">
+                        <barButtonItem key="rightBarButtonItem" title="Save Location" id="x5g-2E-dh9">
+                            <connections>
+                                <action selector="saveLocationButtonPressed:" destination="BYZ-38-t0r" id="GzT-lg-7uh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addressTextField" destination="piL-A7-nRU" id="zZ0-SM-meM"/>
                         <outlet property="distanceTextField" destination="w7t-lw-DTP" id="LZZ-EO-5dn"/>
