@@ -32,6 +32,10 @@ class AppearanceController {
         UITableViewCell.appearance().tintColor = darkGreen
         UITableViewCell.appearance().backgroundColor = offWhite
         MKMapView.appearance().tintColor = lightGreen
+        UITextField.appearance().backgroundColor = offWhite
+        UITextField.appearance().tintColor = lightGreen
+        UITextField.appearance().textColor = darkGreen
+        
     }
-    
+
 }

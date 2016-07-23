@@ -27,7 +27,12 @@ class NewLocationViewController: UIViewController {
         setUpLongTouch()
         setUpMap()
         distanceTextField.delegate = self
+        addressTextField.delegate = self
+        locationNameTextField.delegate = self
         self.hideKeyboardWhenTappedAround()
+        view.backgroundColor = AppearanceController.offWhite
+        view.tintColor = AppearanceController.darkGreen
+        setUpKeyboards()
         
     }
     
@@ -40,27 +45,6 @@ class NewLocationViewController: UIViewController {
         mapSelectionPoint.coordinate = touchCoordinate
         mapView.removeAnnotation(mapSelectionPoint)
         mapView.addAnnotation(mapSelectionPoint)
-    }
-    
-    @IBAction func addressGoButtonPressed(sender: AnyObject) {
-        guard !addressTextField.text!.isEmpty else { return }
-        guard let address = addressTextField.text else { return }
-        geoCoder.cancelGeocode()
-        geoCoder.geocodeAddressString(address) { (placemark, error) in
-            if error != nil {
-                print("GeoCoding error: \(error)")
-            } else {
-                guard let placemark = placemark, let first = placemark.first, let location = first.location else { return }
-                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                let coordinates = location.coordinate
-                let addressRegion = MKCoordinateRegionMake(coordinates, span)
-                self.mapView.setRegion(addressRegion, animated: true)
-                self.geoCoder.cancelGeocode()
-                self.mapSelectionPoint.coordinate = coordinates
-                self.mapView.removeAnnotation(self.mapSelectionPoint)
-                self.mapView.addAnnotation(self.mapSelectionPoint)
-            }
-        }
     }
     
     @IBAction func saveLocationButtonPressed(sender: AnyObject) {
@@ -112,6 +96,35 @@ extension NewLocationViewController: UITextFieldDelegate {
         mapView.removeOverlay(distanceCircleOverlay)
         setUpDistanceCircleOverlay()
     }
+    
+    func setUpKeyboards() {
+        addressTextField.returnKeyType = UIReturnKeyType.Search
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == addressTextField {
+            guard !addressTextField.text!.isEmpty else { return false }
+            guard let address = addressTextField.text else { return false }
+            geoCoder.cancelGeocode()
+            geoCoder.geocodeAddressString(address) { (placemark, error) in
+                if error != nil {
+                    print("GeoCoding error: \(error)")
+                } else {
+                    guard let placemark = placemark, let first = placemark.first, let location = first.location else { return }
+                    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    let coordinates = location.coordinate
+                    let addressRegion = MKCoordinateRegionMake(coordinates, span)
+                    self.mapView.setRegion(addressRegion, animated: true)
+                    self.geoCoder.cancelGeocode()
+                    self.mapSelectionPoint.coordinate = coordinates
+                    self.mapView.removeAnnotation(self.mapSelectionPoint)
+                    self.mapView.addAnnotation(self.mapSelectionPoint)
+                }
+            }
+        }
+        self.dismissKeyboard()
+        return true
+    }
 }
 
 extension NewLocationViewController: MKMapViewDelegate {
@@ -129,7 +142,7 @@ extension NewLocationViewController: MKMapViewDelegate {
             locationNameTextField.text = region.identifier
             locationNameTextField.hidden = true
             setUpDistanceCircleOverlay()
-            searchStackView.hidden = true
+            addressTextField.hidden = true
             
             
             let zoomRegion = MKCoordinateRegion(center: mapSelectionPoint.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
