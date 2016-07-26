@@ -33,6 +33,7 @@
 		C4BEEDDA1D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */; };
 		C4BEEDDC1D2DB25C00C0D190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDDB1D2DB25C00C0D190 /* Main.storyboard */; };
 		C4C7D6F21D35B143000D5310 /* FollowUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C7D6F11D35B143000D5310 /* FollowUserTableViewCell.swift */; };
+		C4DFDECF1D480C0200E42BFF /* ConnectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DFDECE1D480C0200E42BFF /* ConnectionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		C4BEEDD71D2DB1FF00C0D190 /* LocationsDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsDetailTableViewController.swift; sourceTree = "<group>"; };
 		C4BEEDDB1D2DB25C00C0D190 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C4C7D6F11D35B143000D5310 /* FollowUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowUserTableViewCell.swift; sourceTree = "<group>"; };
+		C4DFDECE1D480C0200E42BFF /* ConnectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				C438BFEB1D3F255500C62BF4 /* RequestsViewController.swift */,
 				C459F8561D4077470061B300 /* PendingRequestCell.swift */,
 				C433DC541D4194AC00D4A9BA /* FamilyMembersTableViewController.swift */,
+				C4DFDECE1D480C0200E42BFF /* ConnectionTableViewCell.swift */,
 				C426EDEE1D3870EB007F9123 /* UserSearchTableViewController.swift */,
 			);
 			name = ViewControllers;
@@ -381,6 +384,7 @@
 				C4BEEDD41D2DB1F700C0D190 /* RegionController.swift in Sources */,
 				C4723D761D2EEEC5008D0AD3 /* NotificationController.swift in Sources */,
 				C459F8591D407D390061B300 /* AlertController.swift in Sources */,
+				C4DFDECF1D480C0200E42BFF /* ConnectionTableViewCell.swift in Sources */,
 				C426EDEF1D3870EB007F9123 /* UserSearchTableViewController.swift in Sources */,
 				C4BEEDD91D2DB1FF00C0D190 /* NewLocationViewController.swift in Sources */,
 				C459F8571D4077470061B300 /* PendingRequestCell.swift in Sources */,
