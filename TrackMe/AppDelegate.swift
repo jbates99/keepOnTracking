@@ -65,8 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         localNotification.fireDate = NSDate()
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
-        //MessageController.sharedController.postNewMessage(Message(messageText: "User has left \(region.identifier)", date: NSDate()))
-        
+        guard let username = MessageController.currentUserName else { return }
+        MessageController.sharedController.postNewMessage(Message(messageText: "User \(username) has left \(region.identifier)", date: NSDate()))
     }
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
@@ -77,7 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         localNotification.fireDate = NSDate()
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
-        //MessageController.sharedController.postNewMessage(Message(messageText: "User has entered \(region.identifier)", date: NSDate()))
+        guard let username = MessageController.currentUserName else { return }
+        MessageController.sharedController.postNewMessage(Message(messageText: "User \(username) has entered \(region.identifier)", date: NSDate()))
         
     }
     
@@ -102,6 +103,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     func setUpUsers() {
         NotificationController.sharedInstance.discoverUsers(nil)
+    }
+    
+    func setUpCurrentUser() {
+        MessageController.getCurrentUserName()
     }
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

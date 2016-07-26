@@ -18,7 +18,8 @@ struct Message {
 extension Message {
     static var dateKey: String { return "Date" }
     static var messageTextKey: String { return "MessageText" }
-    static var userIDKey: String { return "UserID" }
+
+    static var userNameKey: String { return "Username" }
     static var recordType: String { return "Message" }
     
     init?(cloudKitRecord: CKRecord) {
@@ -26,7 +27,7 @@ extension Message {
             date = cloudKitRecord[Message.dateKey] as? NSDate
             where cloudKitRecord.recordType == Message.recordType else { return nil }
         
-        self.init(messageText: messageText, date: date /*userID: userID*/)
+        self.init(messageText: messageText, date: date)
     }
 }
 

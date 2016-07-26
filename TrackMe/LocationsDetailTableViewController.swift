@@ -19,6 +19,7 @@ class LocationsDetailTableViewController: UITableViewController {
         super.viewDidLoad()
         setUpRegions()
         hiddenView.backgroundColor = AppearanceController.offWhite
+        tableView.tableHeaderView = hiddenView
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -36,10 +37,10 @@ class LocationsDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = regions.count
         if count == 0 {
-            hiddenView.hidden = false
+            tableView.tableHeaderView?.hidden = false
             return count
         } else if count >= 1 {
-            hiddenView.hidden = true
+            tableView.tableHeaderView?.hidden = true
             return count
         } else {
             return count

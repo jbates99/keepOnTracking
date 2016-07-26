@@ -8,11 +8,33 @@
 
 import Foundation
 import CloudKit
+import CoreLocation
 
 let MessageControllerDidRefreshNotification = "MessagesControllerDidRefreshNotification"
 
 class MessageController {
     static let sharedController = MessageController()
+    
+    static var currentUserName: String?
+    
+    static func getCurrentUserName() {
+        let db = CKContainer.defaultContainer()
+        db.fetchUserRecordIDWithCompletionHandler { recordID, error in
+            if let error = error {
+                print("\(error)")
+            } else if let recordID = recordID {
+                db.discoverUserInfoWithUserRecordID(recordID) { discoveredInfo, error in
+                    if let error = error {
+                        print("\(error)")
+                    } else if let discoveredInfo = discoveredInfo {
+                        guard let contact = discoveredInfo.displayContact else { return }
+                        let username = "\(contact.givenName) \(contact.familyName)"
+                        self.currentUserName = username
+                    }
+                }
+            }
+        }
+    }
     
     init() {
         refresh()
@@ -21,7 +43,7 @@ class MessageController {
     func postNewMessage(message: Message) {
         let record = CKRecord(message: message)
         let db = CKContainer.defaultContainer().publicCloudDatabase
-        db.saveRecord(record) { (record, error) in
+        db.saveRecord(record) { record, error in
             if let error = error {
                 NSLog("Error saving \(message) to CloudKit: \(error)")
                 return
@@ -71,9 +93,11 @@ class MessageController {
                 return
             }
             
-            let subscription = CKSubscription(recordType: Message.recordType, predicate: NSPredicate(format: "userID CONTAINS '\(userID)'"), options: .FiresOnRecordCreation)
+            let subscription = CKSubscription(recordType: Message.recordType, predicate: NSPredicate(format: "UserID CONTAINS '\(userID)'"), options: .FiresOnRecordCreation)
             let notificationInfo = CKNotificationInfo()
+            
             notificationInfo.alertBody = "A user has updated their location."
+            
             subscription.notificationInfo = notificationInfo
             db.saveSubscription(subscription) { (subscription, error) in
                 if let error = error {
