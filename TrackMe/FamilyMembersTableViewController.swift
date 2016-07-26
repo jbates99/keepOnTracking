@@ -11,6 +11,7 @@ import UIKit
 class FamilyMembersTableViewController: UITableViewController {
     
     @IBOutlet weak var hiddenView: UIView!
+    
     var followings = [Following]()
     
     var acceptedFollowings: [Following] {
@@ -30,11 +31,6 @@ class FamilyMembersTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = acceptedFollowings.count
         if count == 0 {
@@ -49,8 +45,19 @@ class FamilyMembersTableViewController: UITableViewController {
     }
 
     func setUpDataSource() {
-        FollowingController.sharedController.retrieveFollowingsForCurrentUser { (followings) in
+        let sharedController = FollowingController.sharedController
+        guard let currentUserID = sharedController.currentUserRecordID else { return }
+        sharedController.retrieveFollowingsRequestsByStatus(1, recordID: currentUserID) { returnedRecords in
+            guard let returnedRecords = returnedRecords else { return }
+            for record in returnedRecords {
+                guard let following = Following(cloudKitRecord: record) else { break }
+                self.followings.append(following)
+    
+            }
             
+            Dispatch.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 

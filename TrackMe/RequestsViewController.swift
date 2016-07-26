@@ -87,16 +87,16 @@ extension RequestsViewController: PendingRequestCellDelegate {
     func acceptButtonPressed(sender: PendingRequestCell) {
         guard let indexPath = tableView.indexPathForCell(sender), filteredResults = filteredResults else { return }
         let record = filteredResults[indexPath.row]
-        guard let following = Following(cloudKitRecord: record) else { return }
-        FollowingController.sharedController.updateFollowing(following, status: Following.Status.accepted)
+        FollowingController.sharedController.updateFollowing(record, status: Following.Status.accepted)
+        setUpPendingDataSource()
         tableView.reloadData()
     }
     
     func declineButtonPressed(sender: PendingRequestCell) {
         guard let indexPath = tableView.indexPathForCell(sender), filteredResults = filteredResults else { return }
         let record = filteredResults[indexPath.row]
-        guard let following = Following(cloudKitRecord: record) else { return }
-        FollowingController.sharedController.updateFollowing(following, status: Following.Status.denied)
+        FollowingController.sharedController.updateFollowing(record, status: Following.Status.denied)
+        setUpPendingDataSource()
         tableView.reloadData()
     }
 }

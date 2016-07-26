@@ -16,7 +16,7 @@ class FollowingController {
     var currentUserRecordID: CKRecordID?
     
     let cloudKitManager = CloudKitManager()
-
+    
     func createFollowing(recordID: CKRecordID) {
         let following = Following(recordID: recordID)
         let record = CKRecord(following: following)
@@ -68,17 +68,13 @@ class FollowingController {
         }
     }
     
-    func updateFollowing(following: Following, status: Following.Status) {
-        var followingCopy = following
-        followingCopy.status = status.rawValue
-        let record = CKRecord(following: following)
-        cloudKitManager.modifyRecords([record], perRecordCompletion: { (record, error) in
+    func updateFollowing(record: CKRecord, status: Following.Status) {
+        record.setObject(status.rawValue, forKey: Following.statusKey)
+        cloudKitManager.saveRecord(record) { record, error in
             if let error = error {
-                print(error)
-            }
-        }) { (records, error) in
-            if let error = error {
-                print(error)
+                AlertController.displayError(error, withMessage: nil)
+            } else {
+                print("\(record?.valueForKey(Following.statusKey))")
             }
         }
     }
