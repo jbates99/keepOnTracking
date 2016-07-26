@@ -55,6 +55,24 @@ class MessageController {
         }
     }
     
+    func fetchLatestUserUpdateMessage(recordID: CKRecordID, completion: (message: [Message]?) -> Void) {
+        let db = CKContainer.defaultContainer().publicCloudDatabase
+        let query = CKQuery(recordType: Message.recordType, predicate: NSPredicate(format: "CreatedBy == %@", argumentArray: [recordID]))
+        query.sortDescriptors = [NSSortDescriptor(key: Message.dateKey, ascending: true)]
+        
+        db.performQuery(query, inZoneWithID: nil) { records, error in
+            if let error = error {
+                NSLog("Error \(error) when fetching data")
+                completion(message: nil)
+            }
+            guard let records = records?.suffix(1) else { return }
+            let messages = records.flatMap { Message(cloudKitRecord: $0) }
+            Dispatch.main.async {
+                completion(message: messages)
+            }
+        }
+    }
+    
     func refresh() {
         let db = CKContainer.defaultContainer().publicCloudDatabase
         

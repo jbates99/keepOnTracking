@@ -37,10 +37,12 @@ class LocationsDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = regions.count
         if count == 0 {
-            tableView.tableHeaderView?.hidden = false
+            view.addConstraint(hiddenView.heightAnchor.constraintEqualToConstant(90))
+            hiddenView.hidden = false
             return count
         } else if count >= 1 {
-            tableView.tableHeaderView?.hidden = true
+            view.addConstraint(hiddenView.heightAnchor.constraintEqualToConstant(0))
+            hiddenView.hidden = true
             return count
         } else {
             return count
@@ -48,6 +50,7 @@ class LocationsDetailTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("locationCell", forIndexPath: indexPath) as! ButtonTableViewCell
         
         let region = regions[indexPath.row]
