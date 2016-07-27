@@ -12,11 +12,12 @@ import CloudKit
 class FamilyMembersTableViewController: UITableViewController {
     
     var queryResults: [CKRecord]?
-    var messages = [Message]()
+    
+    var messagesResults = [Message]()
     
     var filteredResults: [CKRecord]? {
         guard let queryResults = queryResults else { return nil }
-        return queryResults.filter { $0.creatorUserRecordID?.recordName != "__defaultOwner__" }
+        return queryResults.filter { $0.creatorUserRecordID?.recordName == "__defaultOwner__" }
     }
     
     var followingResults: [Following]? {
@@ -37,15 +38,10 @@ class FamilyMembersTableViewController: UITableViewController {
         setUpDataSource()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
-    
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = queryResults?.count ?? 0
+        let count = filteredResults?.count ?? 0
         if count == 0 {
             tableView.emptyMessage("You currently have no connections. Press the add button to create your first!", viewController: self)
             return 0
@@ -61,29 +57,38 @@ class FamilyMembersTableViewController: UITableViewController {
         
         guard let record = filteredResults?[indexPath.row] else { return UITableViewCell() }
         guard let userInfo = NotificationController.sharedInstance.creatorUserInfo(for: record) else { return UITableViewCell() }
-        MessageController.sharedController.fetchLatestUserUpdateMessage(record.recordID) { (message) in
-            guard let messages = message else { return }
-            let newMessage = messages[1]
-            cell.setUpCell(with: record, userInfo: userInfo, and: newMessage)
-        }
+        
+        cell.setUpCell(with: record, userInfo: userInfo, and: messagesResults[indexPath.row])
         cell.delegate = self
         return cell
     }
     
-    func setUpDataSource() {
-        let sharedController = FollowingController.sharedController
-        guard let currentUserID = sharedController.currentUserRecordID else { return }
-        sharedController.retrieveFollowingsRequestsByStatus(1, recordID: currentUserID) { returnedRecords in
-            guard let returnedRecords = returnedRecords else { return }
-            self.queryResults = returnedRecords
-            
-            Dispatch.main.async {
-                self.tableView.reloadData()
+    func setUpmessages() {
+        guard let filteredResults = filteredResults else { return }
+        for result in filteredResults {
+            MessageController.sharedController.fetchLatestUserUpdateMessage(result.recordID) { (message) in
+                guard let messages = message else { return }
+                let newMessage = messages[1]
+                self.messagesResults.append(newMessage)
             }
         }
     }
-    
+   
+
+
+func setUpDataSource() {
+    let sharedController = FollowingController.sharedController
+    sharedController.retrieveFollowingsRequestsByStatusForUser(1) { returnedRecords in
+        guard let returnedRecords = returnedRecords else { return }
+        self.queryResults = returnedRecords
+        
+        Dispatch.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
+}
+
 
 extension FamilyMembersTableViewController: ConnectionTableViewCellDelegate {
     func notifyMeButtonPressed(sender: ConnectionTableViewCell) {

@@ -54,6 +54,21 @@ class FollowingController {
         }
     }
     
+    func retrieveFollowingsRequestsByStatusForUser(status: Int, completion: (returnedRecords: [CKRecord]?) -> Void) {
+        guard let currentUserRecordID = currentUserRecordID else { return }
+        let predicate = NSPredicate(format: "creatorUserRecordID == %@, Status == \(status)", argumentArray: [currentUserRecordID])
+        cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: { (record) in
+        }) { (records, error) in
+            if let error = error {
+                AlertController.displayError(error, withMessage: nil)
+                completion(returnedRecords: nil)
+            } else if let records = records {
+                completion(returnedRecords: records)
+            }
+            
+        }
+    }
+    
     func retrieveFollowingsRequestsByStatus(status: Int, recordID: CKRecordID, completion: (returnedRecords: [CKRecord]?) -> Void) {
         let reference = CKReference(recordID: recordID, action: .None)
         let predicate = NSPredicate(format: "SentTo == %@ AND Status == \(status)", argumentArray: [reference])

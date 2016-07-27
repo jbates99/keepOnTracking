@@ -34,7 +34,6 @@ class RequestsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpPendingDataSource()
-
         
     }
     
