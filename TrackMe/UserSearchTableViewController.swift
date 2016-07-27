@@ -34,6 +34,7 @@ class UserSearchTableViewController: UITableViewController {
             tableView.emptyMessage("None of your contacts have this app.  Ask them to download it in order to make connections.", viewController: self)
             return 0
         } else if count >= 1 {
+            tableView.removeMessage(self)
             return count
         } else {
             return count

@@ -33,9 +33,10 @@ class FamilyMembersTableViewController: UITableViewController {
         return followingResults
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         setUpDataSource()
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -46,6 +47,7 @@ class FamilyMembersTableViewController: UITableViewController {
             tableView.emptyMessage("You currently have no connections. Press the add button to create your first!", viewController: self)
             return 0
         } else if count >= 1 {
+            tableView.removeMessage(self)
             return count
         } else {
             return count
@@ -56,7 +58,7 @@ class FamilyMembersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("updateCell", forIndexPath: indexPath) as! ConnectionTableViewCell
         
         guard let record = filteredResults?[indexPath.row] else { return UITableViewCell() }
-        guard let userInfo = NotificationController.sharedInstance.creatorUserInfo(for: record) else { return UITableViewCell() }
+        guard let userInfo = NotificationController.sharedInstance.followingUserInfo(for: record) else { return UITableViewCell() }
         
         cell.setUpCell(with: record, userInfo: userInfo, and: messagesResults[indexPath.row])
         cell.delegate = self
@@ -77,8 +79,7 @@ class FamilyMembersTableViewController: UITableViewController {
 
 
 func setUpDataSource() {
-    let sharedController = FollowingController.sharedController
-    sharedController.retrieveFollowingsRequestsByStatusForUser(1) { returnedRecords in
+    FollowingController.retrieveFollowingsRequestsByStatusForUser(1) { returnedRecords in
         guard let returnedRecords = returnedRecords else { return }
         self.queryResults = returnedRecords
         

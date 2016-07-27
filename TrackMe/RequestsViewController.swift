@@ -49,6 +49,7 @@ class RequestsViewController: UITableViewController {
             tableView.emptyMessage("You have no pending requests", viewController: self)
             return 0
         } else if count >= 1 {
+            tableView.removeMessage(self)
             return count
         } else {
             return count

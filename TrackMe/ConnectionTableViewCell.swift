@@ -19,7 +19,6 @@ class ConnectionTableViewCell: UITableViewCell {
     
     var delegate: ConnectionTableViewCellDelegate?
     
-    
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var userUpdateLabel: UILabel!
@@ -32,7 +31,6 @@ class ConnectionTableViewCell: UITableViewCell {
     
     func setUpCell(with record: CKRecord, userInfo: CKDiscoveredUserInfo, and message: Message?) {
         guard let contact = userInfo.displayContact else { return }
-        
         userUpdateLabel.textColor = AppearanceController.darkGreen
         if message != nil {
             userUpdateLabel.text = message?.messageText

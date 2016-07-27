@@ -54,10 +54,10 @@ class FollowingController {
         }
     }
     
-    func retrieveFollowingsRequestsByStatusForUser(status: Int, completion: (returnedRecords: [CKRecord]?) -> Void) {
-        guard let currentUserRecordID = currentUserRecordID else { return }
-        let predicate = NSPredicate(format: "creatorUserRecordID == %@, Status == \(status)", argumentArray: [currentUserRecordID])
-        cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: { (record) in
+    static func retrieveFollowingsRequestsByStatusForUser(status: Int, completion: (returnedRecords: [CKRecord]?) -> Void) {
+        guard let currentUserRecordID = self.sharedController.currentUserRecordID else { return }
+        let predicate = NSPredicate(format: "creatorUserRecordID == %@ AND Status == \(status)", argumentArray: [currentUserRecordID])
+        sharedController.cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: { (record) in
         }) { (records, error) in
             if let error = error {
                 AlertController.displayError(error, withMessage: nil)

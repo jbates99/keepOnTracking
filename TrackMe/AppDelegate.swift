@@ -98,6 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         followingController.cloudKitManager.fetchLoggedInUserRecord { (record, error) in
             guard let record = record else { return }
             followingController.currentUserRecordID = record.recordID
+            
         }
     }
     

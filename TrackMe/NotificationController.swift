@@ -40,6 +40,16 @@ class NotificationController {
         }
     }
     
+    func followingUserInfo(for userRecord: CKRecord) -> CKDiscoveredUserInfo? {
+        if let recordID = userRecord.lastModifiedUserRecordID {
+            let recordName = recordID.recordName
+            return usersDict[recordName]
+        } else {
+            print("Unable to access modifier recordID")
+            return nil
+        }
+    }
+    
     func creatorUserInfo(for userRecord: CKRecord) -> CKDiscoveredUserInfo? {
         if let recordID = userRecord.creatorUserRecordID {
             let recordName = recordID.recordName

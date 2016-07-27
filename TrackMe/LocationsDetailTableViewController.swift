@@ -36,6 +36,7 @@ class LocationsDetailTableViewController: UITableViewController {
             tableView.emptyMessage("You currently have no locations. Press the add button to add your first!", viewController: self)
             return 0
         } else if count >= 1 {
+            tableView.removeMessage(self)
             return count
         } else {
             return count
@@ -116,5 +117,9 @@ extension UITableView {
         viewController.tableView.separatorStyle = .None
     }
     
+    func removeMessage(viewController: UITableViewController) {
+        viewController.tableView.backgroundView = nil
+        viewController.tableView.separatorStyle = .SingleLine
+    }
 }
 
