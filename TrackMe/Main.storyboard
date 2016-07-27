@@ -124,35 +124,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" hidden="YES" contentMode="scaleToFill" id="UFX-5i-AA1">
-                            <rect key="frame" x="0.0" y="94" width="600" height="90"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm sorry.  It looks like none of your friends have this app.  Please share it with them in order to add more connections." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbK-HU-gJh">
-                                    <rect key="frame" x="8" y="34" width="584" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="GbK-HU-gJh" firstAttribute="centerY" secondItem="UFX-5i-AA1" secondAttribute="centerY" id="9Hl-IZ-Fgn"/>
-                                <constraint firstAttribute="trailing" secondItem="GbK-HU-gJh" secondAttribute="trailing" constant="8" id="Duz-8w-2Dt"/>
-                                <constraint firstItem="GbK-HU-gJh" firstAttribute="centerX" secondItem="UFX-5i-AA1" secondAttribute="centerX" id="NQb-tE-H8o"/>
-                                <constraint firstItem="GbK-HU-gJh" firstAttribute="leading" secondItem="UFX-5i-AA1" secondAttribute="leading" constant="8" id="WxD-dc-YjD"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="requestCell" rowHeight="90" id="fny-IO-gCJ" customClass="FollowUserTableViewCell" customModule="TrackMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="212" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fny-IO-gCJ" id="YOP-Fh-xJS">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBu-6a-D7g">
-                                            <rect key="frame" x="16" y="34.5" width="42" height="21"/>
+                                            <rect key="frame" x="16" y="35" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -165,7 +146,7 @@
                                             </connections>
                                         </button>
                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J7c-4t-6Sx">
-                                            <rect key="frame" x="521" y="16" width="62.5" height="57.5"/>
+                                            <rect key="frame" x="521" y="16" width="63" height="58"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -194,9 +175,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" prompt=" " id="FDS-wn-hdT"/>
-                    <connections>
-                        <outlet property="hiddenView" destination="UFX-5i-AA1" id="Ql4-r1-KY7"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMY-tA-gMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -210,26 +188,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" hidden="YES" contentMode="scaleToFill" id="23f-5u-SWF">
-                            <rect key="frame" x="0.0" y="94" width="600" height="90"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the add button to add your first location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDm-ZI-ENh">
-                                    <rect key="frame" x="127.5" y="34" width="345.5" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="wDm-ZI-ENh" firstAttribute="centerY" secondItem="23f-5u-SWF" secondAttribute="centerY" id="Ivx-nx-Wqh"/>
-                                <constraint firstItem="wDm-ZI-ENh" firstAttribute="centerX" secondItem="23f-5u-SWF" secondAttribute="centerX" id="coN-1a-VTG"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" rowHeight="90" id="1zV-zH-cQA" customClass="ButtonTableViewCell" customModule="TrackMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="212" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1zV-zH-cQA" id="Jog-H8-hj7">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
@@ -274,9 +235,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="hiddenView" destination="23f-5u-SWF" id="7oq-NA-Gua"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Ei-m4-IMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -328,28 +286,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" hidden="YES" contentMode="scaleToFill" id="pW8-A6-k3Y">
-                            <rect key="frame" x="0.0" y="94" width="600" height="90"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="You have no connections.  Click the add button to create more!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBU-0x-K9r">
-                                    <rect key="frame" x="60" y="34" width="480" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="xBU-0x-K9r" firstAttribute="centerX" secondItem="pW8-A6-k3Y" secondAttribute="centerX" id="JhK-P9-qet"/>
-                                <constraint firstItem="xBU-0x-K9r" firstAttribute="centerY" secondItem="pW8-A6-k3Y" secondAttribute="centerY" id="OWM-Xh-hVO"/>
-                                <constraint firstAttribute="trailing" secondItem="xBU-0x-K9r" secondAttribute="trailing" constant="8" id="avi-yy-K0f"/>
-                                <constraint firstItem="xBU-0x-K9r" firstAttribute="leading" secondItem="pW8-A6-k3Y" secondAttribute="leading" constant="8" id="fe0-Rw-KFf"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="updateCell" rowHeight="90" id="Lyn-G0-4px" customClass="ConnectionTableViewCell" customModule="TrackMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="212" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lyn-G0-4px" id="5Vx-HK-tyG">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
@@ -414,9 +353,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="hiddenView" destination="pW8-A6-k3Y" id="byE-Kn-kxC"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mbx-3o-uIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -449,25 +385,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableHeaderView" hidden="YES" contentMode="scaleToFill" id="4aX-Bw-gZv">
-                            <rect key="frame" x="0.0" y="94" width="600" height="90"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no pending requests" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pE4-JB-34a">
-                                    <rect key="frame" x="185" y="34.5" width="230.5" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="pE4-JB-34a" firstAttribute="centerX" secondItem="4aX-Bw-gZv" secondAttribute="centerX" id="Zvr-oS-YgZ"/>
-                                <constraint firstItem="pE4-JB-34a" firstAttribute="centerY" secondItem="4aX-Bw-gZv" secondAttribute="centerY" id="oeH-1Y-4Cm"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="requestCell" rowHeight="90" id="9fV-XL-Sn4" customClass="PendingRequestCell" customModule="TrackMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="212" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9fV-XL-Sn4" id="eZD-eI-wRO">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
@@ -525,9 +445,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Pending" prompt=" " id="Exw-Ot-hCc"/>
-                    <connections>
-                        <outlet property="hiddenView" destination="4aX-Bw-gZv" id="CU8-tC-msz"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCq-lc-O2O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

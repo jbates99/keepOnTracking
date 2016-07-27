@@ -13,8 +13,6 @@ class RequestsViewController: UITableViewController {
     
     var queryResults: [CKRecord]?
     
-    @IBOutlet weak var hiddenView: UIView!
-    
     var filteredResults: [CKRecord]? {
         guard let queryResults = queryResults else { return nil }
         return queryResults.filter { $0.creatorUserRecordID?.recordName != "__defaultOwner__" }
@@ -36,7 +34,7 @@ class RequestsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpPendingDataSource()
-        hiddenView.backgroundColor = AppearanceController.offWhite
+
         
     }
     
@@ -49,10 +47,9 @@ class RequestsViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = filteredResults?.count ?? 0
         if count == 0 {
-            hiddenView.hidden = false
-            return count
+            tableView.emptyMessage("You have no pending requests", viewController: self)
+            return 0
         } else if count >= 1 {
-            hiddenView.hidden = true
             return count
         } else {
             return count

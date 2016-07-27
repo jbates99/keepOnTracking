@@ -12,16 +12,12 @@ import CoreLocation
 class LocationsDetailTableViewController: UITableViewController {
     
     var regions = [CLRegion]()
-    
-    @IBOutlet weak var hiddenView: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpRegions()
-        hiddenView.backgroundColor = AppearanceController.offWhite
-        tableView.tableHeaderView = hiddenView
     }
-    
+     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         setUpRegions()
@@ -37,12 +33,9 @@ class LocationsDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = regions.count
         if count == 0 {
-            view.addConstraint(hiddenView.heightAnchor.constraintEqualToConstant(90))
-            hiddenView.hidden = false
-            return count
+            tableView.emptyMessage("You currently have no locations. Press the add button to add your first!", viewController: self)
+            return 0
         } else if count >= 1 {
-            view.addConstraint(hiddenView.heightAnchor.constraintEqualToConstant(0))
-            hiddenView.hidden = true
             return count
         } else {
             return count
@@ -106,3 +99,22 @@ extension LocationsDetailTableViewController: ButtonTableViewCellDelegate {
         
     }
 }
+
+extension UITableView {
+    
+    func emptyMessage(message:String, viewController:UITableViewController) {
+        let messageLabel = UILabel(frame: CGRectMake(0,0,viewController.view.bounds.size.width, viewController.view.bounds.size.height))
+        messageLabel.text = message
+        messageLabel.textColor = AppearanceController.darkGreen
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .Center
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+        messageLabel.backgroundColor = AppearanceController.offWhite
+        
+        viewController.tableView.backgroundView = messageLabel
+        viewController.tableView.separatorStyle = .None
+    }
+    
+}
+

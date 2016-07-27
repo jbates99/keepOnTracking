@@ -11,8 +11,6 @@ import CloudKit
 
 class FamilyMembersTableViewController: UITableViewController {
     
-    @IBOutlet weak var hiddenView: UIView!
-    
     var queryResults: [CKRecord]?
     var messages = [Message]()
     
@@ -36,8 +34,7 @@ class FamilyMembersTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hiddenView.backgroundColor = AppearanceController.offWhite
-        
+        setUpDataSource()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,10 +47,9 @@ class FamilyMembersTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = queryResults?.count ?? 0
         if count == 0 {
-            hiddenView.hidden = false
-            return count
+            tableView.emptyMessage("You currently have no connections. Press the add button to create your first!", viewController: self)
+            return 0
         } else if count >= 1 {
-            hiddenView.hidden = true
             return count
         } else {
             return count

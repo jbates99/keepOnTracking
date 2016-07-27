@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        
+        // FIXME: Set up did receive remotenotification
     }
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
-        //        UIApplication.sharedApplication().registerForRemoteNotifications()
+        UIApplication.sharedApplication().registerForRemoteNotifications()
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {

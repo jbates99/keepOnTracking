@@ -14,7 +14,6 @@ class UserSearchTableViewController: UITableViewController {
     let notificationController = NotificationController.sharedInstance
     private let cloudKitManager = CloudKitManager()
     
-    @IBOutlet weak var hiddenView: UIView!
     var users: [CKDiscoveredUserInfo] {
         return notificationController.discoveredRecords
     }
@@ -25,7 +24,6 @@ class UserSearchTableViewController: UITableViewController {
         super.viewDidLoad()
         setUpUsers()
         notificationController.requestAccess()
-        hiddenView.backgroundColor = AppearanceController.offWhite
     }
     
     // MARK: - Table view data source
@@ -33,10 +31,9 @@ class UserSearchTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = users.count
         if count == 0 {
-            hiddenView.hidden = false
-            return count
+            tableView.emptyMessage("None of your contacts have this app.  Ask them to download it in order to make connections.", viewController: self)
+            return 0
         } else if count >= 1 {
-            hiddenView.hidden = true
             return count
         } else {
             return count
