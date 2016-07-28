@@ -59,71 +59,8 @@ class NewLocationViewController: UIViewController {
         guard let locationName = locationNameTextField.text, let distanceText = distanceTextField.text where !locationName.isEmpty && !distanceText.isEmpty else { return }
         guard let distance = Double(distanceText) else { return }
         RegionController.createRegion(mapSelectionPoint.coordinate, radius: distance, name: locationName)
-        
-        // MARK: - Location Permissions
-        
-        guard let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager else { return }
-        if CLLocationManager.authorizationStatus() == .NotDetermined {
-            manager.requestAlwaysAuthorization()
-            manager.startUpdatingLocation()
-        } else if CLLocationManager.authorizationStatus() == .AuthorizedAlways {
-            manager.startUpdatingLocation()
-        }
-        if let navController = self.navigationController {
-            navController.popViewControllerAnimated(true)
-        }
-    }
-    
-}
-
-extension NewLocationViewController: UITextFieldDelegate {
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        guard mapView.annotations.count >= 1 else { return }
-        mapView.removeOverlay(distanceCircleOverlay)
-        setUpDistanceCircleOverlay()
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == addressTextField {
-            guard !addressTextField.text!.isEmpty else { return false }
-            guard let address = addressTextField.text else { return false }
-            geoCoder.cancelGeocode()
-            geoCoder.geocodeAddressString(address) { (placemark, error) in
-                if error != nil {
-                    print("GeoCoding error: \(error)")
-                } else {
-                    guard let placemark = placemark, let first = placemark.first, let location = first.location else { return }
-                    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                    let coordinates = location.coordinate
-                    let addressRegion = MKCoordinateRegionMake(coordinates, span)
-                    self.mapView.setRegion(addressRegion, animated: true)
-                    self.geoCoder.cancelGeocode()
-                    self.mapSelectionPoint.coordinate = coordinates
-                    self.mapView.removeAnnotation(self.mapSelectionPoint)
-                    self.mapView.addAnnotation(self.mapSelectionPoint)
-                }
-            }
-        }
-        self.dismissKeyboard()
-        return true
-    }
-}
-
-// MARK: - MapViewDelegate
-
-extension NewLocationViewController: MKMapViewDelegate {
-
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        if overlay is MKCircle {
-            let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.strokeColor = UIColor.darkGreen.colorWithAlphaComponent(0.6)
-            circleRenderer.fillColor = UIColor.darkGreen.colorWithAlphaComponent(0.2)
-            circleRenderer.lineWidth = 3.0
-            return circleRenderer
-        } else {
-            return MKOverlayRenderer(overlay: overlay)
-        }
+        RegionController.askForLocationPermissions()
+        navigationController?.popViewControllerAnimated(true)
     }
     
 }
@@ -162,20 +99,58 @@ private extension NewLocationViewController {
         mapView.addOverlay(distanceCircleOverlay)
     }
     
-    private func d() {
-        
+}
+
+// MARK: - TextField Delegate
+
+extension NewLocationViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        guard mapView.annotations.count >= 1 else { return }
+        mapView.removeOverlay(distanceCircleOverlay)
+        setUpDistanceCircleOverlay()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == addressTextField {
+            guard !addressTextField.text!.isEmpty else { return false }
+            guard let address = addressTextField.text else { return false }
+            geoCoder.cancelGeocode()
+            geoCoder.geocodeAddressString(address) { placemark, error in
+                if error != nil {
+                    print("GeoCoding error: \(error)")
+                } else {
+                    guard let placemark = placemark, let first = placemark.first, let location = first.location else { return }
+                    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                    let coordinates = location.coordinate
+                    let addressRegion = MKCoordinateRegionMake(coordinates, span)
+                    self.mapView.setRegion(addressRegion, animated: true)
+                    self.geoCoder.cancelGeocode()
+                    self.mapSelectionPoint.coordinate = coordinates
+                    self.mapView.removeAnnotation(self.mapSelectionPoint)
+                    self.mapView.addAnnotation(self.mapSelectionPoint)
+                }
+            }
+        }
+        self.dismissKeyboard()
+        return true
+    }
+}
+
+// MARK: - MapViewDelegate
+
+extension NewLocationViewController: MKMapViewDelegate {
+
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKCircle {
+            let circleRenderer = MKCircleRenderer(overlay: overlay)
+            circleRenderer.strokeColor = UIColor.darkGreen.colorWithAlphaComponent(0.6)
+            circleRenderer.fillColor = UIColor.darkGreen.colorWithAlphaComponent(0.2)
+            circleRenderer.lineWidth = 3.0
+            return circleRenderer
+        } else {
+            return MKOverlayRenderer(overlay: overlay)
+        }
     }
     
 }
-
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-}
-

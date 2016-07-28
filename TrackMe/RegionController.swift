@@ -22,4 +22,15 @@ class RegionController {
         manager.startMonitoringForRegion(region)
     }
     
+    static func askForLocationPermissions() {
+        guard let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager else { return }
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            manager.requestAlwaysAuthorization()
+            manager.startUpdatingLocation()
+        } else if CLLocationManager.authorizationStatus() == .AuthorizedAlways {
+            manager.startUpdatingLocation()
+        }
+        
+    }
+    
 }
