@@ -18,7 +18,7 @@ class LocationsDetailTableViewController: UITableViewController {
         setUpRegions()
     }
     
-    // MARK: - Table view data source
+    // MARK: - Table view delegate functions
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = regions.count
@@ -43,17 +43,6 @@ class LocationsDetailTableViewController: UITableViewController {
         return cell
     }
     
-    private func setUpRegions() {
-        guard let delegate = (UIApplication.sharedApplication().delegate as? AppDelegate) else { return }
-        delegate.setUpRegions()
-        if let regions = (UIApplication.sharedApplication().delegate as? AppDelegate)?.regions {
-            self.regions = regions
-        } else {
-            self.regions = []
-        }
-        self.tableView.reloadData()
-    }
-    
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let region = regions[indexPath.row]
@@ -69,6 +58,8 @@ class LocationsDetailTableViewController: UITableViewController {
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
     
+    // MARK: - Navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let detailViewController = segue.destinationViewController as? NewLocationViewController else { fatalError("unexpected destination from segue") }
         if segue.identifier == "savedLocation" {
@@ -79,7 +70,22 @@ class LocationsDetailTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Private functions
+    
+    private func setUpRegions() {
+        guard let delegate = (UIApplication.sharedApplication().delegate as? AppDelegate) else { return }
+        delegate.setUpRegions()
+        if let regions = (UIApplication.sharedApplication().delegate as? AppDelegate)?.regions {
+            self.regions = regions
+        } else {
+            self.regions = []
+        }
+        self.tableView.reloadData()
+    }
+    
 }
+
+    // MARK: - Button Cell Delegate
 
 extension LocationsDetailTableViewController: ButtonTableViewCellDelegate {
     
