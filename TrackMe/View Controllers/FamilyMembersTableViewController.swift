@@ -36,6 +36,7 @@ class FamilyMembersTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         setUpDataSource()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpDataSource), name: "currentUserSet", object: nil)
         tableView.reloadData()
     }
     
