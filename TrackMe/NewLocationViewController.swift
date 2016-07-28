@@ -85,20 +85,38 @@ private extension NewLocationViewController {
     }
     
     private func setUpAppearance() {
-        view.backgroundColor = UIColor.offWhite
-        view.tintColor = UIColor.darkGreen
-        leftView.backgroundColor = UIColor.offWhite
-        rightView.backgroundColor = UIColor.offWhite
+        view.backgroundColor = .offWhite
+        view.tintColor = .darkGreen
+        leftView.backgroundColor = .offWhite
+        rightView.backgroundColor = .offWhite
     }
     
     private func setUpDistanceCircleOverlay() {
-        guard let distanceText = distanceTextField.text else { return }
-        guard let distance = Double(distanceText) else { return }
+        guard let distanceText = distanceTextField.text, distance = Double(distanceText) else { return }
         distanceCircleOverlay = MKCircle(centerCoordinate: mapSelectionPoint.coordinate, radius: distance) // Radius is in meters
         mapView.removeOverlay(distanceCircleOverlay)
         mapView.addOverlay(distanceCircleOverlay)
     }
     
+    private func geoCodeAddress(address: String) {
+        geoCoder.cancelGeocode()
+        geoCoder.geocodeAddressString(address) { placemark, error in
+            if error != nil {
+                print("GeoCoding error: \(error)")
+            } else {
+                guard let placemark = placemark, let first = placemark.first, let location = first.location else { return }
+                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                let coordinates = location.coordinate
+                let addressRegion = MKCoordinateRegionMake(coordinates, span)
+                self.mapView.setRegion(addressRegion, animated: true)
+                self.geoCoder.cancelGeocode()
+                self.mapSelectionPoint.coordinate = coordinates
+                self.mapView.removeAnnotation(self.mapSelectionPoint)
+                self.mapView.addAnnotation(self.mapSelectionPoint)
+            }
+        }
+        
+    }
 }
 
 // MARK: - TextField Delegate
@@ -107,32 +125,19 @@ extension NewLocationViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(textField: UITextField) {
         guard mapView.annotations.count >= 1 else { return }
-        mapView.removeOverlay(distanceCircleOverlay)
         setUpDistanceCircleOverlay()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == addressTextField {
-            guard !addressTextField.text!.isEmpty else { return false }
-            guard let address = addressTextField.text else { return false }
-            geoCoder.cancelGeocode()
-            geoCoder.geocodeAddressString(address) { placemark, error in
-                if error != nil {
-                    print("GeoCoding error: \(error)")
-                } else {
-                    guard let placemark = placemark, let first = placemark.first, let location = first.location else { return }
-                    let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                    let coordinates = location.coordinate
-                    let addressRegion = MKCoordinateRegionMake(coordinates, span)
-                    self.mapView.setRegion(addressRegion, animated: true)
-                    self.geoCoder.cancelGeocode()
-                    self.mapSelectionPoint.coordinate = coordinates
-                    self.mapView.removeAnnotation(self.mapSelectionPoint)
-                    self.mapView.addAnnotation(self.mapSelectionPoint)
-                }
+        if textField == locationNameTextField {
+            distanceTextField.becomeFirstResponder()
+            return true
+        } else if textField == addressTextField {
+            if let address = addressTextField.text where !address.isEmpty {
+                geoCodeAddress(address)
             }
         }
-        self.dismissKeyboard()
+        dismissKeyboard()
         return true
     }
 }
@@ -140,7 +145,7 @@ extension NewLocationViewController: UITextFieldDelegate {
 // MARK: - MapViewDelegate
 
 extension NewLocationViewController: MKMapViewDelegate {
-
+    
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKCircle {
             let circleRenderer = MKCircleRenderer(overlay: overlay)
