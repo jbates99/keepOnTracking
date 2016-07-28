@@ -12,20 +12,10 @@ import CoreLocation
 class LocationsDetailTableViewController: UITableViewController {
     
     var regions = [CLRegion]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUpRegions()
-    }
      
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         setUpRegions()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
@@ -44,7 +34,6 @@ class LocationsDetailTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("locationCell", forIndexPath: indexPath) as! ButtonTableViewCell
         
         let region = regions[indexPath.row]
@@ -54,7 +43,7 @@ class LocationsDetailTableViewController: UITableViewController {
         return cell
     }
     
-    func setUpRegions() {
+    private func setUpRegions() {
         guard let delegate = (UIApplication.sharedApplication().delegate as? AppDelegate) else { return }
         delegate.setUpRegions()
         if let regions = (UIApplication.sharedApplication().delegate as? AppDelegate)?.regions {
@@ -65,7 +54,6 @@ class LocationsDetailTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let region = regions[indexPath.row]
@@ -91,7 +79,6 @@ class LocationsDetailTableViewController: UITableViewController {
         }
     }
     
-    
 }
 
 extension LocationsDetailTableViewController: ButtonTableViewCellDelegate {
@@ -101,25 +88,4 @@ extension LocationsDetailTableViewController: ButtonTableViewCellDelegate {
     }
 }
 
-extension UITableView {
-    
-    func emptyMessage(message:String, viewController:UITableViewController) {
-        let messageLabel = UILabel(frame: CGRectMake(0,0,viewController.view.bounds.size.width, viewController.view.bounds.size.height))
-        messageLabel.text = message
-        messageLabel.textColor = UIColor.darkGreen
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .Center
-        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
-        messageLabel.sizeToFit()
-        messageLabel.backgroundColor = UIColor.offWhite
-        
-        viewController.tableView.backgroundView = messageLabel
-        viewController.tableView.separatorStyle = .None
-    }
-    
-    func removeMessage(viewController: UITableViewController) {
-        viewController.tableView.backgroundView = nil
-        viewController.tableView.separatorStyle = .SingleLine
-    }
-}
 

@@ -11,6 +11,7 @@ import CloudKit
 import CoreLocation
 
 class Connections {
+    
     let name: String
     let message: String
     let region: CLRegion
