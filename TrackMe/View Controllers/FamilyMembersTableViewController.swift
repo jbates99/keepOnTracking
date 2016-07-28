@@ -12,7 +12,6 @@ import CloudKit
 class FamilyMembersTableViewController: UITableViewController {
     
     var queryResults: [CKRecord]?
-    
     var messagesResults = [Message]()
     
     var filteredResults: [CKRecord]? {
@@ -36,8 +35,8 @@ class FamilyMembersTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         setUpDataSource()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpDataSource), name: "currentUserSet", object: nil)
         tableView.reloadData()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpDataSource), name: "currentUserSet", object: nil)
     }
     
     // MARK: - Table view data source
@@ -91,7 +90,6 @@ class FamilyMembersTableViewController: UITableViewController {
         }
     }
 }
-
 
 extension FamilyMembersTableViewController: ConnectionTableViewCellDelegate {
     func notifyMeButtonPressed(sender: ConnectionTableViewCell) {

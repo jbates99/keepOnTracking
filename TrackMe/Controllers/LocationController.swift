@@ -15,7 +15,7 @@ import MapKit
 struct LocationController {
     
     static func createRegion(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, name: String, status: Bool = true) {
-        // MARK: Starts Monitoring Region
+        // Starts Monitoring Region
         let region = CLCircularRegion(center: coordinate, radius: radius, identifier: name)
         guard let delegate = (UIApplication.sharedApplication().delegate as? AppDelegate) else { return }
         delegate.setUpRegions()
@@ -34,7 +34,7 @@ struct LocationController {
         
     }
     
-    static func geoCodeAddress(address: String, geoCoder: CLGeocoder, completion: (coordinate: CLLocationCoordinate2D?) -> Void){
+    static func geoCodeAddress(address: String, geoCoder: CLGeocoder, completion: (coordinate: CLLocationCoordinate2D?) -> Void) {
         geoCoder.cancelGeocode()
         geoCoder.geocodeAddressString(address) { placemarkers, error in
             if let error = error {
