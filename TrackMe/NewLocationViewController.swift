@@ -51,8 +51,7 @@ class NewLocationViewController: UIViewController {
         let point = longPressRecognizer.locationInView(mapView)
         let touchCoordinate = mapView.convertPoint(point, toCoordinateFromView: mapView)
         mapSelectionPoint.coordinate = touchCoordinate
-        mapView.removeAnnotation(mapSelectionPoint)
-        mapView.addAnnotation(mapSelectionPoint)
+        addAnnotation(mapSelectionPoint)
     }
     
     @IBAction func saveLocationButtonPressed(sender: AnyObject) {
@@ -72,8 +71,7 @@ private extension NewLocationViewController {
     private func setUpMap() {
         guard let region = region else { return }
         mapSelectionPoint.coordinate = CLLocationCoordinate2D(latitude: region.center.latitude, longitude: region.center.longitude)
-        mapView.removeAnnotation(mapSelectionPoint)
-        mapView.addAnnotation(mapSelectionPoint)
+        addAnnotation(mapSelectionPoint)
         distanceTextField.text = String(region.radius)
         title = region.identifier
         locationNameTextField.text = region.identifier
@@ -84,13 +82,6 @@ private extension NewLocationViewController {
         mapView.setRegion(zoomRegion, animated: true)
     }
     
-    private func setUpAppearance() {
-        view.backgroundColor = .offWhite
-        view.tintColor = .darkGreen
-        leftView.backgroundColor = .offWhite
-        rightView.backgroundColor = .offWhite
-    }
-    
     private func setUpDistanceCircleOverlay() {
         guard let distanceText = distanceTextField.text, distance = Double(distanceText) else { return }
         distanceCircleOverlay = MKCircle(centerCoordinate: mapSelectionPoint.coordinate, radius: distance) // Radius is in meters
@@ -98,24 +89,28 @@ private extension NewLocationViewController {
         mapView.addOverlay(distanceCircleOverlay)
     }
     
+    private func setUpAppearance() {
+        view.backgroundColor = .offWhite
+        view.tintColor = .darkGreen
+        leftView.backgroundColor = .offWhite
+        rightView.backgroundColor = .offWhite
+    }
+    
     private func geoCodeAddress(address: String) {
-        geoCoder.cancelGeocode()
-        geoCoder.geocodeAddressString(address) { placemark, error in
-            if error != nil {
-                print("GeoCoding error: \(error)")
-            } else {
-                guard let placemark = placemark, let first = placemark.first, let location = first.location else { return }
-                let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-                let coordinates = location.coordinate
-                let addressRegion = MKCoordinateRegionMake(coordinates, span)
-                self.mapView.setRegion(addressRegion, animated: true)
-                self.geoCoder.cancelGeocode()
-                self.mapSelectionPoint.coordinate = coordinates
-                self.mapView.removeAnnotation(self.mapSelectionPoint)
-                self.mapView.addAnnotation(self.mapSelectionPoint)
-            }
+        RegionController.geoCodeAddress(address, geoCoder: geoCoder) { coordinate in
+            guard let coordinate = coordinate else { return }
+            let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+            let addressRegion = MKCoordinateRegionMake(coordinate, span)
+            self.mapView.setRegion(addressRegion, animated: true)
+            self.geoCoder.cancelGeocode()
+            self.mapSelectionPoint.coordinate = coordinate
+            self.addAnnotation(self.mapSelectionPoint)
         }
-        
+    }
+    
+    private func addAnnotation(annotation: MKPointAnnotation) {
+        mapView.removeAnnotation(annotation)
+        mapView.addAnnotation(annotation)
     }
 }
 

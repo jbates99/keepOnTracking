@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import CoreLocation
 import CloudKit
+import MapKit
 
 class RegionController {
     
@@ -31,6 +32,19 @@ class RegionController {
             manager.startUpdatingLocation()
         }
         
+    }
+    
+    static func geoCodeAddress(address: String, geoCoder: CLGeocoder, completion: (coordinate: CLLocationCoordinate2D?) -> Void){
+        geoCoder.cancelGeocode()
+        geoCoder.geocodeAddressString(address) { placemarkers, error in
+            if let error = error {
+                AlertController.displayError(error, withMessage: nil)
+                completion(coordinate: nil)
+            } else {
+                let placemark = placemarkers?.first
+                completion(coordinate: placemark?.location?.coordinate)
+            }
+        }
     }
     
 }
