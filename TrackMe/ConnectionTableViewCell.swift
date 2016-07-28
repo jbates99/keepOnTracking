@@ -31,13 +31,13 @@ class ConnectionTableViewCell: UITableViewCell {
     
     func setUpCell(with record: CKRecord, userInfo: CKDiscoveredUserInfo, and message: Message?) {
         guard let contact = userInfo.displayContact else { return }
-        userUpdateLabel.textColor = AppearanceController.darkGreen
+        userUpdateLabel.textColor = UIColor.darkGreen
         if message != nil {
             userUpdateLabel.text = message?.messageText
         } else {
             userUpdateLabel.text = "No current location update for user \(contact.givenName)"
         }
-        nameLabel.textColor = AppearanceController.darkGreen
+        nameLabel.textColor = UIColor.darkGreen
         nameLabel.text = "\(contact.givenName) \(contact.familyName)"
     }
 }

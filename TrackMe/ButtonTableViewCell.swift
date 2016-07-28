@@ -27,7 +27,7 @@ protocol ButtonTableViewCellDelegate {
 extension ButtonTableViewCell {
     
     func updateWithLocation(region: CLRegion) {
-        primaryLabel.textColor = AppearanceController.lightGreen
+        primaryLabel.textColor = UIColor.lightGreen
         primaryLabel.text = region.identifier
     }
 }

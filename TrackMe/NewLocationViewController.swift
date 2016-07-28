@@ -12,34 +12,37 @@ import MapKit
 
 class NewLocationViewController: UIViewController {
     
-    var region: CLCircularRegion? = nil
-
     // MARK: - IBOutlets
+    
     @IBOutlet var longPressRecognizer: UILongPressGestureRecognizer!
     @IBOutlet weak var distanceTextField: UITextField!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var locationNameTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var searchStackView: UIStackView!
-    @IBOutlet weak var textFieldStackView: UIStackView!
-    @IBOutlet weak var fullPageStackView: UIStackView!
     @IBOutlet weak var leftView: UIView!
     @IBOutlet weak var rightView: UIView!
     
+    // MARK: - Properties
+    
+    private let geoCoder = CLGeocoder()
+    
+    var region: CLCircularRegion?
+    
+    private var mapSelectionPoint = MKPointAnnotation()
+    private var distanceCircleOverlay = MKCircle()
+    
+    private var selectedPointCoordinates: CLLocationCoordinate2D {
+        return mapSelectionPoint.coordinate
+    }
+    
+    // MARK: - View Controller Life-cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpLongTouch()
-        setUpMap()
-        distanceTextField.delegate = self
-        addressTextField.delegate = self
-        locationNameTextField.delegate = self
-        self.hideKeyboardWhenTappedAround()
-        view.backgroundColor = AppearanceController.offWhite
-        view.tintColor = AppearanceController.darkGreen
-        leftView.backgroundColor = AppearanceController.offWhite
-        rightView.backgroundColor = AppearanceController.offWhite
-        setUpKeyboards()
         
+        setUpMap()
+        setUpAppearance()
+        hideKeyboardWhenTappedAround()
     }
     
     // MARK: - IBActions
@@ -47,64 +50,38 @@ class NewLocationViewController: UIViewController {
     @IBAction func mapViewLongPress(sender: AnyObject) {
         let point = longPressRecognizer.locationInView(mapView)
         let touchCoordinate = mapView.convertPoint(point, toCoordinateFromView: mapView)
-        
         mapSelectionPoint.coordinate = touchCoordinate
         mapView.removeAnnotation(mapSelectionPoint)
         mapView.addAnnotation(mapSelectionPoint)
     }
     
     @IBAction func saveLocationButtonPressed(sender: AnyObject) {
-        if !(locationNameTextField.text?.isEmpty)! && !(distanceTextField.text?.isEmpty)! {
-            guard let locationName = locationNameTextField.text, let distanceText = distanceTextField.text else { return }
-            guard let distance = Double(distanceText) else { return }
-            RegionController.createRegion(mapSelectionPoint.coordinate, radius: distance, name: locationName)
-            
-            // MARK: - Location Permissions
-            guard let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager else { return }
-            if CLLocationManager.authorizationStatus() == .NotDetermined {
-                manager.requestAlwaysAuthorization()
-                manager.startUpdatingLocation()
-            } else if CLLocationManager.authorizationStatus() == .AuthorizedAlways {
-                manager.startUpdatingLocation()
-            }
-            if let navController = self.navigationController {
-                navController.popViewControllerAnimated(true)
-            }
+        guard let locationName = locationNameTextField.text, let distanceText = distanceTextField.text where !locationName.isEmpty && !distanceText.isEmpty else { return }
+        guard let distance = Double(distanceText) else { return }
+        RegionController.createRegion(mapSelectionPoint.coordinate, radius: distance, name: locationName)
+        
+        // MARK: - Location Permissions
+        
+        guard let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager else { return }
+        if CLLocationManager.authorizationStatus() == .NotDetermined {
+            manager.requestAlwaysAuthorization()
+            manager.startUpdatingLocation()
+        } else if CLLocationManager.authorizationStatus() == .AuthorizedAlways {
+            manager.startUpdatingLocation()
         }
-    }
-    
-    
-    
-    // MARK: - Constants 
-    
-    let geoCoder = CLGeocoder()
-    
-    // MARK: - Variables
-    
-    var mapSelectionPoint = MKPointAnnotation()
-    var distanceCircleOverlay = MKCircle()
-    
-    // MARK: - Computed Properties
-    
-    var selectedPointCoordinates: CLLocationCoordinate2D {
-        return mapSelectionPoint.coordinate
-    }
-    
-    func setUpLongTouch() {
-        longPressRecognizer.minimumPressDuration = 1.0
+        if let navController = self.navigationController {
+            navController.popViewControllerAnimated(true)
+        }
     }
     
 }
 
 extension NewLocationViewController: UITextFieldDelegate {
+    
     func textFieldDidEndEditing(textField: UITextField) {
         guard mapView.annotations.count >= 1 else { return }
         mapView.removeOverlay(distanceCircleOverlay)
         setUpDistanceCircleOverlay()
-    }
-    
-    func setUpKeyboards() {
-        addressTextField.returnKeyType = UIReturnKeyType.Search
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -133,33 +110,51 @@ extension NewLocationViewController: UITextFieldDelegate {
     }
 }
 
+// MARK: - MapViewDelegate
+
 extension NewLocationViewController: MKMapViewDelegate {
-    func setUpMap() {
-        mapView.delegate = self
-        mapView.rotateEnabled = false
-        
-        if region != nil {
-            guard let region = region else { return }
-            mapSelectionPoint.coordinate = CLLocationCoordinate2D(latitude: region.center.latitude, longitude: region.center.longitude)
-            mapView.removeAnnotation(mapSelectionPoint)
-            mapView.addAnnotation(mapSelectionPoint)
-            distanceTextField.text = String(region.radius)
-            self.title = region.identifier
-            locationNameTextField.text = region.identifier
-            locationNameTextField.hidden = true
-            setUpDistanceCircleOverlay()
-            addressTextField.hidden = true
-            
-            
-            let zoomRegion = MKCoordinateRegion(center: mapSelectionPoint.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            mapView.setRegion(zoomRegion, animated: true)
-            
+
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKCircle {
+            let circleRenderer = MKCircleRenderer(overlay: overlay)
+            circleRenderer.strokeColor = UIColor.darkGreen.colorWithAlphaComponent(0.6)
+            circleRenderer.fillColor = UIColor.darkGreen.colorWithAlphaComponent(0.2)
+            circleRenderer.lineWidth = 3.0
+            return circleRenderer
+        } else {
+            return MKOverlayRenderer(overlay: overlay)
         }
-        // MARK: Need to set up initial region
-        
     }
     
-    func setUpDistanceCircleOverlay() {
+}
+
+// MARK: - Private functions
+
+private extension NewLocationViewController {
+    
+    private func setUpMap() {
+        guard let region = region else { return }
+        mapSelectionPoint.coordinate = CLLocationCoordinate2D(latitude: region.center.latitude, longitude: region.center.longitude)
+        mapView.removeAnnotation(mapSelectionPoint)
+        mapView.addAnnotation(mapSelectionPoint)
+        distanceTextField.text = String(region.radius)
+        title = region.identifier
+        locationNameTextField.text = region.identifier
+        locationNameTextField.hidden = true
+        addressTextField.hidden = true
+        setUpDistanceCircleOverlay()
+        let zoomRegion = MKCoordinateRegion(center: mapSelectionPoint.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        mapView.setRegion(zoomRegion, animated: true)
+    }
+    
+    private func setUpAppearance() {
+        view.backgroundColor = UIColor.offWhite
+        view.tintColor = UIColor.darkGreen
+        leftView.backgroundColor = UIColor.offWhite
+        rightView.backgroundColor = UIColor.offWhite
+    }
+    
+    private func setUpDistanceCircleOverlay() {
         guard let distanceText = distanceTextField.text else { return }
         guard let distance = Double(distanceText) else { return }
         distanceCircleOverlay = MKCircle(centerCoordinate: mapSelectionPoint.coordinate, radius: distance) // Radius is in meters
@@ -167,16 +162,8 @@ extension NewLocationViewController: MKMapViewDelegate {
         mapView.addOverlay(distanceCircleOverlay)
     }
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        if overlay is MKCircle {
-            let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.strokeColor = AppearanceController.darkGreen.colorWithAlphaComponent(0.6)
-            circleRenderer.fillColor = AppearanceController.darkGreen.colorWithAlphaComponent(0.2)
-            circleRenderer.lineWidth = 3.0
-            return circleRenderer
-        } else {
-            return MKOverlayRenderer(overlay: overlay)
-        }
+    private func d() {
+        
     }
     
 }
@@ -189,10 +176,6 @@ extension UIViewController {
     func dismissKeyboard() {
         view.endEditing(true)
     }
+    
 }
 
-extension NewLocationViewController {
-    func setUpSpacing() {
-        
-    }
-}

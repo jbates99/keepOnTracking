@@ -72,22 +72,23 @@ class FamilyMembersTableViewController: UITableViewController {
                 guard let messages = message else { return }
                 let newMessage = messages[1]
                 self.messagesResults.append(newMessage)
+                Dispatch.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
-   
-
-
-func setUpDataSource() {
-    FollowingController.retrieveFollowingsRequestsByStatusForUser(1) { returnedRecords in
-        guard let returnedRecords = returnedRecords else { return }
-        self.queryResults = returnedRecords
-        
-        Dispatch.main.async {
-            self.tableView.reloadData()
+    
+    func setUpDataSource() {
+        FollowingController.retrieveFollowingsRequestsByStatusForUser(1) { returnedRecords in
+            guard let returnedRecords = returnedRecords else { return }
+            self.queryResults = returnedRecords
+            
+            Dispatch.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
-}
 }
 
 

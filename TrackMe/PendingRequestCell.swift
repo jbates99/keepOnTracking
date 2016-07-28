@@ -45,9 +45,9 @@ extension PendingRequestCell {
     
     func setUpCell(with record: CKRecord, and userInfo: CKDiscoveredUserInfo) {
         guard let contact = userInfo.displayContact else { return }
-        declineButton.backgroundColor = AppearanceController.orangeRed
-        acceptButton.backgroundColor = AppearanceController.darkGreen
-        nameLabel.textColor = AppearanceController.darkGreen
+        declineButton.backgroundColor = UIColor.orangeRed
+        acceptButton.backgroundColor = UIColor.darkGreen
+        nameLabel.textColor = UIColor.darkGreen
         nameLabel.text = "\(contact.givenName) \(contact.familyName)"
         
     }

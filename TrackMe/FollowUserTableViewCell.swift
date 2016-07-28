@@ -41,9 +41,9 @@ protocol FollowUserTableViewCellDelegate {
 extension FollowUserTableViewCell {
     
     func updateWithUser(userInfo: CKDiscoveredUserInfo) {
-        buttonLabel.setTitleColor(AppearanceController.orangeRed, forState: .Normal)
-        pendingLabel.textColor = AppearanceController.lightGreen
-        nameLabel.textColor = AppearanceController.darkGreen
+        buttonLabel.setTitleColor(UIColor.orangeRed, forState: .Normal)
+        pendingLabel.textColor = UIColor.lightGreen
+        nameLabel.textColor = UIColor.darkGreen
         nameLabel.text = userInfo.displayContact?.givenName
         
     }

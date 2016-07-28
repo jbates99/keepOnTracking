@@ -40,17 +40,26 @@
                                                             <constraint firstAttribute="height" constant="50" id="YYA-Nb-cq5"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="NLZ-IG-pm4"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Location name..." textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pnU-1f-yLa">
                                                         <rect key="frame" x="0.0" y="50" width="568" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="2v6-XD-ltO"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Distance from center point(meters)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="w7t-lw-DTP">
                                                         <rect key="frame" x="0.0" y="100" width="568" height="50"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="BYZ-38-t0r" id="1Cx-6L-ifD"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -63,7 +72,7 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="183-Ul-ZrQ">
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="752" mapType="standard" rotateEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="183-Ul-ZrQ">
                                         <rect key="frame" x="0.0" y="150" width="600" height="312"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -75,6 +84,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="18s-ku-tmu"/>
                                             <outletCollection property="gestureRecognizers" destination="r2e-Ao-QgH" appends="YES" id="kDn-Rz-f80"/>
                                         </connections>
                                     </mapView>
@@ -98,13 +108,11 @@
                     <connections>
                         <outlet property="addressTextField" destination="piL-A7-nRU" id="zZ0-SM-meM"/>
                         <outlet property="distanceTextField" destination="w7t-lw-DTP" id="LZZ-EO-5dn"/>
-                        <outlet property="fullPageStackView" destination="CDp-kF-Y7p" id="Xs0-9h-OXf"/>
                         <outlet property="leftView" destination="UJW-oJ-G9L" id="1rl-9x-jkV"/>
                         <outlet property="locationNameTextField" destination="pnU-1f-yLa" id="0La-9g-fAw"/>
                         <outlet property="longPressRecognizer" destination="r2e-Ao-QgH" id="XmV-GY-Bi7"/>
                         <outlet property="mapView" destination="183-Ul-ZrQ" id="EtW-xF-2AU"/>
                         <outlet property="rightView" destination="SHy-bC-9Ca" id="9q2-MT-shN"/>
-                        <outlet property="textFieldStackView" destination="2GK-d6-dc4" id="JpJ-ej-Hip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -114,7 +122,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2464" y="-116"/>
+            <point key="canvasLocation" x="2451" y="-116"/>
         </scene>
         <!--User Search Table View Controller-->
         <scene sceneID="5hR-Vd-jWh">
