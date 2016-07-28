@@ -57,8 +57,8 @@ class NewLocationViewController: UIViewController {
     @IBAction func saveLocationButtonPressed(sender: AnyObject) {
         guard let locationName = locationNameTextField.text, let distanceText = distanceTextField.text where !locationName.isEmpty && !distanceText.isEmpty else { return }
         guard let distance = Double(distanceText) else { return }
-        RegionController.createRegion(mapSelectionPoint.coordinate, radius: distance, name: locationName)
-        RegionController.askForLocationPermissions()
+        LocationController.createRegion(mapSelectionPoint.coordinate, radius: distance, name: locationName)
+        LocationController.askForLocationPermissions()
         navigationController?.popViewControllerAnimated(true)
     }
     
@@ -97,7 +97,7 @@ private extension NewLocationViewController {
     }
     
     private func geoCodeAddress(address: String) {
-        RegionController.geoCodeAddress(address, geoCoder: geoCoder) { coordinate in
+        LocationController.geoCodeAddress(address, geoCoder: geoCoder) { coordinate in
             guard let coordinate = coordinate else { return }
             let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
             let addressRegion = MKCoordinateRegionMake(coordinate, span)

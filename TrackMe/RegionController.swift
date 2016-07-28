@@ -1,5 +1,5 @@
 //
-//  RegionController.swift
+//  LocationController.swift
 //  Capstone
 //
 //  Created by Joshua Bates on 7/5/16.
@@ -12,7 +12,7 @@ import CoreLocation
 import CloudKit
 import MapKit
 
-class RegionController {
+struct LocationController {
     
     static func createRegion(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, name: String, status: Bool = true) {
         // MARK: Starts Monitoring Region
