@@ -1,5 +1,5 @@
 //
-//  FamilyMembersTableViewController.swift
+//  ConnectionsViewController.swift
 //  TrackMe
 //
 //  Created by Joshua Bates on 7/21/16.
@@ -9,7 +9,7 @@
 import UIKit
 import CloudKit
 
-class FamilyMembersTableViewController: UITableViewController {
+class ConnectionsViewController: UITableViewController {
     
     var queryResults: [CKRecord]?
     var messagesResults = [Message]()
@@ -91,7 +91,7 @@ class FamilyMembersTableViewController: UITableViewController {
     }
 }
 
-extension FamilyMembersTableViewController: ConnectionTableViewCellDelegate {
+extension ConnectionsViewController: ConnectionTableViewCellDelegate {
     func notifyMeButtonPressed(sender: ConnectionTableViewCell) {
         guard let indexPath = tableView.indexPathForCell(sender), filteredResults = filteredResults else { return }
         let record = filteredResults[indexPath.row]
