@@ -12,7 +12,19 @@ import CoreLocation
 
 class ConnectionsController {
     
-    func createConnection() {
+    static let sharedController = ConnectionsController()
+    
+    var queryResults: [CKRecord]?
+    var messagesResults = [Message]()
+    
+    var filteredResults: [CKRecord]? {
+        guard let queryResults = queryResults else { return nil }
+        return queryResults.filter { $0.creatorUserRecordID?.recordName == "__defaultOwner__" }
+    }
+    
+    
+    
+    func setUpConnections(currentUserID: CKRecordID, completion: (connections: [Connections]?) -> Void) {
         
     }
     

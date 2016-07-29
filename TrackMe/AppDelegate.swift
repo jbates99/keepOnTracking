@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 extension AppDelegate {
     
     func setUpCurrentUser() {
-        MessageController.getCurrentUserName()
+        MessageController.sharedController.getCurrentUserName()
     }
     
     func storeUserRecordID() {

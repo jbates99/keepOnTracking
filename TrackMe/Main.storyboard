@@ -289,7 +289,7 @@
         <!--Connections-->
         <scene sceneID="0TF-hZ-UyR">
             <objects>
-                <tableViewController id="vge-d1-ynd" customClass="FamilyMembersTableViewController" customModule="TrackMe" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vge-d1-ynd" customClass="ConnectionsViewController" customModule="TrackMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="o0t-q1-rX5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

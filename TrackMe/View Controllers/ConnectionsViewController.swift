@@ -11,30 +11,10 @@ import CloudKit
 
 class ConnectionsViewController: UITableViewController {
     
-    var queryResults: [CKRecord]?
-    var messagesResults = [Message]()
-    
-    var filteredResults: [CKRecord]? {
-        guard let queryResults = queryResults else { return nil }
-        return queryResults.filter { $0.creatorUserRecordID?.recordName == "__defaultOwner__" }
-    }
-    
-    var followingResults: [Following]? {
-        guard let filteredResults = filteredResults else { return nil }
-        var followingResults = [Following]()
-        for result in filteredResults {
-            if let following = Following(cloudKitRecord: result) {
-                followingResults.append(following)
-            } else {
-                print("Record type was not following")
-            }
-        }
-        return followingResults
-    }
+    var connections = [Connections]()
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        setUpDataSource()
         tableView.reloadData()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpDataSource), name: "currentUserSet", object: nil)
     }
@@ -42,7 +22,7 @@ class ConnectionsViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = filteredResults?.count ?? 0
+        let count = connections.count
         if count == 0 {
             tableView.emptyMessage("You currently have no connections. Press the add button to create your first!", viewController: self)
             return 0
@@ -57,21 +37,16 @@ class ConnectionsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("updateCell", forIndexPath: indexPath) as! ConnectionTableViewCell
         
-        guard let record = filteredResults?[indexPath.row] else { return UITableViewCell() }
-        guard let userInfo = NotificationController.sharedInstance.followingUserInfo(for: record) else { return UITableViewCell() }
-        
-        cell.setUpCell(with: record, userInfo: userInfo, and: messagesResults[indexPath.row])
+        cell.setUpCell(with: connections[indexPath.row])
         cell.delegate = self
         return cell
     }
     
-    func setUpmessages() {
-        guard let filteredResults = filteredResults else { return }
-        for result in filteredResults {
-            MessageController.sharedController.fetchLatestUserUpdateMessage(result.recordID) { (message) in
-                guard let messages = message else { return }
-                let newMessage = messages[1]
-                self.messagesResults.append(newMessage)
+    func setUpDataSource() {
+        guard let currentID = FollowingController.sharedController.currentUserRecordID else { return }
+        ConnectionsController.sharedController.setUpConnections(currentID) { (connections) in
+            if let connections = connections {
+                self.connections = connections
                 Dispatch.main.async {
                     self.tableView.reloadData()
                 }
@@ -79,24 +54,17 @@ class ConnectionsViewController: UITableViewController {
         }
     }
     
-    func setUpDataSource() {
-        FollowingController.retrieveFollowingsRequestsByStatusForUser(1) { returnedRecords in
-            guard let returnedRecords = returnedRecords else { return }
-            self.queryResults = returnedRecords
-            
-            Dispatch.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
 }
 
 extension ConnectionsViewController: ConnectionTableViewCellDelegate {
     func notifyMeButtonPressed(sender: ConnectionTableViewCell) {
-        guard let indexPath = tableView.indexPathForCell(sender), filteredResults = filteredResults else { return }
-        let record = filteredResults[indexPath.row]
-        MessageController.subscribeForPushNotifications(String(record.creatorUserRecordID))
-        setUpDataSource()
+        guard let indexPath = tableView.indexPathForCell(sender) else { return }
+        let connection = connections[indexPath.row]
+        if connection.notified == false {
+            MessageController.sharedController.subscribeForPushNotifications(connection.userID)
+        } else {
+            MessageController.sharedController.unsubscribeForPushNotifications(connection.userID)
+        }
         tableView.reloadData()
     }
 }

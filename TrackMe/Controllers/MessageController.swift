@@ -15,9 +15,9 @@ let MessageControllerDidRefreshNotification = "MessagesControllerDidRefreshNotif
 class MessageController {
     static let sharedController = MessageController()
     
-    static var currentUserName: String?
+    var currentUserName: String?
     
-    static func getCurrentUserName() {
+    func getCurrentUserName() {
         let db = CKContainer.defaultContainer()
         db.fetchUserRecordIDWithCompletionHandler { recordID, error in
             if let error = error {
@@ -99,7 +99,7 @@ class MessageController {
         }
     }
     
-    static func subscribeForPushNotifications(userID: String) {
+    func subscribeForPushNotifications(userID: String) {
         let db = CKContainer.defaultContainer().publicCloudDatabase
         db.fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in
             if let error = error {
@@ -122,6 +122,20 @@ class MessageController {
                     NSLog("Error saving subscription: \(error)")
                     return
                 }
+            }
+        }
+    }
+    
+    func unsubscribeForPushNotifications(userID: String) {
+        let db = CKContainer.defaultContainer().publicCloudDatabase
+        db.fetchAllSubscriptionsWithCompletionHandler { subscriptions, error in
+            if let error = error {
+                AlertController.displayError(error, withMessage: nil)
+                return
+                // FIXME: set up unsubscribe function
+//            } else if let subscriptions = subscriptions {
+//                let predicate = NSPredicate(format: "UserID CONTAINS %@", argumentArray: [userID])
+//                let subscription = subscriptions.indexOf
             }
         }
     }
