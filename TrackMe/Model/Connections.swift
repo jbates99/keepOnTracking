@@ -13,13 +13,15 @@ import CoreLocation
 class Connections {
     
     let name: String
-    let message: Message
+    let message: String?
     let userID: String
+    var notified: Bool
     
-    init(name: String, message: Message, region: String, userID: String) {
+    init(name: String, message: String?, region: String, userID: String, notified: Bool) {
         self.name = name
         self.message = message
         self.userID = userID
+        self.notified = notified
     }
     
 }

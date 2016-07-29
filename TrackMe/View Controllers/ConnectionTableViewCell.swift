@@ -29,16 +29,21 @@ class ConnectionTableViewCell: UITableViewCell {
         self.delegate?.notifyMeButtonPressed(self)
     }
     
-    func setUpCell(with record: CKRecord, userInfo: CKDiscoveredUserInfo, and message: Message?) {
-        guard let contact = userInfo.displayContact else { return }
-        userUpdateLabel.textColor = UIColor.darkGreen
-        if message != nil {
-            userUpdateLabel.text = message?.messageText
-        } else {
-            userUpdateLabel.text = "No current location update for user \(contact.givenName)"
+    func setUpCell(with connection: Connections) {
+        if connection.notified == true {
+            notifyMeButton.setTitle("Stop Notifications", forState: .Normal)
+        } else if connection.notified == false {
+            notifyMeButton.setTitle("Notify Me", forState: .Normal)
         }
+        
+        if let message = connection.message {
+            userUpdateLabel.text = message
+        } else {
+            userUpdateLabel.text = "There are no current location updates for this User"
+        }
+        
+        nameLabel.text = connection.name
         nameLabel.textColor = UIColor.darkGreen
-        nameLabel.text = "\(contact.givenName) \(contact.familyName)"
     }
 }
 
