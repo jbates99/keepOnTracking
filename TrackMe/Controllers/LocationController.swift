@@ -17,14 +17,12 @@ struct LocationController {
     static func createRegion(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance, name: String, status: Bool = true) {
         // Starts Monitoring Region
         let region = CLCircularRegion(center: coordinate, radius: radius, identifier: name)
-        guard let delegate = (UIApplication.sharedApplication().delegate as? AppDelegate) else { return }
-        delegate.setUpRegions()
-        let manager = delegate.manager
+        let manager = LocationManagerController.sharedInstance.manager
         manager.startMonitoringForRegion(region)
     }
     
     static func askForLocationPermissions() {
-        guard let manager = (UIApplication.sharedApplication().delegate as? AppDelegate)?.manager else { return }
+        let manager = LocationManagerController.sharedInstance.manager
         if CLLocationManager.authorizationStatus() == .NotDetermined {
             manager.requestAlwaysAuthorization()
             manager.startUpdatingLocation()

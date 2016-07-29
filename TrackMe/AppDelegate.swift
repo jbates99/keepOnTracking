@@ -14,97 +14,17 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
     var window: UIWindow?
-    var regions = [CLRegion]()
-    let manager = CLLocationManager()
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let managerInstance = LocationManagerController.sharedInstance
         
-        // MARK: Local Notification Permissions
-        
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        
-        // MARK: Remote Notification Permissions
-        
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-        
-        // MARK: - Set Up Location Manager
-        
-        manager.delegate = self
-        manager.distanceFilter = kCLDistanceFilterNone  // Whenever user moves
-        manager.desiredAccuracy = kCLLocationAccuracyBest // Best Accuracy
-        
-        setUpRegions()
+        managerInstance.setUpRegions()
         setUpUsers()
+        setUpNotifications()
         storeUserRecordID()
         AppearanceController.initializeAppearance()
         
         return true
-    }
-    
-    func setUpRegions() {
-        regions = Array(manager.monitoredRegions)
-    }
-    
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        // FIXME: Set up did receive remotenotification
-    }
-    
-    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-    }
-    
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        let localNotification = UILocalNotification()
-        localNotification.alertBody = "User has left \(region.identifier)"
-        localNotification.alertTitle = "Location Alert"
-        localNotification.fireDate = NSDate()
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        
-        guard let username = MessageController.currentUserName else { return }
-        MessageController.sharedController.postNewMessage(Message(messageText: "User \(username) has left \(region.identifier)", date: NSDate()))
-    }
-    
-    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        let localNotification = UILocalNotification()
-        localNotification.alertBody = "User has entered \(region.identifier)"
-        localNotification.alertTitle = "Location Alert"
-        localNotification.fireDate = NSDate()
-        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        
-        guard let username = MessageController.currentUserName else { return }
-        MessageController.sharedController.postNewMessage(Message(messageText: "User \(username) has entered \(region.identifier)", date: NSDate()))
-    }
-    
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        print("Received notification but you haven't done anything with it yet: \(notification)") // FIXME:
-    }
-    
-    // MARK: - Location Authorization Changed
-    
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == .AuthorizedAlways {
-            manager.startUpdatingLocation()
-        }
-    }
-    
-    func storeUserRecordID() {
-        let followingController = FollowingController.sharedController
-        followingController.cloudKitManager.fetchLoggedInUserRecord { (record, error) in
-            guard let record = record else { return }
-            followingController.currentUserRecordID = record.recordID
-            NSNotificationCenter.defaultCenter().postNotificationName("currentUserSet", object: nil)
-        }
-    }
-    
-    func setUpUsers() {
-        NotificationController.sharedInstance.discoverUsers(nil)
-    }
-    
-    func setUpCurrentUser() {
-        MessageController.getCurrentUserName()
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -129,6 +49,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    
+}
+
+// MARK: - User Set Up
+
+extension AppDelegate {
+    
+    func setUpCurrentUser() {
+        MessageController.getCurrentUserName()
+    }
+    
+    func storeUserRecordID() {
+        let followingController = FollowingController.sharedController
+        followingController.cloudKitManager.fetchLoggedInUserRecord { (record, error) in
+            guard let record = record else { return }
+            followingController.currentUserRecordID = record.recordID
+            NSNotificationCenter.defaultCenter().postNotificationName("currentUserSet", object: nil)
+        }
+    }
+    
+    func setUpUsers() {
+        NotificationController.sharedInstance.discoverUsers(nil)
+    }
+    
+}
+
+// MARK: - Notification Handling
+
+extension AppDelegate {
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
+    
+    func setUpNotifications() {
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        
+    }
+    
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+    }
     
 }
 

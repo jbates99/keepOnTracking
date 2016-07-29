@@ -46,10 +46,10 @@ class LocationsDetailTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             let region = regions[indexPath.row]
-            guard let delegate = (UIApplication.sharedApplication().delegate as? AppDelegate) else { return }
-            let manager = delegate.manager
+            
+            let manager = LocationManagerController.sharedInstance.manager
             manager.stopMonitoringForRegion(region)
-            delegate.setUpRegions()
+            LocationManagerController.sharedInstance.setUpRegions()
             
         } else {
             print("Unable to access the manager")
@@ -73,13 +73,10 @@ class LocationsDetailTableViewController: UITableViewController {
     // MARK: - Private functions
     
     private func setUpRegions() {
-        guard let delegate = (UIApplication.sharedApplication().delegate as? AppDelegate) else { return }
-        delegate.setUpRegions()
-        if let regions = (UIApplication.sharedApplication().delegate as? AppDelegate)?.regions {
-            self.regions = regions
-        } else {
-            self.regions = []
-        }
+        let sharedInstance = LocationManagerController.sharedInstance
+        sharedInstance.setUpRegions()
+        let discoveredRegions = sharedInstance.regions
+        regions = discoveredRegions
         self.tableView.reloadData()
     }
     
