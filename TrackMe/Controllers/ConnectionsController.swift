@@ -22,7 +22,9 @@ class ConnectionsController {
         return queryResults.filter { $0.creatorUserRecordID?.recordName == "__defaultOwner__" }
     }
     
-    
+    func createMessage() {
+        
+    }
     
     func setUpConnections(currentUserID: CKRecordID, completion: (connections: [Connections]?) -> Void) {
         

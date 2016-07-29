@@ -89,6 +89,7 @@ class FollowingController {
             if let error = error {
                 AlertController.displayError(error, withMessage: nil)
             } else {
+                NSNotificationCenter.defaultCenter().postNotificationName("followingUpdated", object: nil)
                 print("\(record?.valueForKey(Following.statusKey))")
             }
         }

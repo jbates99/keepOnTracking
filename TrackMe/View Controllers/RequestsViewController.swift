@@ -17,24 +17,12 @@ class RequestsViewController: UITableViewController {
         guard let queryResults = queryResults else { return nil }
         return queryResults.filter { $0.creatorUserRecordID?.recordName != "__defaultOwner__" }
     }
-    
-    var followingResults: [Following]? {
-        guard let filteredResults = filteredResults else { return nil }
-        var followingResults = [Following]()
-        for result in filteredResults {
-            if let following = Following(cloudKitRecord: result) {
-                followingResults.append(following)
-            } else {
-                print("Record type was not following")
-            }
-        }
-        return followingResults
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpPendingDataSource()
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpPendingDataSource), name: "currentUserSet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpPendingDataSource), name: "followingUpdated", object: nil)
     }
     
     @IBAction func doneButtonPressed(sender: AnyObject) {
