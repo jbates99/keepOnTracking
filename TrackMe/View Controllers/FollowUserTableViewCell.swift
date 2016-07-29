@@ -11,24 +11,19 @@ import CloudKit
 
 class FollowUserTableViewCell: UITableViewCell {
     
-    
-    let cloudKitManager = CloudKitManager()
-    
-    var userRecordID: CKRecordID?
-    
     @IBOutlet weak var buttonLabel: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var pendingLabel: UILabel!
     
-    // MARK: - Complete Button Drawing Properties
+    let cloudKitManager = CloudKitManager()
     
+    var userRecordID: CKRecordID?
     var delegate: FollowUserTableViewCellDelegate?
     
     @IBAction func requestButtonTapped(sender: AnyObject) {
         self.delegate?.buttonCellButtonTapped(self)
         buttonLabel.hidden = true
         pendingLabel.hidden = false
-        
     }
     
 }

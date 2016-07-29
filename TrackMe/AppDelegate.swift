@@ -20,13 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // MARK: Local Notification Permissions
+        
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
         // MARK: Remote Notification Permissions
+        
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
         // MARK: - Set Up Location Manager
+        
         manager.delegate = self
         manager.distanceFilter = kCLDistanceFilterNone  // Whenever user moves
         manager.desiredAccuracy = kCLLocationAccuracyBest // Best Accuracy
@@ -48,16 +51,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        
         let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
-        
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        
         UIApplication.sharedApplication().registerForRemoteNotifications()
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        print("didExitRegion")
         let localNotification = UILocalNotification()
         localNotification.alertBody = "User has left \(region.identifier)"
         localNotification.alertTitle = "Location Alert"
@@ -69,7 +68,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
-        print("didExitRegion")
         let localNotification = UILocalNotification()
         localNotification.alertBody = "User has entered \(region.identifier)"
         localNotification.alertTitle = "Location Alert"
@@ -78,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         guard let username = MessageController.currentUserName else { return }
         MessageController.sharedController.postNewMessage(Message(messageText: "User \(username) has entered \(region.identifier)", date: NSDate()))
-        
     }
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
@@ -86,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     // MARK: - Location Authorization Changed
+    
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedAlways {
             manager.startUpdatingLocation()
@@ -98,7 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             guard let record = record else { return }
             followingController.currentUserRecordID = record.recordID
             NSNotificationCenter.defaultCenter().postNotificationName("currentUserSet", object: nil)
-            
         }
     }
     
@@ -109,6 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func setUpCurrentUser() {
         MessageController.getCurrentUserName()
     }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

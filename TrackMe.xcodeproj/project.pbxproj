@@ -30,6 +30,7 @@
 		C41368A71D4AA2530088BFB0 /* PendingRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C413689E1D4AA2530088BFB0 /* PendingRequestCell.swift */; };
 		C41368A81D4AA2530088BFB0 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C413689F1D4AA2530088BFB0 /* RequestsViewController.swift */; };
 		C41368A91D4AA2530088BFB0 /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41368A01D4AA2530088BFB0 /* UserSearchTableViewController.swift */; };
+		C41368AB1D4ABA250088BFB0 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41368AA1D4ABA250088BFB0 /* LocationManagerController.swift */; };
 		C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */; };
 		C4BEEDA61D2DB19D00C0D190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */; };
 		C4BEEDA91D2DB19D00C0D190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA71D2DB19D00C0D190 /* LaunchScreen.storyboard */; };
@@ -80,6 +81,7 @@
 		C413689E1D4AA2530088BFB0 /* PendingRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingRequestCell.swift; path = "View Controllers/PendingRequestCell.swift"; sourceTree = "<group>"; };
 		C413689F1D4AA2530088BFB0 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestsViewController.swift; path = "View Controllers/RequestsViewController.swift"; sourceTree = "<group>"; };
 		C41368A01D4AA2530088BFB0 /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSearchTableViewController.swift; path = "View Controllers/UserSearchTableViewController.swift"; sourceTree = "<group>"; };
+		C41368AA1D4ABA250088BFB0 /* LocationManagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerController.swift; sourceTree = "<group>"; };
 		C4BEED9B1D2DB19D00C0D190 /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				C413687C1D4AA1990088BFB0 /* AlertController.swift */,
+				C41368AA1D4ABA250088BFB0 /* LocationManagerController.swift */,
 				C413687D1D4AA1990088BFB0 /* ConnectionsController.swift */,
 				C413687E1D4AA1990088BFB0 /* FollowingController.swift */,
 				C413687F1D4AA1990088BFB0 /* LocationController.swift */,
@@ -388,6 +391,7 @@
 				C41368A51D4AA2530088BFB0 /* LocationsDetailTableViewController.swift in Sources */,
 				C413688D1D4AA1C60088BFB0 /* CloudKitManager.swift in Sources */,
 				C41368831D4AA1990088BFB0 /* ConnectionsController.swift in Sources */,
+				C41368AB1D4ABA250088BFB0 /* LocationManagerController.swift in Sources */,
 				C41368A21D4AA2530088BFB0 /* ConnectionTableViewCell.swift in Sources */,
 				C41368971D4AA1F70088BFB0 /* Profile.swift in Sources */,
 				C41368A81D4AA2530088BFB0 /* RequestsViewController.swift in Sources */,
