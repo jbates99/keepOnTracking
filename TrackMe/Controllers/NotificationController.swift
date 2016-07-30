@@ -51,7 +51,7 @@ class NotificationController {
     }
     
     func creatorUserInfo(for userRecord: CKRecord) -> CKDiscoveredUserInfo? {
-        if let recordID = userRecord.creatorUserRecordID {
+        if let recordID = userRecord.lastModifiedUserRecordID {
             let recordName = recordID.recordName
             return usersDict[recordName]
         } else {

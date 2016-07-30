@@ -55,7 +55,7 @@ class MessageController {
         }
     }
     
-    func fetchLatestUserUpdateMessage(recordID: CKRecordID, completion: (message: [Message]?) -> Void) {
+    func fetchLatestUserUpdateMessage(recordID: CKRecordID, completion: (message: Message?) -> Void) {
         let db = CKContainer.defaultContainer().publicCloudDatabase
         let query = CKQuery(recordType: Message.recordType, predicate: NSPredicate(format: "CreatedBy == %@", argumentArray: [recordID]))
         query.sortDescriptors = [NSSortDescriptor(key: Message.dateKey, ascending: true)]
@@ -68,7 +68,7 @@ class MessageController {
             guard let records = records?.suffix(1) else { return }
             let messages = records.flatMap { Message(cloudKitRecord: $0) }
             Dispatch.main.async {
-                completion(message: messages)
+                completion(message: messages.first)
             }
         }
     }

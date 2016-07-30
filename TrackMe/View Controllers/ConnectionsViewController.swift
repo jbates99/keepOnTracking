@@ -11,18 +11,19 @@ import CloudKit
 
 class ConnectionsViewController: UITableViewController {
     
-    var connections = [Connections]()
+    var connections: [Connections]?
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpConnections), name: "connectionsSet", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpDataSource), name: "currentUserSet", object: nil)
     }
     
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = connections.count
+        let count = connections?.count ?? 0
         if count == 0 {
             tableView.emptyMessage("You currently have no connections. Press the add button to create your first!", viewController: self)
             return 0
@@ -36,7 +37,7 @@ class ConnectionsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("updateCell", forIndexPath: indexPath) as! ConnectionTableViewCell
-        
+        guard let connections = connections else { return UITableViewCell() }
         cell.setUpCell(with: connections[indexPath.row])
         cell.delegate = self
         return cell
@@ -45,12 +46,14 @@ class ConnectionsViewController: UITableViewController {
     func setUpDataSource() {
         guard let currentID = FollowingController.sharedController.currentUserRecordID else { return }
         ConnectionsController.sharedController.setUpConnections(currentID) { (connections) in
-            if let connections = connections {
-                self.connections = connections
-                Dispatch.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+            self.connections = connections
+        }
+    }
+    
+    func setUpConnections() {
+        connections = ConnectionsController.sharedController.connections
+        Dispatch.main.async {
+            self.tableView.reloadData()
         }
     }
     
@@ -58,7 +61,7 @@ class ConnectionsViewController: UITableViewController {
 
 extension ConnectionsViewController: ConnectionTableViewCellDelegate {
     func notifyMeButtonPressed(sender: ConnectionTableViewCell) {
-        guard let indexPath = tableView.indexPathForCell(sender) else { return }
+        guard let indexPath = tableView.indexPathForCell(sender), connections = connections else { return }
         let connection = connections[indexPath.row]
         if connection.notified == false {
             MessageController.sharedController.subscribeForPushNotifications(connection.userID)

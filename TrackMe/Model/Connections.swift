@@ -17,7 +17,7 @@ class Connections {
     let userID: String
     var notified: Bool
     
-    init(name: String, message: String?, region: String, userID: String, notified: Bool = false) {
+    init(name: String, message: String?, userID: String, notified: Bool = false) {
         self.name = name
         self.message = message
         self.userID = userID
