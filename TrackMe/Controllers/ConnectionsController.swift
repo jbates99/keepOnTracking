@@ -56,11 +56,10 @@ class ConnectionsController {
     
     func setUpQueryResults(currentUserID: CKRecordID, completion: (records: [CKRecord]?) -> Void) {
         dispatch_group_enter(connectionGroup)
-        followingController.retrieveFollowingsRequestsByStatus(1, recordID: currentUserID) { returnedRecords in
+        followingController.retrieveFollowingsRequestsByStatusForUser(1) { returnedRecords in
             if let returnedRecords = returnedRecords {
-                let filteredRecords = returnedRecords.filter { $0.creatorUserRecordID?.recordName == "__defaultOwner__" }
-                self.queryResults = filteredRecords
-                completion(records: filteredRecords)
+                self.queryResults = returnedRecords
+                completion(records: returnedRecords)
             } else {
                 completion(records: nil)
             }
