@@ -14,10 +14,10 @@ class Connections {
     
     let name: String
     let message: String?
-    let userID: String
+    let userID: CKRecordID
     var notified: Bool
     
-    init(name: String, message: String?, userID: String, notified: Bool = false) {
+    init(name: String, message: String?, userID: CKRecordID, notified: Bool = false) {
         self.name = name
         self.message = message
         self.userID = userID

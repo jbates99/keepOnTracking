@@ -17,7 +17,7 @@ class RequestsViewController: UITableViewController {
         guard let queryResults = queryResults else { return nil }
         return queryResults.filter { $0.creatorUserRecordID?.recordName != "__defaultOwner__" }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpPendingDataSource()
@@ -47,10 +47,15 @@ class RequestsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(PendingRequestCell.reuseIdentifier) as!PendingRequestCell
         guard let record = filteredResults?[indexPath.row] else { return UITableViewCell() }
-        guard let userInfo = NotificationController.sharedInstance.creatorUserInfo(for: record) else { return UITableViewCell() }
-        cell.setUpCell(with: record, and: userInfo)
-        cell.delegate = self
-        return cell
+        NotificationController.sharedInstance.creatorUserInfo(for: record) { (discoveredInfo) in
+            guard let discoveredInfo = discoveredInfo else { return }
+            cell.setUpCell(with: record, and: discoveredInfo)
+            cell.delegate = self
+            Dispatch.main.async {
+                return cell
+            }
+        }
+        return UITableViewCell()
     }
     
     func setUpPendingDataSource() {

@@ -14,8 +14,9 @@ class ConnectionsController {
     
     static let sharedController = ConnectionsController()
     
+    let delegateUserSetUpGroup = dispatch_group_create()
+    
     let followingController = FollowingController.sharedController
-    let connectionGroup = dispatch_group_create()
     
     var connections: [Connections]?
     var queryResults: [CKRecord]?
@@ -28,34 +29,29 @@ class ConnectionsController {
         return queryResults.filter { $0.creatorUserRecordID?.recordName == "__defaultOwner__" }
     }
     
+    
+    //MAIN
     func setUpConnections(currentUserID: CKRecordID, completion: (connections: [Connections]?) -> Void) {
         setUpQueryResults(currentUserID) { records in
-            if let records = records {
-                self.setUpRecordInfoDictionary(records) { dictionary in
-                    if let dictionary = dictionary {
-                        self.setUpInfoMessagesDictionary(dictionary) { infoDictionary in
-                            if let infoDictionary = infoDictionary {
-                                self.connectionsForUser(infoDictionary) { connections in
-                                    completion(connections: connections)
-                                    NSNotificationCenter.defaultCenter().postNotificationName("connectionsSet", object: nil)
-                                }
-                            } else {
-                                completion(connections: nil)
-                            }
-                        }
-                    } else {
-                        completion(connections: nil)
-                    }
-                }
-            } else {
-                completion(connections: nil)
-            }
+            guard let followingRecords = records else { completion(connections: nil); return }
+            
+            self.setUpRecordInfoDictionary(followingRecords, completion: { (dictionary) in
+                guard let followingRecordsUserInfoDictionary = dictionary else { completion(connections: nil); return }
+                
+                self.setUpInfoMessagesDictionary(followingRecordsUserInfoDictionary, completion: { (infoDictionary) in
+                    guard let infoMessageDictionary = infoDictionary else { completion(connections: nil); return }
+                    
+                    let connections = self.connectionsForUser(infoMessageDictionary)
+                    completion(connections: connections)
+                    NSNotificationCenter.defaultCenter().postNotificationName("connectionsSet", object: nil)
+                })
+            })
         }
-    
     }
     
+    
+    //HELPERS
     func setUpQueryResults(currentUserID: CKRecordID, completion: (records: [CKRecord]?) -> Void) {
-        dispatch_group_enter(connectionGroup)
         followingController.retrieveFollowingsRequestsByStatusForUser(1) { returnedRecords in
             if let returnedRecords = returnedRecords {
                 self.queryResults = returnedRecords
@@ -63,67 +59,73 @@ class ConnectionsController {
             } else {
                 completion(records: nil)
             }
-            dispatch_group_leave(self.connectionGroup)
         }
     }
     
     func setUpRecordInfoDictionary(records: [CKRecord], completion: (dictionary: [CKRecord: CKDiscoveredUserInfo]?) -> Void) {
-        dispatch_group_enter(connectionGroup)
+        let recordInfoDispatchGroup = dispatch_group_create()
         var dictionary = [CKRecord: CKDiscoveredUserInfo]()
         for record in records {
-            guard let userInfo = NotificationController.sharedInstance.creatorUserInfo(for: record) else { break }
-            dictionary[record] = userInfo
+            dispatch_group_enter(recordInfoDispatchGroup)
+            NotificationController.sharedInstance.creatorUserInfo(for: record, completion: { (discoveredInfo) in
+                dictionary[record] = discoveredInfo
+                dispatch_group_leave(recordInfoDispatchGroup)
+            })
         }
         self.recordInfoDictionary = dictionary
-        completion(dictionary: dictionary)
-        dispatch_group_leave(self.connectionGroup)
+        dispatch_group_notify(recordInfoDispatchGroup, dispatch_get_main_queue()) {
+            completion(dictionary: dictionary)
+        }
     }
     
     
     func setUpInfoMessagesDictionary(dictionary: [CKRecord: CKDiscoveredUserInfo], completion: (infoDictionary: [CKDiscoveredUserInfo: Message?]?) -> Void) {
-        dispatch_group_enter(connectionGroup)
         var infoDictionary = [CKDiscoveredUserInfo: Message?]()
+        
+        let messageDictionaryDispatchGroup = dispatch_group_create()
+        
         for record in dictionary.values {
             guard let recordID = record.userRecordID else { break }
+            dispatch_group_enter(messageDictionaryDispatchGroup)
             MessageController.sharedController.fetchLatestUserUpdateMessage(recordID) { message in
                 if let message = message {
                     infoDictionary[record] = message
                 } else {
-                    infoDictionary[record] = nil
+                    infoDictionary[record] = Message(messageText: "No recent updates found", date: NSDate())
                 }
+                self.infoMessagesDictionary = infoDictionary
+                dispatch_group_leave(messageDictionaryDispatchGroup)
             }
-            self.infoMessagesDictionary = infoDictionary
-            completion(infoDictionary: infoDictionary)
-            dispatch_group_leave(self.connectionGroup)
         }
         
+        dispatch_group_notify(messageDictionaryDispatchGroup, dispatch_get_main_queue()) { 
+            completion(infoDictionary: infoDictionary)
+        }
     }
     
-    func connectionsForUser(dictionary: [CKDiscoveredUserInfo: Message?], completion: (connections: [Connections]) -> Void) {
-        dispatch_group_enter(connectionGroup)
+    func connectionsForUser(dictionary: [CKDiscoveredUserInfo: Message?]) -> [Connections] {
         var connections = [Connections]()
         for item in dictionary {
-            createConnection(item.1, userInfo: item.0) { connection in
-                connections.append(connection)
-            }
+            let newConnection = createConnection(item.1, userInfo: item.0)
+            guard let connection = newConnection else { break }
+            connections.append(connection)
         }
         self.connections = connections
-        completion(connections: connections)
-        dispatch_group_leave(self.connectionGroup)
+        return connections
     }
     
-    func createConnection(message: Message?, userInfo: CKDiscoveredUserInfo, completion: (connection: Connections) -> Void) {
+    func createConnection(message: Message?, userInfo: CKDiscoveredUserInfo) -> Connections? {
         var messageText: String?
-        guard let contact = userInfo.displayContact, userRecordID = userInfo.userRecordID else { return }
+        guard let contact = userInfo.displayContact, userRecordID = userInfo.userRecordID else { return nil }
         let name = "\(contact.givenName) \(contact.familyName)"
-        let userID = String(userRecordID)
+        let userID = userRecordID
         if let message = message {
-            messageText = "\(message.messageText) at \(message.date)"
+            messageText = "\(message.messageText) at \(message.date.stringValue())"
         } else {
             messageText = nil
         }
         let connection = Connections(name: name, message: messageText, userID: userID)
-        completion(connection: connection)
+        return connection
     }
     
 }

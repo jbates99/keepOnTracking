@@ -31,6 +31,7 @@
 		C41368A91D4AA2530088BFB0 /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41368A01D4AA2530088BFB0 /* UserSearchTableViewController.swift */; };
 		C46B55D81D4AE2C800222F50 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B55D71D4AE2C800222F50 /* LocationManagerController.swift */; };
 		C46B55DA1D4AE2EA00222F50 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B55D91D4AE2EA00222F50 /* ConnectionsViewController.swift */; };
+		C4AD4FA11D5185B6000FBA85 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AD4FA01D5185B6000FBA85 /* DateHelpers.swift */; };
 		C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */; };
 		C4BEEDA61D2DB19D00C0D190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */; };
 		C4BEEDA91D2DB19D00C0D190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA71D2DB19D00C0D190 /* LaunchScreen.storyboard */; };
@@ -82,6 +83,7 @@
 		C41368A01D4AA2530088BFB0 /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSearchTableViewController.swift; path = "View Controllers/UserSearchTableViewController.swift"; sourceTree = "<group>"; };
 		C46B55D71D4AE2C800222F50 /* LocationManagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManagerController.swift; path = Controllers/LocationManagerController.swift; sourceTree = "<group>"; };
 		C46B55D91D4AE2EA00222F50 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionsViewController.swift; path = "View Controllers/ConnectionsViewController.swift"; sourceTree = "<group>"; };
+		C4AD4FA01D5185B6000FBA85 /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		C4BEED9B1D2DB19D00C0D190 /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				C41368881D4AA1C60088BFB0 /* AppearanceController.swift */,
 				C41368891D4AA1C60088BFB0 /* CloudKitManager.swift */,
 				C413688A1D4AA1C60088BFB0 /* DispatchHelper.swift */,
+				C4AD4FA01D5185B6000FBA85 /* DateHelpers.swift */,
 				C413688B1D4AA1C60088BFB0 /* UIViewControllerExtensions.swift */,
 			);
 			name = Helpers;
@@ -404,6 +407,7 @@
 				C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */,
 				C41368961D4AA1F70088BFB0 /* Message.swift in Sources */,
 				C41368841D4AA1990088BFB0 /* FollowingController.swift in Sources */,
+				C4AD4FA11D5185B6000FBA85 /* DateHelpers.swift in Sources */,
 				C41368861D4AA1990088BFB0 /* MessageController.swift in Sources */,
 				C41368A11D4AA2530088BFB0 /* ButtonTableViewCell.swift in Sources */,
 				C41368821D4AA1990088BFB0 /* AlertController.swift in Sources */,

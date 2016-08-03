@@ -61,13 +61,13 @@ class MessageController {
         query.sortDescriptors = [NSSortDescriptor(key: Message.dateKey, ascending: true)]
         
         db.performQuery(query, inZoneWithID: nil) { records, error in
+            
             if let error = error {
                 NSLog("Error \(error) when fetching data")
                 completion(message: nil)
-            }
-            guard let records = records?.suffix(1) else { return }
-            let messages = records.flatMap { Message(cloudKitRecord: $0) }
-            Dispatch.main.async {
+            } else {
+                guard let records = records?.suffix(1) else { completion(message: nil); return }
+                let messages = records.flatMap { Message(cloudKitRecord: $0) }
                 completion(message: messages.first)
             }
         }
@@ -99,7 +99,7 @@ class MessageController {
         }
     }
     
-    func subscribeForPushNotifications(userID: String) {
+    func subscribeForPushNotifications(userID: CKRecordID) {
         let db = CKContainer.defaultContainer().publicCloudDatabase
         db.fetchAllSubscriptionsWithCompletionHandler { (subscriptions, error) in
             if let error = error {
@@ -111,7 +111,9 @@ class MessageController {
                 return
             }
             
-            let subscription = CKSubscription(recordType: Message.recordType, predicate: NSPredicate(format: "UserID CONTAINS '\(userID)'"), options: .FiresOnRecordCreation)
+            let predicate = NSPredicate(format: "creatorUserRecordID == %@", argumentArray: [userID])
+            
+            let subscription = CKSubscription(recordType: Message.recordType, predicate: predicate, options: .FiresOnRecordCreation)
             let notificationInfo = CKNotificationInfo()
             
             notificationInfo.alertBody = "A user has updated their location."
@@ -126,16 +128,16 @@ class MessageController {
         }
     }
     
-    func unsubscribeForPushNotifications(userID: String) {
+    func unsubscribeForPushNotifications(userID: CKRecordID) {
         let db = CKContainer.defaultContainer().publicCloudDatabase
         db.fetchAllSubscriptionsWithCompletionHandler { subscriptions, error in
             if let error = error {
                 AlertController.displayError(error, withMessage: nil)
                 return
                 // FIXME: set up unsubscribe function
-//            } else if let subscriptions = subscriptions {
-//                let predicate = NSPredicate(format: "UserID CONTAINS %@", argumentArray: [userID])
-//                let subscription = subscriptions.indexOf
+                //            } else if let subscriptions = subscriptions {
+                //                let predicate = NSPredicate(format: "UserID CONTAINS %@", argumentArray: [userID])
+                //                let subscription = subscriptions.indexOf
             }
         }
     }

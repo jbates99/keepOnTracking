@@ -19,10 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let managerInstance = LocationManagerController.sharedInstance
         
         managerInstance.setUpRegions()
-        setUpUsers()
         setUpNotifications()
         storeUserRecordID()
         AppearanceController.initializeAppearance()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpUsers), name: "currentUserSet", object: nil)
         
         return true
     }
@@ -70,7 +70,11 @@ extension AppDelegate {
     }
     
     func setUpUsers() {
-        NotificationController.sharedInstance.discoverUsers(nil)
+        NotificationController.sharedInstance.discoverUsers { (success) in
+            if success {
+                NSNotificationCenter.defaultCenter().postNotificationName("usersDictSet", object: nil)
+            }
+        }
     }
     
 }

@@ -36,6 +36,7 @@ class NotificationController {
             if let users = users {
                 self.discoveredRecords = users
                 completion?(success: true)
+                dispatch_group_leave(ConnectionsController.sharedController.delegateUserSetUpGroup)
             }
         }
     }
@@ -50,13 +51,16 @@ class NotificationController {
         }
     }
     
-    func creatorUserInfo(for userRecord: CKRecord) -> CKDiscoveredUserInfo? {
+    func creatorUserInfo(for userRecord: CKRecord, completion: (discoveredInfo: CKDiscoveredUserInfo?) -> Void) {
+        
+        print(usersDict)
+        
         if let recordID = userRecord.lastModifiedUserRecordID {
             let recordName = recordID.recordName
-            return usersDict[recordName]
+            completion(discoveredInfo: usersDict[recordName])
         } else {
             print("Unable to access creator recordID")
-            return nil
+            completion(discoveredInfo: nil)
         }
     }
     

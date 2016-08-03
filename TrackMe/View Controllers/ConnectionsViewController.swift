@@ -16,8 +16,8 @@ class ConnectionsViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpConnections), name: "connectionsSet", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpDataSource), name: "currentUserSet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(retrieveConnections), name: "connectionsSet", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpDataSource), name: "usersDictSet", object: nil)
     }
     
     // MARK: - Table view data source
@@ -50,7 +50,7 @@ class ConnectionsViewController: UITableViewController {
         }
     }
     
-    func setUpConnections() {
+    func retrieveConnections() {
         connections = ConnectionsController.sharedController.connections
         Dispatch.main.async {
             self.tableView.reloadData()

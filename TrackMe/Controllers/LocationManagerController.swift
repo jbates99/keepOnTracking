@@ -43,9 +43,7 @@ extension LocationManagerController: CLLocationManagerDelegate {
         localNotification.fireDate = NSDate()
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
-        guard let username = MessageController.sharedController.currentUserName, userID = FollowingController.sharedController.currentUserRecordID else { return }
-        let IDAsString = String(userID)
-        MessageController.sharedController.postNewMessage(Message(messageText: "User \(username) has left \(region.identifier)", date: NSDate(), userID: IDAsString))
+        MessageController.sharedController.postNewMessage(Message(messageText: "Left \(region.identifier)", date: NSDate()))
     }
     
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
@@ -55,9 +53,7 @@ extension LocationManagerController: CLLocationManagerDelegate {
         localNotification.fireDate = NSDate()
         UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
         
-        guard let username = MessageController.sharedController.currentUserName, userID = FollowingController.sharedController.currentUserRecordID else { return }
-        let IDAsString = String(userID)
-        MessageController.sharedController.postNewMessage(Message(messageText: "User \(username) has entered \(region.identifier)", date: NSDate(), userID: IDAsString))
+        MessageController.sharedController.postNewMessage(Message(messageText: "Entered \(region.identifier)", date: NSDate()))
     }
     
     // MARK: - Location Authorization Changed
