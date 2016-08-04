@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let managerInstance = LocationManagerController.sharedInstance
         
         managerInstance.setUpRegions()
+        setUpUsers()
         setUpNotifications()
         storeUserRecordID()
         AppearanceController.initializeAppearance()

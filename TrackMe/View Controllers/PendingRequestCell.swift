@@ -23,8 +23,6 @@ class PendingRequestCell: UITableViewCell {
     static let reuseIdentifier = "requestCell"
     
     let notificationController = NotificationController.sharedInstance
-
-    let cloudKitManager = CloudKitManager()
     
     var delegate: PendingRequestCellDelegate?
     

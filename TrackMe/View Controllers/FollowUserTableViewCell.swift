@@ -15,8 +15,6 @@ class FollowUserTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var pendingLabel: UILabel!
     
-    let cloudKitManager = CloudKitManager()
-    
     var userRecordID: CKRecordID?
     var delegate: FollowUserTableViewCellDelegate?
     

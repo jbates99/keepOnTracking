@@ -208,8 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				C413687C1D4AA1990088BFB0 /* AlertController.swift */,
-				C46B55D71D4AE2C800222F50 /* LocationManagerController.swift */,
 				C413687D1D4AA1990088BFB0 /* ConnectionsController.swift */,
+				C46B55D71D4AE2C800222F50 /* LocationManagerController.swift */,
 				C413687E1D4AA1990088BFB0 /* FollowingController.swift */,
 				C413687F1D4AA1990088BFB0 /* LocationController.swift */,
 				C41368801D4AA1990088BFB0 /* MessageController.swift */,

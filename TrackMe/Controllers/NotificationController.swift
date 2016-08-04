@@ -36,7 +36,6 @@ class NotificationController {
             if let users = users {
                 self.discoveredRecords = users
                 completion?(success: true)
-                dispatch_group_leave(ConnectionsController.sharedController.delegateUserSetUpGroup)
             }
         }
     }

@@ -12,7 +12,6 @@ import CloudKit
 class UserSearchTableViewController: UITableViewController {
     
     let notificationController = NotificationController.sharedInstance
-    private let cloudKitManager = CloudKitManager()
     
     var users: [CKDiscoveredUserInfo] {
         return notificationController.discoveredRecords
