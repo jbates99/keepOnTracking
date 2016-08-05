@@ -18,8 +18,8 @@ class RequestsViewController: UITableViewController {
         return queryResults.filter { $0.creatorUserRecordID?.recordName != "__defaultOwner__" }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         setUpPendingDataSource()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpPendingDataSource), name: "currentUserSet", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpPendingDataSource), name: "followingUpdated", object: nil)
@@ -47,15 +47,15 @@ class RequestsViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(PendingRequestCell.reuseIdentifier) as!PendingRequestCell
         guard let record = filteredResults?[indexPath.row] else { return UITableViewCell() }
-        NotificationController.sharedInstance.creatorUserInfo(for: record) { (discoveredInfo) in
-            guard let discoveredInfo = discoveredInfo else { return }
+        let discoveredInfo = NotificationController.sharedInstance.creatorUserInfoForTableViewCell(for: record)
+        if let discoveredInfo = discoveredInfo {
             cell.setUpCell(with: record, and: discoveredInfo)
             cell.delegate = self
-            Dispatch.main.async {
-                return cell
-            }
+            return cell
+        } else {
+            return UITableViewCell()
         }
-        return UITableViewCell()
+        
     }
     
     func setUpPendingDataSource() {

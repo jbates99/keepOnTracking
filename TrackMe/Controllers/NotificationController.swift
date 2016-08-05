@@ -50,6 +50,16 @@ class NotificationController {
         }
     }
     
+    func creatorUserInfoForTableViewCell(for userRecord: CKRecord) -> CKDiscoveredUserInfo? {
+        if let recordID = userRecord.lastModifiedUserRecordID {
+            let recordName = recordID.recordName
+            return usersDict[recordName]
+        } else {
+            print("Unable to access creator recordID")
+            return nil
+        }
+    }
+    
     func creatorUserInfo(for userRecord: CKRecord, completion: (discoveredInfo: CKDiscoveredUserInfo?) -> Void) {
         
         print(usersDict)

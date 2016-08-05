@@ -30,8 +30,9 @@ class FollowingController {
     }
     
     func retrieveFollowingRequests(by recordID: CKRecordID, completion: (returnedRecords: [CKRecord]?) -> Void) {
+        guard let recordID = currentUserRecordID else { return }
         let reference = CKReference(recordID: recordID, action: .None)
-        let predicate = NSPredicate(format: "SentTo == %@", argumentArray: [reference])
+        let predicate = NSPredicate(format: "SentTo == %@ AND creatorUserRecordID == %@", argumentArray: [reference, recordID])
         cloudKitManager.fetchRecordsWithType("Following", predicate: predicate, recordFetchedBlock: nil) { records, error in
             if let error = error {
                 AlertController.displayError(error, withMessage: nil)
