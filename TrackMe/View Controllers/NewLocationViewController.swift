@@ -84,8 +84,8 @@ private extension NewLocationViewController {
     
     private func setUpDistanceCircleOverlay() {
         guard let distanceText = distanceTextField.text, distance = Double(distanceText) else { return }
-        distanceCircleOverlay = MKCircle(centerCoordinate: mapSelectionPoint.coordinate, radius: distance) // Radius is in meters
         mapView.removeOverlay(distanceCircleOverlay)
+        distanceCircleOverlay = MKCircle(centerCoordinate: mapSelectionPoint.coordinate, radius: distance) // Radius is in meters
         mapView.addOverlay(distanceCircleOverlay)
     }
     
