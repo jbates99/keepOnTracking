@@ -20,6 +20,9 @@ class RequestsViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        HUD.show(.Progress)
+        HUD.dimsBackground = false
+        HUD.allowsInteraction = true
         setUpPendingDataSource()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpPendingDataSource), name: "currentUserSet", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpPendingDataSource), name: "followingUpdated", object: nil)
@@ -67,6 +70,7 @@ class RequestsViewController: UITableViewController {
             
             Dispatch.main.async {
                 self.tableView.reloadData()
+                HUD.hide()
             }
         }
     }

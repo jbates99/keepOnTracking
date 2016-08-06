@@ -11,10 +11,15 @@ import CloudKit
 
 class ConnectionsViewController: UITableViewController {
     
+    
     var connections: [Connections]?
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        HUD.show(.Progress)
+        HUD.dimsBackground = false
+        HUD.allowsInteraction = true
+        setUpDataSource()
         tableView.reloadData()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(retrieveConnections), name: "connectionsSet", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpDataSource), name: "usersDictSet", object: nil)
@@ -54,6 +59,7 @@ class ConnectionsViewController: UITableViewController {
         connections = ConnectionsController.sharedController.connections
         Dispatch.main.async {
             self.tableView.reloadData()
+            HUD.hide()
         }
     }
     

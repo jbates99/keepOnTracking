@@ -29,6 +29,25 @@
 		C41368A71D4AA2530088BFB0 /* PendingRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C413689E1D4AA2530088BFB0 /* PendingRequestCell.swift */; };
 		C41368A81D4AA2530088BFB0 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C413689F1D4AA2530088BFB0 /* RequestsViewController.swift */; };
 		C41368A91D4AA2530088BFB0 /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41368A01D4AA2530088BFB0 /* UserSearchTableViewController.swift */; };
+		C41BCFAD1D5648510083B5DA /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCF991D5648510083B5DA /* FrameView.swift */; };
+		C41BCFAE1D5648510083B5DA /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCF9A1D5648510083B5DA /* HUD.swift */; };
+		C41BCFAF1D5648510083B5DA /* HUDInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = C41BCF9B1D5648510083B5DA /* HUDInfo.plist */; };
+		C41BCFB01D5648510083B5DA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41BCF9C1D5648510083B5DA /* Images.xcassets */; };
+		C41BCFB11D5648510083B5DA /* PKHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCF9E1D5648510083B5DA /* PKHUD.swift */; };
+		C41BCFB21D5648510083B5DA /* PKHUDAnimating.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCF9F1D5648510083B5DA /* PKHUDAnimating.swift */; };
+		C41BCFB31D5648510083B5DA /* PKHUDAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA01D5648510083B5DA /* PKHUDAnimation.swift */; };
+		C41BCFB41D5648510083B5DA /* PKHUDAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA11D5648510083B5DA /* PKHUDAssets.swift */; };
+		C41BCFB51D5648510083B5DA /* PKHUDErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA21D5648510083B5DA /* PKHUDErrorView.swift */; };
+		C41BCFB61D5648510083B5DA /* PKHUDProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA31D5648510083B5DA /* PKHUDProgressView.swift */; };
+		C41BCFB71D5648510083B5DA /* PKHUDRotatingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA41D5648510083B5DA /* PKHUDRotatingImageView.swift */; };
+		C41BCFB81D5648510083B5DA /* PKHUDSquareBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA51D5648510083B5DA /* PKHUDSquareBaseView.swift */; };
+		C41BCFB91D5648510083B5DA /* PKHUDSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA61D5648510083B5DA /* PKHUDSuccessView.swift */; };
+		C41BCFBA1D5648510083B5DA /* PKHUDSystemActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA71D5648510083B5DA /* PKHUDSystemActivityIndicatorView.swift */; };
+		C41BCFBB1D5648510083B5DA /* PKHUDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA81D5648510083B5DA /* PKHUDTextView.swift */; };
+		C41BCFBC1D5648510083B5DA /* PKHUDWideBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFA91D5648510083B5DA /* PKHUDWideBaseView.swift */; };
+		C41BCFBD1D5648510083B5DA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFAA1D5648510083B5DA /* ViewController.swift */; };
+		C41BCFBE1D5648510083B5DA /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFAB1D5648510083B5DA /* Window.swift */; };
+		C41BCFBF1D5648510083B5DA /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFAC1D5648510083B5DA /* WindowRootViewController.swift */; };
 		C46B55D81D4AE2C800222F50 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B55D71D4AE2C800222F50 /* LocationManagerController.swift */; };
 		C46B55DA1D4AE2EA00222F50 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B55D91D4AE2EA00222F50 /* ConnectionsViewController.swift */; };
 		C4AD4FA11D5185B6000FBA85 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AD4FA01D5185B6000FBA85 /* DateHelpers.swift */; };
@@ -81,6 +100,26 @@
 		C413689E1D4AA2530088BFB0 /* PendingRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingRequestCell.swift; path = "View Controllers/PendingRequestCell.swift"; sourceTree = "<group>"; };
 		C413689F1D4AA2530088BFB0 /* RequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestsViewController.swift; path = "View Controllers/RequestsViewController.swift"; sourceTree = "<group>"; };
 		C41368A01D4AA2530088BFB0 /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSearchTableViewController.swift; path = "View Controllers/UserSearchTableViewController.swift"; sourceTree = "<group>"; };
+		C41BCF991D5648510083B5DA /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		C41BCF9A1D5648510083B5DA /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		C41BCF9B1D5648510083B5DA /* HUDInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HUDInfo.plist; sourceTree = "<group>"; };
+		C41BCF9C1D5648510083B5DA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C41BCF9D1D5648510083B5DA /* PKHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKHUD.h; sourceTree = "<group>"; };
+		C41BCF9E1D5648510083B5DA /* PKHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUD.swift; sourceTree = "<group>"; };
+		C41BCF9F1D5648510083B5DA /* PKHUDAnimating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDAnimating.swift; sourceTree = "<group>"; };
+		C41BCFA01D5648510083B5DA /* PKHUDAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDAnimation.swift; sourceTree = "<group>"; };
+		C41BCFA11D5648510083B5DA /* PKHUDAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDAssets.swift; sourceTree = "<group>"; };
+		C41BCFA21D5648510083B5DA /* PKHUDErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDErrorView.swift; sourceTree = "<group>"; };
+		C41BCFA31D5648510083B5DA /* PKHUDProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDProgressView.swift; sourceTree = "<group>"; };
+		C41BCFA41D5648510083B5DA /* PKHUDRotatingImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDRotatingImageView.swift; sourceTree = "<group>"; };
+		C41BCFA51D5648510083B5DA /* PKHUDSquareBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDSquareBaseView.swift; sourceTree = "<group>"; };
+		C41BCFA61D5648510083B5DA /* PKHUDSuccessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDSuccessView.swift; sourceTree = "<group>"; };
+		C41BCFA71D5648510083B5DA /* PKHUDSystemActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDSystemActivityIndicatorView.swift; sourceTree = "<group>"; };
+		C41BCFA81D5648510083B5DA /* PKHUDTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDTextView.swift; sourceTree = "<group>"; };
+		C41BCFA91D5648510083B5DA /* PKHUDWideBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDWideBaseView.swift; sourceTree = "<group>"; };
+		C41BCFAA1D5648510083B5DA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C41BCFAB1D5648510083B5DA /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		C41BCFAC1D5648510083B5DA /* WindowRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowRootViewController.swift; sourceTree = "<group>"; };
 		C46B55D71D4AE2C800222F50 /* LocationManagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManagerController.swift; path = Controllers/LocationManagerController.swift; sourceTree = "<group>"; };
 		C46B55D91D4AE2EA00222F50 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionsViewController.swift; path = "View Controllers/ConnectionsViewController.swift"; sourceTree = "<group>"; };
 		C4AD4FA01D5185B6000FBA85 /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
@@ -126,9 +165,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C41BCFC11D5648720083B5DA /* LoadingHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				C41BCF991D5648510083B5DA /* FrameView.swift */,
+				C41BCF9A1D5648510083B5DA /* HUD.swift */,
+				C41BCF9B1D5648510083B5DA /* HUDInfo.plist */,
+				C41BCF9C1D5648510083B5DA /* Images.xcassets */,
+				C41BCF9D1D5648510083B5DA /* PKHUD.h */,
+				C41BCF9E1D5648510083B5DA /* PKHUD.swift */,
+				C41BCF9F1D5648510083B5DA /* PKHUDAnimating.swift */,
+				C41BCFA01D5648510083B5DA /* PKHUDAnimation.swift */,
+				C41BCFA11D5648510083B5DA /* PKHUDAssets.swift */,
+				C41BCFA21D5648510083B5DA /* PKHUDErrorView.swift */,
+				C41BCFA31D5648510083B5DA /* PKHUDProgressView.swift */,
+				C41BCFA41D5648510083B5DA /* PKHUDRotatingImageView.swift */,
+				C41BCFA51D5648510083B5DA /* PKHUDSquareBaseView.swift */,
+				C41BCFA61D5648510083B5DA /* PKHUDSuccessView.swift */,
+				C41BCFA71D5648510083B5DA /* PKHUDSystemActivityIndicatorView.swift */,
+				C41BCFA81D5648510083B5DA /* PKHUDTextView.swift */,
+				C41BCFA91D5648510083B5DA /* PKHUDWideBaseView.swift */,
+				C41BCFAA1D5648510083B5DA /* ViewController.swift */,
+				C41BCFAB1D5648510083B5DA /* Window.swift */,
+				C41BCFAC1D5648510083B5DA /* WindowRootViewController.swift */,
+			);
+			name = LoadingHelpers;
+			sourceTree = "<group>";
+		};
 		C426EDF01D387B80007F9123 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				C41BCFC11D5648720083B5DA /* LoadingHelpers */,
 				C41368881D4AA1C60088BFB0 /* AppearanceController.swift */,
 				C41368891D4AA1C60088BFB0 /* CloudKitManager.swift */,
 				C413688A1D4AA1C60088BFB0 /* DispatchHelper.swift */,
@@ -359,6 +426,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C41BCFAF1D5648510083B5DA /* HUDInfo.plist in Resources */,
+				C41BCFB01D5648510083B5DA /* Images.xcassets in Resources */,
 				C4BEEDDC1D2DB25C00C0D190 /* Main.storyboard in Resources */,
 				C4BEEDA91D2DB19D00C0D190 /* LaunchScreen.storyboard in Resources */,
 				C4BEEDA61D2DB19D00C0D190 /* Assets.xcassets in Resources */,
@@ -388,30 +457,47 @@
 			files = (
 				C41368A71D4AA2530088BFB0 /* PendingRequestCell.swift in Sources */,
 				C41368871D4AA1990088BFB0 /* NotificationController.swift in Sources */,
+				C41BCFB31D5648510083B5DA /* PKHUDAnimation.swift in Sources */,
 				C46B55D81D4AE2C800222F50 /* LocationManagerController.swift in Sources */,
+				C41BCFAD1D5648510083B5DA /* FrameView.swift in Sources */,
+				C41BCFBC1D5648510083B5DA /* PKHUDWideBaseView.swift in Sources */,
 				C413688E1D4AA1C60088BFB0 /* DispatchHelper.swift in Sources */,
 				C46B55DA1D4AE2EA00222F50 /* ConnectionsViewController.swift in Sources */,
+				C41BCFBD1D5648510083B5DA /* ViewController.swift in Sources */,
 				C41368851D4AA1990088BFB0 /* LocationController.swift in Sources */,
+				C41BCFB21D5648510083B5DA /* PKHUDAnimating.swift in Sources */,
 				C413688C1D4AA1C60088BFB0 /* AppearanceController.swift in Sources */,
 				C41368A51D4AA2530088BFB0 /* LocationsDetailTableViewController.swift in Sources */,
 				C413688D1D4AA1C60088BFB0 /* CloudKitManager.swift in Sources */,
+				C41BCFB51D5648510083B5DA /* PKHUDErrorView.swift in Sources */,
 				C41368831D4AA1990088BFB0 /* ConnectionsController.swift in Sources */,
 				C41368A21D4AA2530088BFB0 /* ConnectionTableViewCell.swift in Sources */,
 				C41368971D4AA1F70088BFB0 /* Profile.swift in Sources */,
+				C41BCFBB1D5648510083B5DA /* PKHUDTextView.swift in Sources */,
 				C41368A81D4AA2530088BFB0 /* RequestsViewController.swift in Sources */,
 				C41368951D4AA1F70088BFB0 /* Following.swift in Sources */,
 				C41368A61D4AA2530088BFB0 /* NewLocationViewController.swift in Sources */,
 				C41368A41D4AA2530088BFB0 /* FollowUserTableViewCell.swift in Sources */,
+				C41BCFBE1D5648510083B5DA /* Window.swift in Sources */,
 				C41368941D4AA1F70088BFB0 /* Connections.swift in Sources */,
+				C41BCFB11D5648510083B5DA /* PKHUD.swift in Sources */,
+				C41BCFBF1D5648510083B5DA /* WindowRootViewController.swift in Sources */,
+				C41BCFB61D5648510083B5DA /* PKHUDProgressView.swift in Sources */,
 				C413688F1D4AA1C60088BFB0 /* UIViewControllerExtensions.swift in Sources */,
 				C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */,
+				C41BCFBA1D5648510083B5DA /* PKHUDSystemActivityIndicatorView.swift in Sources */,
 				C41368961D4AA1F70088BFB0 /* Message.swift in Sources */,
 				C41368841D4AA1990088BFB0 /* FollowingController.swift in Sources */,
 				C4AD4FA11D5185B6000FBA85 /* DateHelpers.swift in Sources */,
 				C41368861D4AA1990088BFB0 /* MessageController.swift in Sources */,
+				C41BCFB41D5648510083B5DA /* PKHUDAssets.swift in Sources */,
 				C41368A11D4AA2530088BFB0 /* ButtonTableViewCell.swift in Sources */,
+				C41BCFB91D5648510083B5DA /* PKHUDSuccessView.swift in Sources */,
+				C41BCFAE1D5648510083B5DA /* HUD.swift in Sources */,
 				C41368821D4AA1990088BFB0 /* AlertController.swift in Sources */,
+				C41BCFB71D5648510083B5DA /* PKHUDRotatingImageView.swift in Sources */,
 				C41368A91D4AA2530088BFB0 /* UserSearchTableViewController.swift in Sources */,
+				C41BCFB81D5648510083B5DA /* PKHUDSquareBaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

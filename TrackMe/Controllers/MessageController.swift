@@ -57,7 +57,8 @@ class MessageController {
     
     func fetchLatestUserUpdateMessage(recordID: CKRecordID, completion: (message: Message?) -> Void) {
         let db = CKContainer.defaultContainer().publicCloudDatabase
-        let query = CKQuery(recordType: Message.recordType, predicate: NSPredicate(format: "CreatedBy == %@", argumentArray: [recordID]))
+        let createdByReference = CKReference(recordID: recordID, action: .None)
+        let query = CKQuery(recordType: Message.recordType, predicate: NSPredicate(format: "creatorUserRecordID == %@", argumentArray: [createdByReference]))
         query.sortDescriptors = [NSSortDescriptor(key: Message.dateKey, ascending: true)]
         
         db.performQuery(query, inZoneWithID: nil) { records, error in
@@ -111,6 +112,7 @@ class MessageController {
                 return
             }
             
+//            let createdByReference = CKReference(recordID: userID, action: .None)
             let predicate = NSPredicate(format: "creatorUserRecordID == %@", argumentArray: [userID])
             
             let subscription = CKSubscription(recordType: Message.recordType, predicate: predicate, options: .FiresOnRecordCreation)
@@ -123,9 +125,15 @@ class MessageController {
                 if let error = error {
                     NSLog("Error saving subscription: \(error)")
                     return
+                } else {
+                    print(subscription)
                 }
             }
         }
+    }
+    
+    func notifyMe() {
+        
     }
     
     func unsubscribeForPushNotifications(userID: CKRecordID) {

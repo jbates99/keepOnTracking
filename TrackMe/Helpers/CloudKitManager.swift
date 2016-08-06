@@ -322,7 +322,7 @@ class CloudKitManager {
             break
         }
         
-        displayCloudKitNotAvailableError(errorText)
+//        displayCloudKitNotAvailableError(errorText)
     }
     
     func displayCloudKitNotAvailableError(errorText: String) {
