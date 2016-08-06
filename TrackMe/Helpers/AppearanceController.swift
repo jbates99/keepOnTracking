@@ -19,6 +19,7 @@ class AppearanceController {
         UITabBar.appearance().tintColor = .darkGreen
         UITabBar.appearance().barTintColor = .lightGreen
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.darkGreen], forState: .Normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.orangeRed], forState:.Selected)
         UITableView.appearance().backgroundColor = .offWhite
         UITableViewCell.appearance().tintColor = .darkGreen
         UITableViewCell.appearance().backgroundColor = .offWhite
@@ -33,6 +34,7 @@ class AppearanceController {
         UITextField.appearance().tintColor = .lightGreen
         UITextField.appearance().textColor = .darkGreen
         UILabel.appearance().tintColor = .darkGreen
+        
     }
     
 }
