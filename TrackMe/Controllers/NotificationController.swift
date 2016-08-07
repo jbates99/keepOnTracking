@@ -62,8 +62,6 @@ class NotificationController {
     
     func creatorUserInfo(for userRecord: CKRecord, completion: (discoveredInfo: CKDiscoveredUserInfo?) -> Void) {
         
-        print(usersDict)
-        
         if let recordID = userRecord.lastModifiedUserRecordID {
             let recordName = recordID.recordName
             completion(discoveredInfo: usersDict[recordName])

@@ -383,7 +383,7 @@
                                     <outlet property="nameLabel" destination="tVy-X8-pf0" id="TzT-zt-XvV"/>
                                     <outlet property="notifyMeButton" destination="B8F-8t-VOo" id="J8a-XW-yMf"/>
                                     <outlet property="userUpdateLabel" destination="wgl-bp-RCz" id="bh9-T8-Qvc"/>
-                                    <segue destination="ris-Mb-TsK" kind="show" identifier="Message Updates" id="xzi-y8-SeU"/>
+                                    <segue destination="ris-Mb-TsK" kind="show" identifier="messageUpdates" id="xzi-y8-SeU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
