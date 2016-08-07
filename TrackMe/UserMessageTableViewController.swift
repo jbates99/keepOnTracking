@@ -18,20 +18,16 @@ class UserMessageTableViewController: UITableViewController {
         super.viewDidLoad()
         setUpDataSource()
         tableView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        guard let connection = connection else { return }
+        self.title = connection.name
     }
     
     // MARK: - Table view data source
-    
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let messages = messages else { return 0 }
         return messages.count
     }
-    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("messageCell", forIndexPath: indexPath)

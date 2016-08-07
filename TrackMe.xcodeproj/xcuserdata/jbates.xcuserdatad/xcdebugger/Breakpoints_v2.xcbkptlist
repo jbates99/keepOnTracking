@@ -6,54 +6,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TrackMe/View Controllers/ConnectionsViewController.swift"
-            timestampString = "492195850.932273"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "notifyMeButtonPressed(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of TrackMe.ConnectionsViewController.notifyMeButtonPressed (TrackMe.ConnectionTableViewCell) -&gt; ()"
-                  moduleName = "TrackMe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jbates/Desktop/TrackMe/TrackMe/View%20Controllers/ConnectionsViewController.swift"
-                  timestampString = "492230998.458229"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "276">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of TrackMe.ConnectionsViewController.notifyMeButtonPressed (TrackMe.ConnectionTableViewCell) -&gt; ()"
-                  moduleName = "TrackMe"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jbates/Desktop/TrackMe/TrackMe/View%20Controllers/ConnectionsViewController.swift"
-                  timestampString = "492230998.45855"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "73"
-                  endingLineNumber = "73"
-                  offsetFromSymbolStart = "368">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
