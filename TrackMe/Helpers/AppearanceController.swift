@@ -19,7 +19,7 @@ class AppearanceController {
         UITabBar.appearance().tintColor = .darkGreen
         UITabBar.appearance().barTintColor = .lightGreen
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.darkGreen], forState: .Normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.orangeRed], forState:.Selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.lightGreen], forState:.Selected)
         UITableView.appearance().backgroundColor = .offWhite
         UITableViewCell.appearance().tintColor = .darkGreen
         UITableViewCell.appearance().backgroundColor = .offWhite

@@ -339,44 +339,49 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="748" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UCS-aF-5aI">
-                                            <rect key="frame" x="16" y="16" width="568" height="66"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFT-Oo-hm4">
+                                            <rect key="frame" x="8" y="8" width="584" height="74"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ISF-IV-c8L">
-                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="29"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="748" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="UCS-aF-5aI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="509" height="74"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVy-X8-pf0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="493" height="29"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="749" ambiguous="YES" misplaced="YES" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="ISF-IV-c8L">
+                                                            <rect key="frame" x="0.0" y="0.0" width="509" height="46"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVy-X8-pf0">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="509" height="46"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="User (arrived/left) region (xxxx) at (time)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgl-bp-RCz">
+                                                            <rect key="frame" x="0.0" y="54" width="509" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-8t-VOo">
-                                                            <rect key="frame" x="493" y="0.0" width="75" height="29"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="75" id="hM9-nQ-qnL"/>
-                                                            </constraints>
-                                                            <state key="normal" title="Notify Me"/>
-                                                            <connections>
-                                                                <action selector="notifyMeButtonPressed:" destination="Lyn-G0-4px" eventType="touchUpInside" id="BSj-Og-Gui"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                 </stackView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User (arrived/left) region (xxxx) at (time)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgl-bp-RCz">
-                                                    <rect key="frame" x="0.0" y="37" width="568" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-8t-VOo">
+                                                    <rect key="frame" x="509" y="0.0" width="75" height="74"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="hM9-nQ-qnL"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Notify Me"/>
+                                                    <connections>
+                                                        <action selector="notifyMeButtonPressed:" destination="Lyn-G0-4px" eventType="touchUpInside" id="BSj-Og-Gui"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="UCS-aF-5aI" secondAttribute="bottom" id="FSa-93-rRS"/>
-                                        <constraint firstItem="UCS-aF-5aI" firstAttribute="leading" secondItem="5Vx-HK-tyG" secondAttribute="leadingMargin" constant="8" id="dWO-Yp-mHa"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="UCS-aF-5aI" secondAttribute="trailing" constant="8" id="fx4-nU-ZcC"/>
-                                        <constraint firstItem="UCS-aF-5aI" firstAttribute="top" secondItem="5Vx-HK-tyG" secondAttribute="topMargin" constant="8" id="lDe-J4-Wpe"/>
+                                        <constraint firstItem="hFT-Oo-hm4" firstAttribute="top" secondItem="5Vx-HK-tyG" secondAttribute="topMargin" id="WsW-e3-AAR"/>
+                                        <constraint firstItem="hFT-Oo-hm4" firstAttribute="leading" secondItem="5Vx-HK-tyG" secondAttribute="leadingMargin" id="buQ-Jc-fTT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hFT-Oo-hm4" secondAttribute="trailing" id="gRV-yt-9Tx"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hFT-Oo-hm4" secondAttribute="bottom" id="xmc-9K-wWE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

@@ -44,7 +44,13 @@ class ConnectionTableViewCell: UITableViewCell {
         
         nameLabel.text = connection.name
         nameLabel.textColor = UIColor.darkGreen
+        userUpdateLabel.textColor = UIColor.darkGreen
+        setUpButton()
+    }
+    
+    func setUpButton() {
+        notifyMeButton.layer.cornerRadius = 0.5 * notifyMeButton.bounds.size.width
+        notifyMeButton.backgroundColor = UIColor.lightGreen
+        notifyMeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
     }
 }
-
-
