@@ -76,7 +76,7 @@ class MessageController {
         let db = CKContainer.defaultContainer().publicCloudDatabase
         let createdByReference = CKReference(recordID: recordID, action: .None)
         let query = CKQuery(recordType: Message.recordType, predicate: NSPredicate(format: "creatorUserRecordID == %@", argumentArray: [createdByReference]))
-        query.sortDescriptors = [NSSortDescriptor(key: Message.dateKey, ascending: true)]
+        query.sortDescriptors = [NSSortDescriptor(key: Message.dateKey, ascending: false)]
         
         db.performQuery(query, inZoneWithID: nil) { records, error in
             
