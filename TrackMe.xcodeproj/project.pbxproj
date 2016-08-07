@@ -50,6 +50,7 @@
 		C41BCFBF1D5648510083B5DA /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41BCFAC1D5648510083B5DA /* WindowRootViewController.swift */; };
 		C46B55D81D4AE2C800222F50 /* LocationManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B55D71D4AE2C800222F50 /* LocationManagerController.swift */; };
 		C46B55DA1D4AE2EA00222F50 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B55D91D4AE2EA00222F50 /* ConnectionsViewController.swift */; };
+		C48FE56D1D56D537007530ED /* UserMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48FE56C1D56D537007530ED /* UserMessageTableViewController.swift */; };
 		C4AD4FA11D5185B6000FBA85 /* DateHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AD4FA01D5185B6000FBA85 /* DateHelpers.swift */; };
 		C4BEED9F1D2DB19D00C0D190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */; };
 		C4BEEDA61D2DB19D00C0D190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEEDA51D2DB19D00C0D190 /* Assets.xcassets */; };
@@ -122,6 +123,7 @@
 		C41BCFAC1D5648510083B5DA /* WindowRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowRootViewController.swift; sourceTree = "<group>"; };
 		C46B55D71D4AE2C800222F50 /* LocationManagerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocationManagerController.swift; path = Controllers/LocationManagerController.swift; sourceTree = "<group>"; };
 		C46B55D91D4AE2EA00222F50 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConnectionsViewController.swift; path = "View Controllers/ConnectionsViewController.swift"; sourceTree = "<group>"; };
+		C48FE56C1D56D537007530ED /* UserMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserMessageTableViewController.swift; sourceTree = "<group>"; };
 		C4AD4FA01D5185B6000FBA85 /* DateHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelpers.swift; sourceTree = "<group>"; };
 		C4BEED9B1D2DB19D00C0D190 /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BEED9E1D2DB19D00C0D190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				C413689B1D4AA2530088BFB0 /* FollowUserTableViewCell.swift */,
 				C413689C1D4AA2530088BFB0 /* LocationsDetailTableViewController.swift */,
 				C413689D1D4AA2530088BFB0 /* NewLocationViewController.swift */,
+				C48FE56C1D56D537007530ED /* UserMessageTableViewController.swift */,
 				C413689E1D4AA2530088BFB0 /* PendingRequestCell.swift */,
 				C413689F1D4AA2530088BFB0 /* RequestsViewController.swift */,
 				C41368A01D4AA2530088BFB0 /* UserSearchTableViewController.swift */,
@@ -473,6 +476,7 @@
 				C41368831D4AA1990088BFB0 /* ConnectionsController.swift in Sources */,
 				C41368A21D4AA2530088BFB0 /* ConnectionTableViewCell.swift in Sources */,
 				C41368971D4AA1F70088BFB0 /* Profile.swift in Sources */,
+				C48FE56D1D56D537007530ED /* UserMessageTableViewController.swift in Sources */,
 				C41BCFBB1D5648510083B5DA /* PKHUDTextView.swift in Sources */,
 				C41368A81D4AA2530088BFB0 /* RequestsViewController.swift in Sources */,
 				C41368951D4AA1F70088BFB0 /* Following.swift in Sources */,

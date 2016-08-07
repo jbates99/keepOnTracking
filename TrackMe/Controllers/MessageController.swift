@@ -55,6 +55,23 @@ class MessageController {
         }
     }
     
+    func fetchMessagesForUser(recordID recordID: CKRecordID, completion: (messages: [Message]?) -> Void) {
+        let db = CKContainer.defaultContainer().publicCloudDatabase
+        let createdByReference = CKReference(recordID: recordID, action: .None)
+        let query = CKQuery(recordType: Message.recordType, predicate: NSPredicate(format: "creatorUserRecordID == %@", argumentArray: [createdByReference]))
+        query.sortDescriptors = [NSSortDescriptor(key: Message.dateKey, ascending: true)]
+        db.performQuery(query, inZoneWithID: nil) { records, error in
+            if let error = error {
+                AlertController.displayError(error, withMessage: nil)
+                completion(messages: nil)
+            } else {
+                guard let records = records?.suffix(40) else { completion(messages: nil); return }
+                let messages = records.flatMap { Message(cloudKitRecord: $0) }
+                completion(messages: messages)
+            }
+        }
+    }
+    
     func fetchLatestUserUpdateMessage(recordID: CKRecordID, completion: (message: Message?) -> Void) {
         let db = CKContainer.defaultContainer().publicCloudDatabase
         let createdByReference = CKReference(recordID: recordID, action: .None)
