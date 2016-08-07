@@ -186,7 +186,35 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMY-tA-gMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3276" y="599"/>
+            <point key="canvasLocation" x="3319" y="314"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="nR0-qT-NCZ">
+            <objects>
+                <tableViewController id="ris-Mb-TsK" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="U3q-4U-DEM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="gGU-NY-Xps">
+                                <rect key="frame" x="0.0" y="122" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gGU-NY-Xps" id="Nmj-bc-0pw">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ris-Mb-TsK" id="U7i-sd-977"/>
+                            <outlet property="delegate" destination="ris-Mb-TsK" id="lSc-eW-5YB"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sAs-bc-ytE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3319" y="992"/>
         </scene>
         <!--My Locations-->
         <scene sceneID="XYg-pa-GpL">
@@ -346,6 +374,7 @@
                                     <outlet property="nameLabel" destination="tVy-X8-pf0" id="TzT-zt-XvV"/>
                                     <outlet property="notifyMeButton" destination="B8F-8t-VOo" id="J8a-XW-yMf"/>
                                     <outlet property="userUpdateLabel" destination="wgl-bp-RCz" id="bh9-T8-Qvc"/>
+                                    <segue destination="ris-Mb-TsK" kind="show" identifier="Message Updates" id="xzi-y8-SeU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

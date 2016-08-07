@@ -59,6 +59,11 @@ class NewLocationViewController: UIViewController {
         guard let distance = Double(distanceText) else { return }
         LocationController.createRegion(mapSelectionPoint.coordinate, radius: distance, name: locationName)
         LocationController.askForLocationPermissions()
+        if let region = region {
+            MessageController.sharedController.postNewMessage(Message(messageText: "Updated \(region.identifier)", date: NSDate()))
+        } else {
+            MessageController.sharedController.postNewMessage(Message(messageText: "Created \(locationName)", date: NSDate()))
+        }
         navigationController?.popViewControllerAnimated(true)
     }
     

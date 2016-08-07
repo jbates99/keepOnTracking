@@ -48,6 +48,7 @@ class LocationsDetailTableViewController: UITableViewController {
             let region = regions[indexPath.row]
             
             let manager = LocationManagerController.sharedInstance.manager
+            MessageController.sharedController.postNewMessage(Message(messageText: "Deleted \(region.identifier)", date: NSDate()))
             manager.stopMonitoringForRegion(region)
             LocationManagerController.sharedInstance.setUpRegions()
             
