@@ -13,6 +13,8 @@ class UserSearchTableViewController: UITableViewController {
     
     let notificationController = NotificationController.sharedInstance
     
+    var userStatusDictionary = [CKDiscoveredUserInfo: Int]()
+    
     var users: [CKDiscoveredUserInfo] {
         return notificationController.discoveredRecords
     }
@@ -21,8 +23,17 @@ class UserSearchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        HUD.show(.Progress)
+        HUD.dimsBackground = false
+        HUD.allowsInteraction = true
         setUpUsers()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpUserStatusDictionary), name: "discoveredUsers", object: nil)
         notificationController.requestAccess()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        HUD.hide()
     }
     
     // MARK: - Table view data source
@@ -43,8 +54,10 @@ class UserSearchTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("requestCell", forIndexPath: indexPath) as! FollowUserTableViewCell
         let user = users[indexPath.row]
-        cell.updateWithUser(user)
+        let userStatus = userStatusDictionary[user] ?? nil
+        cell.updateWithUser(user, status: userStatus)
         cell.delegate = self
+        cell.selectionStyle = .None
         
         return cell
     }
@@ -52,10 +65,29 @@ class UserSearchTableViewController: UITableViewController {
     func setUpUsers() {
         notificationController.discoverUsers { success in
             if success {
-                Dispatch.main.async {
-                    self.tableView.reloadData()
-                }
+                NSNotificationCenter.defaultCenter().postNotificationName("discoveredUsers", object: nil)
             }
+        }
+    }
+    
+    func setUpUserStatusDictionary() {
+        let group = dispatch_group_create()
+        for user in users {
+            dispatch_group_enter(group)
+            guard let recordID = user.userRecordID else { dispatch_group_leave(group); break }
+            FollowingController.sharedController.retrieveFollowingRequests(by: recordID, completion: { (returnedRecords) in
+                if let returnedRecords = returnedRecords {
+                    if returnedRecords.count > 0 && returnedRecords.count < 2  {
+                        guard let record = returnedRecords.first, following = Following(cloudKitRecord: record) else { return }
+                        self.userStatusDictionary[user] = following.status
+                        dispatch_group_leave(group)
+                    }
+                }
+            })
+        }
+        dispatch_group_notify(group, dispatch_get_main_queue()) { 
+            self.tableView.reloadData()
+            HUD.hide()
         }
     }
     

@@ -28,6 +28,11 @@ class RequestsViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpPendingDataSource), name: "followingUpdated", object: nil)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        HUD.hide()
+    }
+    
     @IBAction func doneButtonPressed(sender: AnyObject) {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }

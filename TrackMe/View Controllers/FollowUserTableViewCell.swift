@@ -33,11 +33,34 @@ protocol FollowUserTableViewCellDelegate {
 
 extension FollowUserTableViewCell {
     
-    func updateWithUser(userInfo: CKDiscoveredUserInfo) {
-        buttonLabel.setTitleColor(UIColor.orangeRed, forState: .Normal)
+    func updateWithUser(userInfo: CKDiscoveredUserInfo, status: Int?) {
+        setUpCellAppearence()
+        nameLabel.text = userInfo.displayContact?.givenName
+        if status == nil {
+            pendingLabel.hidden = true
+            buttonLabel.hidden = false
+        } else if status == 0 { // Pending
+            buttonLabel.hidden = true
+            pendingLabel.hidden = false
+        } else if status == 1 { // Accepted
+            buttonLabel.hidden = true
+            pendingLabel.text = "Accepted"
+            pendingLabel.hidden = false
+        } else if status == 2 { // Denied
+            buttonLabel.hidden = true
+            pendingLabel.text = "Denied"
+            pendingLabel.textColor = UIColor.orangeRed
+            pendingLabel.hidden = false
+        }
+    }
+    
+    func setUpCellAppearence() {
+        buttonLabel.setTitleColor(UIColor.lightGreen, forState: .Normal)
+        buttonLabel.layer.borderWidth = 1
+        buttonLabel.layer.borderColor = UIColor.lightGreen.CGColor
+        buttonLabel.layer.cornerRadius = 5
+        buttonLabel.contentEdgeInsets = UIEdgeInsetsMake(5,5,5,5)
         pendingLabel.textColor = UIColor.lightGreen
         nameLabel.textColor = UIColor.darkGreen
-        nameLabel.text = userInfo.displayContact?.givenName
-        
     }
 }

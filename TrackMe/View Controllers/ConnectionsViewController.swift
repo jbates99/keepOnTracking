@@ -25,6 +25,11 @@ class ConnectionsViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setUpDataSource), name: "usersDictSet", object: nil)
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        HUD.hide()
+    }
+    
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
