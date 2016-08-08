@@ -395,7 +395,7 @@
                     <navigationItem key="navigationItem" title="Connections" prompt=" " id="vgr-oI-pbK">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Qfs-9g-YfR">
                             <connections>
-                                <segue destination="z1m-mV-pUM" kind="show" id="4Ik-lm-ENN"/>
+                                <segue destination="z1m-mV-pUM" kind="show" identifier="userSearch" id="4Ik-lm-ENN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

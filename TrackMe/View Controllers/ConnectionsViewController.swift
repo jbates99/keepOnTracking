@@ -66,8 +66,8 @@ class ConnectionsViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let detailViewController = segue.destinationViewController as? UserMessageTableViewController else { fatalError("unexpected destination from segue") }
         if segue.identifier == "messageUpdates" {
+        guard let detailViewController = segue.destinationViewController as? UserMessageTableViewController else { fatalError("unexpected destination from segue") }
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 guard let connections = connections else { return }
                 let connection = connections[selectedIndexPath.row]
