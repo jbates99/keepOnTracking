@@ -16,7 +16,15 @@ class UserSearchTableViewController: UITableViewController {
     var userStatusDictionary = [CKDiscoveredUserInfo: Int]()
     
     var users: [CKDiscoveredUserInfo] {
-        return notificationController.discoveredRecords
+        var users = notificationController.discoveredRecords
+        for user in users {
+            if user.userRecordID == FollowingController.sharedController.currentUserRecordID {
+                if let index = users.indexOf(user) {
+                    users.removeAtIndex(index)
+                }
+            }
+        }
+        return users
     }
     
     // MARK: - Computed Properties
@@ -85,7 +93,7 @@ class UserSearchTableViewController: UITableViewController {
                 }
             })
         }
-        dispatch_group_notify(group, dispatch_get_main_queue()) { 
+        dispatch_group_notify(group, dispatch_get_main_queue()) {
             self.tableView.reloadData()
             HUD.hide()
         }

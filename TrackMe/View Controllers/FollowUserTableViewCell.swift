@@ -39,7 +39,7 @@ extension FollowUserTableViewCell {
             let name = "\(displayContact.givenName) \(displayContact.familyName)"
             nameLabel.text = name
         } else {
-        nameLabel.text = userInfo.displayContact?.givenName
+            nameLabel.text = userInfo.displayContact?.givenName
         }
         if status == nil {
             pendingLabel.hidden = true
