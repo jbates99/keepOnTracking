@@ -35,7 +35,12 @@ extension FollowUserTableViewCell {
     
     func updateWithUser(userInfo: CKDiscoveredUserInfo, status: Int?) {
         setUpCellAppearence()
+        if let displayContact = userInfo.displayContact {
+            let name = "\(displayContact.givenName) \(displayContact.familyName)"
+            nameLabel.text = name
+        } else {
         nameLabel.text = userInfo.displayContact?.givenName
+        }
         if status == nil {
             pendingLabel.hidden = true
             buttonLabel.hidden = false
